@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Integral Humanism — Deendayal Upadhyaya · Read the Book</title>
+<style>
+/* ============ fonts ============ */
+@font-face{font-family:'Instrument';src:url(fonts/InstrumentSerif-Regular.ttf);font-weight:400;font-style:normal}
+@font-face{font-family:'Instrument';src:url(fonts/InstrumentSerif-Italic.ttf);font-weight:400;font-style:italic}
+@font-face{font-family:'Plex';src:url(fonts/IBMPlexMono-Regular.ttf);font-weight:400}
+@font-face{font-family:'Plex';src:url(fonts/IBMPlexMono-Medium.ttf);font-weight:500}
+@font-face{font-family:'Aeonik';src:url(fonts/AeonikTRIAL-Light.otf);font-weight:300}
+@font-face{font-family:'Aeonik';src:url(fonts/AeonikTRIAL-Regular.otf);font-weight:400}
+@font-face{font-family:'Doto';src:url(fonts/Doto.ttf);font-weight:100 900}
+
+/* ============ tokens ============ */
+:root{
+  --ink:#0B1411;          /* deep contemplative green-black */
+  --ink-2:#0E1915;
+  --ink-3:#122019;
+  --cream:#F0E7D3;
+  --cream-dim:rgba(240,231,211,.72);
+  --gold:#D9A44F;
+  --gold-deep:#B67F2E;
+  --ember:#C96F3B;
+  --hair:rgba(240,231,211,.22);
+  --hair-soft:rgba(240,231,211,.12);
+  --paper:#F2EAD9;
+  --paper-2:#EBE1CC;
+  --book-ink:#2A241A;
+  --book-soft:#6E6350;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:'Aeonik',sans-serif;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(217,164,79,.35)}
+
+/* ============ poster chrome (fixed) ============ */
+.chrome{position:fixed;inset:0;pointer-events:none;z-index:90}
+.chrome .fr{position:absolute;inset:14px;border:1px solid var(--hair)}
+.chrome .tick{position:absolute;width:14px;height:14px;border-color:rgba(240,231,211,.5)}
+.chrome .t1{left:6px;top:6px;border-left:1.5px solid;border-top:1.5px solid}
+.chrome .t2{right:6px;top:6px;border-right:1.5px solid;border-top:1.5px solid}
+.chrome .t3{left:6px;bottom:6px;border-left:1.5px solid;border-bottom:1.5px solid}
+.chrome .t4{right:6px;bottom:6px;border-right:1.5px solid;border-bottom:1.5px solid}
+.grain{position:fixed;inset:-40%;z-index:91;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.94 0 0 0 0 0.9 0 0 0 0 0.83 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ============ shared type ============ */
+.mono{font-family:'Plex',monospace}
+.serif{font-family:'Instrument',serif;font-weight:400}
+.lab{font-family:'Plex',monospace;font-weight:500;font-size:13px;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--gold)}
+.micro{font-family:'Plex',monospace;font-weight:500;font-size:11.5px;letter-spacing:.34em;
+  text-transform:uppercase;color:rgba(240,231,211,.45)}
+.dot{ -webkit-mask-image:radial-gradient(circle 2.5px at 4px 4px,#000 97%,transparent 100%);
+  mask-image:radial-gradient(circle 2.5px at 4px 4px,#000 97%,transparent 100%);
+  -webkit-mask-size:8px 8px;mask-size:8px 8px}
+
+/* scroll reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+.rv.in{opacity:1;transform:none}
+
+/* ============ nav ============ */
+nav{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;justify-content:space-between;
+  align-items:center;padding:26px 44px;mix-blend-mode:normal}
+nav .wm{display:flex;align-items:baseline;gap:14px;text-decoration:none;color:var(--cream)}
+nav .wm .dev{font-family:'Instrument',serif;font-size:20px;color:var(--gold)}
+nav .links{display:flex;gap:34px}
+nav .links a{font-family:'Plex',monospace;font-weight:500;font-size:12px;letter-spacing:.26em;
+  text-transform:uppercase;color:rgba(240,231,211,.7);text-decoration:none;transition:color .3s}
+nav .links a:hover{color:var(--gold)}
+
+/* ============ hero ============ */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;
+  padding:120px 7vw 80px;overflow:hidden;
+  background:
+    radial-gradient(ellipse 90% 60% at 72% 42%, #1A2B1F 0%, transparent 60%),
+    linear-gradient(180deg,#0C1713 0%, #0B1411 55%, #091210 100%)}
+.hero .copy{position:relative;z-index:5;max-width:640px}
+.hero .dev-line{font-family:'Instrument',serif;font-size:clamp(22px,2.4vw,30px);
+  color:var(--gold);letter-spacing:.04em;margin-bottom:22px}
+.hero h1{font-family:'Instrument',serif;font-size:clamp(58px,7.2vw,108px);line-height:.98;
+  letter-spacing:.005em;margin-bottom:30px}
+.hero h1 i{color:var(--gold)}
+.hero .sub{font-size:clamp(17px,1.5vw,21px);line-height:1.65;color:var(--cream-dim);
+  max-width:520px;font-weight:300}
+.hero .meta{display:flex;gap:44px;margin-top:44px}
+.hero .meta .m .k{font-family:'Plex',monospace;font-weight:500;font-size:11.5px;
+  letter-spacing:.3em;text-transform:uppercase;color:rgba(240,231,211,.5);margin-bottom:8px}
+.hero .meta .m .v{font-family:'Instrument',serif;font-size:24px}
+.cta{display:inline-flex;align-items:center;gap:16px;margin-top:52px;padding:17px 30px;
+  border:1px solid var(--gold);color:var(--gold);text-decoration:none;
+  font-family:'Plex',monospace;font-weight:500;font-size:13px;letter-spacing:.3em;
+  text-transform:uppercase;transition:background .35s,color .35s;background:transparent}
+.cta:hover{background:var(--gold);color:var(--ink)}
+.cta .ar{transition:transform .35s}
+.cta:hover .ar{transform:translateY(3px)}
+
+/* mandala — the widening self */
+.mandala{position:absolute;right:max(2vw,20px);top:50%;transform:translateY(-50%);
+  width:min(46vw,720px);aspect-ratio:1;z-index:1}
+.mandala .halo{position:absolute;inset:6%;border-radius:50%;
+  background:radial-gradient(circle,rgba(217,164,79,.20) 0%,rgba(217,164,79,.06) 46%,transparent 68%)}
+.mandala .sun{position:absolute;left:50%;top:50%;width:29%;aspect-ratio:1;border-radius:50%;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle at 42% 36%,#F4D9A0 0%,#E4B563 34%,#C98A38 66%,#8F5B22 100%)}
+.mandala .ring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  border:1px solid var(--hair-soft);border-radius:50%}
+.mandala .ring.dash{border:none;animation:spin 90s linear infinite}
+.mandala .ring.dash svg{display:block;width:100%;height:100%}
+.mandala .rlab{position:absolute;left:50%;top:50%;font-family:'Plex',monospace;font-weight:500;
+  font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(240,231,211,.55);
+  background:var(--ink);padding:3px 10px;white-space:nowrap}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.hero .base-line{position:absolute;left:7vw;right:7vw;bottom:44px;display:flex;
+  justify-content:space-between;align-items:center;z-index:5}
+
+/* ============ reader ============ */
+.reader{position:relative;padding:110px 4vw 90px;
+  background:linear-gradient(180deg,#091210 0%,#0C1713 30%,#0C1713 70%,#0A1310 100%)}
+.reader .rhead{max-width:1180px;margin:0 auto 40px;text-align:center}
+.reader .rhead .lab{margin-bottom:18px}
+.reader .rhead h2{font-family:'Instrument',serif;font-size:clamp(38px,4.4vw,62px);line-height:1.04}
+.reader .rhead h2 i{color:var(--gold)}
+.reader .rhead p{margin:18px auto 0;max-width:560px;color:var(--cream-dim);font-weight:300;
+  font-size:17px;line-height:1.6}
+
+/* chapter bar — on top of the book */
+.chbar{max-width:1180px;margin:0 auto 26px;display:flex;align-items:center;gap:22px;
+  justify-content:space-between;border:1px solid var(--hair);padding:14px 22px;
+  background:rgba(240,231,211,.03)}
+.chbar .pills{display:flex;gap:8px}
+.chbar .pill{font-family:'Doto',monospace;font-weight:700;font-size:15px;letter-spacing:.12em;
+  color:rgba(240,231,211,.55);border:1px solid transparent;background:none;padding:7px 13px;
+  cursor:pointer;transition:all .3s}
+.chbar .pill:hover{color:var(--gold)}
+.chbar .pill.on{color:var(--gold);border-color:var(--gold)}
+.chbar .now{flex:1;text-align:center;font-family:'Plex',monospace;font-weight:500;font-size:13px;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--cream)}
+.chbar .now b{color:var(--gold);font-weight:500}
+.chbar .right{display:flex;align-items:center;gap:18px}
+.chbar .pg{font-family:'Plex',monospace;font-size:12px;letter-spacing:.2em;color:rgba(240,231,211,.55)}
+.chbar .snd{font-family:'Plex',monospace;font-weight:500;font-size:11px;letter-spacing:.24em;
+  color:rgba(240,231,211,.6);background:none;border:1px solid var(--hair);padding:7px 12px;
+  cursor:pointer;text-transform:uppercase;transition:all .3s}
+.chbar .snd:hover{color:var(--gold);border-color:var(--gold)}
+
+/* the book */
+.stage{display:flex;align-items:center;justify-content:center;gap:26px;max-width:1280px;margin:0 auto}
+.navbtn{width:56px;height:56px;flex:none;border:1px solid var(--hair);background:none;
+  color:var(--cream);font-size:20px;cursor:pointer;transition:all .3s;font-family:'Plex',monospace}
+.navbtn:hover{border-color:var(--gold);color:var(--gold)}
+.navbtn:disabled{opacity:.25;cursor:default}
+.bookwrap{perspective:2600px}
+.book{position:relative;width:calc(var(--pw)*2 + 4px);height:var(--ph);
+  transform-style:preserve-3d;
+  --pw:450px;--ph:620px}
+.book .shadow{position:absolute;left:2%;right:2%;bottom:-34px;height:50px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(0,0,0,.55) 0%,transparent 68%)}
+/* page-edge stacks */
+.stack{position:absolute;top:5px;bottom:5px;width:0}
+.stack.l{left:-1px;border-left:1px solid rgba(42,36,26,.45);
+  box-shadow:-2px 0 0 rgba(242,234,217,.85),-3px 0 0 rgba(42,36,26,.22),-5px 0 0 rgba(242,234,217,.8),-6px 0 0 rgba(42,36,26,.18),-8px 0 0 rgba(242,234,217,.7)}
+.stack.r{right:-1px;border-right:1px solid rgba(42,36,26,.45);
+  box-shadow:2px 0 0 rgba(242,234,217,.85),3px 0 0 rgba(42,36,26,.22),5px 0 0 rgba(242,234,217,.8),6px 0 0 rgba(42,36,26,.18),8px 0 0 rgba(242,234,217,.7)}
+.pageslot{position:absolute;top:0;width:var(--pw);height:var(--ph);overflow:hidden}
+.pageslot.left{left:0;border-radius:3px 0 0 3px}
+.pageslot.right{right:0;border-radius:0 3px 3px 0}
+.leaf{position:absolute;top:0;right:0;width:var(--pw);height:var(--ph);z-index:30;
+  transform-style:preserve-3d;transform-origin:left center;will-change:transform}
+.leaf .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+.leaf .face.back{transform:rotateY(180deg)}
+.leaf.fromleft{left:0;right:auto;transform-origin:right center}
+.flipshade{position:absolute;inset:0;pointer-events:none;opacity:0}
+
+/* paper */
+.paper{width:var(--pw);height:var(--ph);background:
+  linear-gradient(115deg,rgba(255,255,255,.35) 0%,transparent 30%),
+  var(--paper);
+  color:var(--book-ink);position:relative;
+  padding:52px 46px 58px;display:flex;flex-direction:column}
+.paper::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.45 0 0 0 0 0.38 0 0 0 0 0.26 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23p)'/%3E%3C/svg%3E")}
+.paper.pl{box-shadow:inset -26px 0 34px -22px rgba(60,45,20,.5)}
+.paper.pr{box-shadow:inset 26px 0 34px -22px rgba(60,45,20,.5)}
+.paper .run{display:flex;justify-content:space-between;margin-bottom:26px}
+.paper .run span{font-family:'Plex',monospace;font-weight:500;font-size:10px;
+  letter-spacing:.32em;text-transform:uppercase;color:var(--book-soft)}
+.paper .body{flex:1;overflow:hidden;position:relative;z-index:2}
+.paper .pno{text-align:center;margin-top:20px;font-family:'Plex',monospace;font-size:11px;
+  letter-spacing:.3em;color:var(--book-soft)}
+.paper .body p{font-family:'Instrument',serif;font-size:17.5px;line-height:1.58;
+  text-indent:1.6em;text-align:justify;hyphens:auto}
+.paper .body p.noind{text-indent:0}
+.paper .body p.li{text-indent:0;padding-left:1.5em;position:relative;margin-top:.5em}
+.paper .body p.li em.n{position:absolute;left:0;font-style:normal;color:var(--gold-deep);
+  font-family:'Plex',monospace;font-size:13px;top:3px}
+.paper .body h4{font-family:'Plex',monospace;font-weight:500;font-size:12.5px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep);
+  margin:1.5em 0 .8em;text-indent:0}
+.paper .body h4:first-child{margin-top:.2em}
+/* chapter opener page */
+.opener{display:flex;flex-direction:column;align-items:center;text-align:center;height:100%;
+  justify-content:center;gap:0}
+.opener .doto{font-family:'Doto';font-weight:700;font-size:120px;line-height:1;color:var(--gold-deep)}
+.opener .clab{font-family:'Plex',monospace;font-weight:500;font-size:12px;letter-spacing:.42em;
+  text-transform:uppercase;color:var(--book-soft);margin:26px 0 14px}
+.opener .ctit{font-family:'Instrument',serif;font-size:40px;line-height:1.1;max-width:300px}
+.opener .crule{width:70px;height:1px;background:var(--book-soft);opacity:.5;margin:26px auto}
+.opener .csub{font-family:'Instrument',serif;font-style:italic;font-size:18px;
+  color:var(--book-soft);max-width:280px;line-height:1.5}
+/* title page + cover deco */
+.tpage{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;height:100%}
+.tpage .dev{font-family:'Instrument',serif;font-size:26px;color:var(--gold-deep);margin-bottom:20px}
+.tpage h3{font-family:'Instrument',serif;font-size:46px;line-height:1.05;margin-bottom:18px}
+.tpage .by{font-family:'Plex',monospace;font-weight:500;font-size:11.5px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--book-soft);line-height:2.1}
+.tpage .orn{margin:30px 0;color:var(--gold-deep);font-size:20px}
+.coverdeco{display:flex;align-items:center;justify-content:center;height:100%}
+.coverdeco .disc{width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle at 42% 36%,#E9C583 0%,#CE9A47 50%,#96601F 100%)}
+.blankpg{display:flex;align-items:center;justify-content:center;height:100%;
+  color:var(--book-soft);font-size:18px;opacity:.6}
+
+/* corner hints */
+.hint{position:absolute;bottom:0;width:74px;height:74px;cursor:pointer;z-index:26}
+.hint.hr{right:0;background:linear-gradient(315deg,rgba(150,120,60,.28) 0%,transparent 52%)}
+.hint.hl{left:0;background:linear-gradient(45deg,rgba(150,120,60,.28) 0%,transparent 52%)}
+.hint{opacity:0;transition:opacity .3s}
+.book:hover .hint{opacity:1}
+
+.rfoot{max-width:1180px;margin:34px auto 0;display:flex;justify-content:space-between;align-items:center}
+.rfoot .tip{font-family:'Plex',monospace;font-size:11.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(240,231,211,.4)}
+.progress{flex:1;margin:0 40px;height:1px;background:var(--hair-soft);position:relative}
+.progress .fill{position:absolute;left:0;top:0;bottom:0;background:var(--gold);width:0;transition:width .5s}
+.progress .knot{position:absolute;top:-4px;width:9px;height:9px;transform:rotate(45deg) translateX(-50%);
+  background:var(--gold);transition:left .5s}
+
+/* ============ listen / podcast ============ */
+.listen{position:relative;padding:120px 7vw 110px;background:
+  radial-gradient(ellipse 60% 50% at 82% 20%,#16241C 0%,transparent 60%),
+  linear-gradient(180deg,#0A1310 0%,#0B1512 50%,#0A1310 100%)}
+.listen .lhead{text-align:center;max-width:760px;margin:0 auto 20px}
+.listen h2{font-family:'Instrument',serif;font-size:clamp(40px,4.8vw,68px);line-height:1.02;margin-top:20px}
+.listen h2 i{color:var(--gold)}
+.listen .lhead p{margin-top:20px;font-weight:300;font-size:17.5px;line-height:1.65;color:var(--cream-dim)}
+.langtog{display:flex;justify-content:center;gap:0;margin:36px auto 46px;width:max-content;
+  border:1px solid var(--hair)}
+.langtog button{font-family:'Plex',monospace;font-weight:500;font-size:13px;letter-spacing:.26em;
+  text-transform:uppercase;padding:13px 34px;background:none;border:none;color:rgba(240,231,211,.6);
+  cursor:pointer;transition:all .3s}
+.langtog button.on{background:var(--gold);color:var(--ink)}
+.eplist{max-width:1080px;margin:0 auto;border-top:1px solid var(--hair-soft)}
+.ep{display:flex;align-items:center;gap:30px;padding:30px 10px;
+  border-bottom:1px solid var(--hair-soft);transition:background .3s}
+.ep:hover{background:rgba(240,231,211,.025)}
+.ep .eno{font-family:'Doto';font-weight:700;font-size:30px;color:var(--gold);width:64px;
+  flex:none;letter-spacing:.1em}
+.ep .emeta{flex:1;min-width:0}
+.ep .etit{font-family:'Instrument',serif;font-size:29px;line-height:1.15}
+.ep .esub{font-family:'Plex',monospace;font-weight:500;font-size:11.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:rgba(240,231,211,.5);margin-top:8px}
+.ep .esub .edur{color:var(--gold)}
+.ep .prog{flex:1.1;height:26px;position:relative;cursor:pointer;min-width:120px}
+.ep .prog .rail{position:absolute;left:0;right:0;top:50%;height:1px;background:var(--hair)}
+.ep .prog .fill{position:absolute;left:0;top:50%;height:1px;background:var(--gold);width:0}
+.ep .prog .knot{position:absolute;top:50%;width:9px;height:9px;margin-top:-4.5px;
+  transform:rotate(45deg);background:var(--gold);left:0;margin-left:-4px;opacity:0;transition:opacity .3s}
+.ep.playing .prog .knot{opacity:1}
+.ep .etime{font-family:'Plex',monospace;font-size:12px;letter-spacing:.12em;
+  color:rgba(240,231,211,.55);width:110px;text-align:right;flex:none}
+.pbtn{width:60px;height:60px;flex:none;border-radius:50%;border:1px solid var(--hair);
+  background:none;color:var(--cream);cursor:pointer;position:relative;transition:all .3s}
+.pbtn:hover{border-color:var(--gold);color:var(--gold)}
+.ep.playing .pbtn{border-color:var(--gold);background:var(--gold);color:var(--ink)}
+.pbtn .tri{position:absolute;left:53%;top:50%;transform:translate(-50%,-50%);
+  width:0;height:0;border-left:15px solid currentColor;border-top:9px solid transparent;
+  border-bottom:9px solid transparent}
+.pbtn .bars{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:none;gap:5px}
+.pbtn .bars i{display:block;width:4px;height:18px;background:currentColor}
+.ep.playing .pbtn .tri{display:none}
+.ep.playing .pbtn .bars{display:flex}
+.ep.pending .pbtn{opacity:.35;cursor:default}
+.ep.pending .etime{font-size:10.5px;letter-spacing:.2em}
+.listen .lfoot{max-width:1080px;margin:30px auto 0;display:flex;justify-content:space-between}
+@media(max-width:900px){
+  .ep{flex-wrap:wrap}
+  .ep .prog{order:5;flex-basis:100%}
+}
+
+/* --- show card (spotify-like, our texture) --- */
+.show{max-width:1120px;margin:56px auto 0;display:flex;gap:64px;align-items:stretch}
+.cover{width:380px;height:380px;flex:none;position:relative;overflow:hidden;
+  background:
+    radial-gradient(ellipse 90% 70% at 70% 30%,#182A20 0%,transparent 65%),
+    linear-gradient(160deg,#101E17 0%,#0A1310 100%);
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}
+.cover .cv-halo{position:absolute;right:-14%;top:-14%;width:70%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(217,164,79,.28) 0%,rgba(217,164,79,.08) 50%,transparent 72%)}
+.cover .cv-sun{position:absolute;right:6%;top:6%;width:38%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 40% 35%,#F4D9A0 0%,#DFAE58 45%,#B67F2E 80%,#8F5B22 100%)}
+.cover .cv-ring{position:absolute;border:1px solid rgba(240,231,211,.16);border-radius:50%}
+.cover .r1{right:-4%;top:-4%;width:58%;aspect-ratio:1}
+.cover .r2{right:-14%;top:-14%;width:78%;aspect-ratio:1;border-color:rgba(240,231,211,.10)}
+.cover .r3{right:-26%;top:-26%;width:102%;aspect-ratio:1;border-color:rgba(240,231,211,.06)}
+.cover .cv-frame{position:absolute;inset:14px;border:1px solid rgba(240,231,211,.28);pointer-events:none}
+.cover .cv-top{position:absolute;left:28px;right:28px;top:26px;display:flex;
+  justify-content:space-between;align-items:baseline}
+.cover .cv-top span{font-family:'Instrument',serif;font-size:17px;color:var(--gold)}
+.cover .cv-top .cv-n{font-family:'Plex',monospace;font-weight:500;font-size:10px;
+  letter-spacing:.3em;color:rgba(240,231,211,.55)}
+.cover .cv-bottom{position:absolute;left:28px;right:28px;bottom:26px}
+.cover .cv-t1{font-family:'Instrument',serif;font-size:52px;line-height:.98;color:var(--cream)}
+.cover .cv-t2{font-family:'Plex',monospace;font-weight:500;font-size:10.5px;letter-spacing:.3em;
+  text-transform:uppercase;color:rgba(240,231,211,.6);margin-top:14px}
+.showinfo{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center}
+.showtitle{font-family:'Instrument',serif;font-size:clamp(34px,3.6vw,52px);line-height:1.05;
+  margin:16px 0 14px}
+.showtitle i{color:var(--gold)}
+.showby{font-family:'Plex',monospace;font-weight:500;font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(240,231,211,.55)}
+.showdesc{margin-top:18px;font-weight:300;font-size:16.5px;line-height:1.65;
+  color:var(--cream-dim);max-width:560px}
+.playcard{margin-top:32px;display:flex;align-items:center;gap:26px;border:1px solid var(--hair);
+  padding:20px 26px;background:rgba(240,231,211,.03)}
+.pbtn.big{width:68px;height:68px;background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.pbtn.big:hover{transform:scale(1.05)}
+.pbtn.big .tri{border-left-width:18px;border-top-width:11px;border-bottom-width:11px}
+.pbtn.big .bars i{width:5px;height:20px}
+.playing-one .pbtn.big .tri{display:none}
+.playing-one .pbtn.big .bars{display:flex}
+.ptitle{font-family:'Plex',monospace;font-weight:500;font-size:11.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.pmid{flex:1;min-width:0}
+.pmid .prog{height:26px;position:relative;cursor:pointer}
+.pmid .rail{position:absolute;left:0;right:0;top:50%;height:1px;background:var(--hair)}
+.pmid .fill{position:absolute;left:0;top:50%;height:1px;background:var(--gold);width:0}
+.pmid .knot{position:absolute;top:50%;width:9px;height:9px;margin-top:-4.5px;margin-left:-4px;
+  transform:rotate(45deg);background:var(--gold);left:0}
+.prow{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.ptime{font-family:'Plex',monospace;font-size:12px;letter-spacing:.14em;color:rgba(240,231,211,.6)}
+.pctl{display:flex;gap:10px}
+.ictl{font-family:'Plex',monospace;font-weight:500;font-size:11px;letter-spacing:.14em;
+  color:rgba(240,231,211,.65);background:none;border:1px solid var(--hair);padding:6px 11px;
+  cursor:pointer;transition:all .3s}
+.ictl:hover{color:var(--gold);border-color:var(--gold)}
+/* --- up next --- */
+.upnext{max-width:1120px;margin:64px auto 0}
+.unhead{display:flex;justify-content:space-between;align-items:baseline;
+  border-bottom:1px solid var(--hair);padding-bottom:16px}
+.unrow{display:flex;align-items:baseline;gap:26px;padding:19px 4px;
+  border-bottom:1px solid var(--hair-soft);opacity:.55}
+.unrow .unno{font-family:'Doto';font-weight:700;font-size:19px;color:var(--gold);width:56px;flex:none}
+.unrow .untit{font-family:'Instrument',serif;font-size:22px;flex:1;min-width:0}
+.unrow .unlang{font-family:'Plex',monospace;font-weight:500;font-size:10.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(240,231,211,.5)}
+.unrow .unsoon{font-family:'Plex',monospace;font-weight:500;font-size:10.5px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--gold);border:1px solid rgba(217,164,79,.4);padding:5px 12px}
+@media(max-width:980px){
+  .show{flex-direction:column;align-items:center;gap:40px}
+  .showinfo{text-align:center;align-items:center}
+  .unrow .unlang{display:none}
+}
+
+/* ============ author ============ */
+.author{position:relative;padding:130px 7vw;background:
+  radial-gradient(ellipse 70% 55% at 18% 30%,#16241C 0%,transparent 60%),#0A1310}
+.author .grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:80px;max-width:1240px;margin:0 auto}
+.author h2{font-family:'Instrument',serif;font-size:clamp(40px,4.6vw,64px);line-height:1.03;margin:20px 0 26px}
+.author h2 i{color:var(--gold)}
+.author .bio p{font-weight:300;font-size:17.5px;line-height:1.7;color:var(--cream-dim);margin-bottom:18px}
+.author .bio p b{color:var(--cream);font-weight:400}
+.tl{border-left:1px solid var(--hair);padding-left:38px;display:flex;flex-direction:column;gap:30px;
+  margin-top:14px}
+.tl .ev{position:relative}
+.tl .ev::before{content:"";position:absolute;left:-43px;top:8px;width:9px;height:9px;
+  transform:rotate(45deg);background:var(--gold)}
+.tl .yr{font-family:'Doto';font-weight:700;font-size:26px;color:var(--gold);letter-spacing:.08em}
+.tl .what{font-family:'Plex',monospace;font-weight:500;font-size:12px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--cream);margin:7px 0 6px}
+.tl .d{font-weight:300;font-size:15.5px;line-height:1.55;color:var(--cream-dim)}
+
+/* ============ philosophy ============ */
+.philo{position:relative;padding:130px 7vw 120px;background:
+  linear-gradient(180deg,#0A1310 0%,#0C1814 40%,#091110 100%)}
+.philo .phead{text-align:center;max-width:820px;margin:0 auto 34px}
+.philo h2{font-family:'Instrument',serif;font-size:clamp(42px,5vw,72px);line-height:1.02;margin-top:20px}
+.philo h2 i{color:var(--gold)}
+.philo .phead p{margin-top:22px;font-weight:300;font-size:18px;line-height:1.65;color:var(--cream-dim)}
+.bigquote{max-width:900px;margin:60px auto;text-align:center;position:relative;padding:0 20px}
+.bigquote .q{font-family:'Instrument',serif;font-size:clamp(26px,3vw,40px);line-height:1.32}
+.bigquote .q i{color:var(--gold)}
+.bigquote .who{margin-top:24px}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hair-soft);
+  border:1px solid var(--hair-soft);max-width:1280px;margin:70px auto 0}
+.pcard{background:var(--ink-2);padding:44px 38px 46px;position:relative;overflow:hidden;
+  transition:background .4s}
+.pcard:hover{background:var(--ink-3)}
+.pcard .idx{font-family:'Doto';font-weight:700;font-size:19px;color:var(--gold);letter-spacing:.2em}
+.pcard .dev{font-family:'Instrument',serif;font-size:30px;color:var(--gold);margin:20px 0 6px}
+.pcard h3{font-family:'Plex',monospace;font-weight:500;font-size:13.5px;letter-spacing:.26em;
+  text-transform:uppercase;margin-bottom:16px;color:var(--cream)}
+.pcard p{font-weight:300;font-size:15.5px;line-height:1.65;color:var(--cream-dim)}
+
+/* ============ footer ============ */
+footer{padding:80px 7vw 70px;text-align:center;background:#081009;position:relative}
+footer .dev{font-family:'Instrument',serif;font-size:24px;color:var(--gold);margin-bottom:16px}
+footer .fq{font-family:'Instrument',serif;font-style:italic;font-size:20px;color:var(--cream-dim);
+  max-width:640px;margin:0 auto 34px;line-height:1.5}
+footer .micro{display:block;margin-top:8px}
+
+/* ============ responsive ============ */
+@media(max-width:1200px){
+  .mandala{opacity:.35}
+  .hero .copy{max-width:560px}
+}
+@media(max-width:980px){
+  .pgrid{grid-template-columns:1fr}
+  .author .grid2{grid-template-columns:1fr;gap:56px}
+  nav .links{display:none}
+  .chbar{flex-wrap:wrap;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<div class="chrome"><div class="fr"></div>
+  <div class="tick t1"></div><div class="tick t2"></div><div class="tick t3"></div><div class="tick t4"></div>
+</div>
+<div class="grain"></div>
+
+<nav>
+  <a class="wm" href="#top">
+    <span class="dev">एकात्म मानववाद</span>
+    <span class="micro" style="color:rgba(240,231,211,.7)">Integral&nbsp;Humanism</span>
+  </a>
+  <div class="links">
+    <a href="#read">Read the Book</a>
+    <a href="#listen">Listen</a>
+    <a href="#author">The Author</a>
+    <a href="#philosophy">The Philosophy</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="mandala" id="mandala">
+    <div class="halo"></div>
+    <div class="sun dot"></div>
+  </div>
+  <div class="copy">
+    <div class="dev-line rv">एकात्म मानववाद</div>
+    <h1 class="rv">Know the <i>whole</i> of yourself.</h1>
+    <p class="sub rv">Body, mind, intellect and soul — one integral self, widening from the
+      individual to family, society, nation and all creation. Four lectures delivered by
+      Pandit Deendayal Upadhyaya in Bombay, April 1965 — read here, page by page,
+      as a book.</p>
+    <div class="meta rv">
+      <div class="m"><div class="k">Chapters</div><div class="v">Four Lectures</div></div>
+      <div class="m"><div class="k">Delivered</div><div class="v">22–25 April 1965</div></div>
+      <div class="m"><div class="k">Place</div><div class="v">Bombay</div></div>
+    </div>
+    <a class="cta rv" href="#read">Open the book <span class="ar">↓</span></a>
+  </div>
+  <div class="base-line">
+    <span class="micro">Deendayal Upadhyaya · 1916–1968</span>
+    <span class="micro">N° 01 — The Inner Sun</span>
+    <span class="micro">Ekātma Mānav-vād</span>
+  </div>
+</header>
+
+<!-- ============ READER ============ -->
+<section class="reader" id="read">
+  <div class="rhead rv">
+    <div class="lab">The Book · Read It Whole</div>
+    <h2>Turn the pages. <i>Slowly.</i></h2>
+    <p>The complete text of all four lectures, set as a book. Click a page edge, use the
+       arrows, or your keyboard. Sound on.</p>
+  </div>
+
+  <div class="chbar rv" id="chbar">
+    <div class="pills" id="pills"></div>
+    <div class="now" id="chnow">—</div>
+    <div class="right">
+      <span class="pg" id="pgno">—</span>
+      <button class="snd" id="sndbtn">Sound&nbsp;On</button>
+    </div>
+  </div>
+
+  <div class="stage rv">
+    <button class="navbtn" id="prevb" aria-label="previous">←</button>
+    <div class="bookwrap">
+      <div class="book" id="book">
+        <div class="shadow"></div>
+        <div class="stack l"></div><div class="stack r"></div>
+        <div class="pageslot left" id="slotL"></div>
+        <div class="pageslot right" id="slotR"></div>
+        <div class="hint hl" id="hintL" title="previous page"></div>
+        <div class="hint hr" id="hintR" title="next page"></div>
+      </div>
+    </div>
+    <button class="navbtn" id="nextb" aria-label="next">→</button>
+  </div>
+
+  <div class="rfoot rv">
+    <span class="tip">← → keys work</span>
+    <div class="progress"><div class="fill" id="pfill"></div><div class="knot" id="pknot"></div></div>
+    <span class="tip" id="chtotal">—</span>
+  </div>
+</section>
+
+<!-- ============ LISTEN ============ -->
+<section class="listen" id="listen">
+  <div class="lhead rv">
+    <div class="lab">The Podcast &middot; सुनिए</div>
+    <h2>Or simply <i>listen.</i></h2>
+  </div>
+
+  <div class="show rv">
+    <div class="cover">
+      <div class="cv-halo"></div>
+      <div class="cv-sun dot"></div>
+      <div class="cv-ring r1"></div><div class="cv-ring r2"></div><div class="cv-ring r3"></div>
+      <div class="cv-frame"></div>
+      <div class="cv-top">
+        <span>एकात्म मानववाद</span>
+        <span class="cv-n">N&#176; 01</span>
+      </div>
+      <div class="cv-bottom">
+        <div class="cv-t1">Integral<br>Humanism</div>
+        <div class="cv-t2">The National Soul &middot; 1965</div>
+      </div>
+    </div>
+
+    <div class="showinfo">
+      <div class="micro" style="color:var(--gold)">Podcast &middot; Audio Deep-Dive</div>
+      <h3 class="showtitle">Integral Humanism<br>&amp; the <i>National Soul.</i></h3>
+      <div class="showby">On the four lectures of Pandit Deendayal Upadhyaya &middot; Bombay, April 1965</div>
+      <p class="showdesc">The whole book as one deep-dive conversation — every lecture,
+        every story and argument, discussed end to end. In English and in Hindi.
+        Press play, or take it for a walk.</p>
+
+      <div class="playcard" data-src="podcast/notebooklm_en.mp3">
+        <button class="pbtn big" aria-label="play">
+          <span class="tri"></span><span class="bars"><i></i><i></i></span>
+        </button>
+        <div class="pmid">
+          <div class="ptitle">English &middot; The four lectures, discussed</div>
+          <div class="prog"><div class="rail"></div><div class="fill"></div>
+            <div class="knot"></div></div>
+          <div class="prow">
+            <span class="ptime">–:–– / –:––</span>
+            <span class="pctl">
+              <button class="ictl b15" title="back 15s">&#8617;&#xFE0E; 15</button>
+              <button class="ictl f15" title="forward 15s">15 &#8618;&#xFE0E;</button>
+              <button class="ictl spd" title="playback speed">1&times;</button>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="playcard" data-src="podcast/notebooklm_hi.mp3" style="margin-top:14px">
+        <button class="pbtn big" aria-label="play">
+          <span class="tri"></span><span class="bars"><i></i><i></i></span>
+        </button>
+        <div class="pmid">
+          <div class="ptitle">हिन्दी &middot; राष्ट्र की शाश्वत चिति</div>
+          <div class="prog"><div class="rail"></div><div class="fill"></div>
+            <div class="knot"></div></div>
+          <div class="prow">
+            <span class="ptime">–:–– / –:––</span>
+            <span class="pctl">
+              <button class="ictl b15" title="back 15s">&#8617;&#xFE0E; 15</button>
+              <button class="ictl f15" title="forward 15s">15 &#8618;&#xFE0E;</button>
+              <button class="ictl spd" title="playback speed">1&times;</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="micro" style="margin-top:18px">Audio overviews generated with Google NotebookLM</div>
+    </div>
+  </div>
+
+  <div class="upnext rv">
+    <div class="unhead">
+      <span class="lab" style="font-size:12px">Up Next &middot; Narrated in an Indian voice</span>
+      <span class="micro" style="color:var(--gold)">Live soon</span>
+    </div>
+    <div class="unrow"><span class="unno">॥ १</span><span class="untit">Whither Bharat &middot; भारत किधर?</span><span class="unlang">English &middot; हिन्दी</span><span class="unsoon">soon</span></div>
+    <div class="unrow"><span class="unno">॥ २</span><span class="untit">The Integral Human &middot; एकात्म मानव</span><span class="unlang">English &middot; हिन्दी</span><span class="unsoon">soon</span></div>
+    <div class="unrow"><span class="unno">॥ ३</span><span class="untit">Society, Chiti &amp; Dharma &middot; समाज, चिति और धर्म</span><span class="unlang">English &middot; हिन्दी</span><span class="unsoon">soon</span></div>
+    <div class="unrow"><span class="unno">॥ ४</span><span class="untit">Dharma, State &amp; Economy &middot; धर्म, राज्य और अर्थ</span><span class="unlang">English &middot; हिन्दी</span><span class="unsoon">soon</span></div>
+  </div>
+</section>
+
+<!-- ============ AUTHOR ============ -->
+<section class="author" id="author">
+  <div class="grid2">
+    <div class="bio rv">
+      <div class="lab">The Author</div>
+      <h2>The man who asked <i>whither</i> Bharat.</h2>
+      <p><b>Pandit Deendayal Upadhyaya</b> was born on 25 September 1916 in Nagla
+        Chandrabhan, a village near Mathura in Uttar Pradesh. He stood first class,
+        first in the Ajmer Board matriculation, winning two gold medals — and won two
+        more at Intermediate, before taking his B.A. in mathematics in first class.</p>
+      <p>He joined the RSS in 1937 as one of its earliest swayamsevaks, and the Bharatiya
+        Jana Sangh in 1952 as its General Secretary — a post he held for fifteen years,
+        building the party after the death of Dr. Syama Prasad Mookerjee, until he became
+        its President in 1967.</p>
+      <p>An editor of <b>Panchjanya</b> and <b>Swadesh</b>, he wrote the Hindi drama
+        <b>Chandragupta Maurya</b>, a biography of <b>Shankaracharya</b>, and translated the
+        Marathi biography of Dr. Hedgewar. In April 1965 he condensed a lifetime of
+        thought into four evening lectures in Bombay — <i>Integral Humanism</i> — a
+        philosophy that begins not with systems, but with the self.</p>
+      <p>His death in tragic circumstances on 11 February 1968 was, in the words of the
+        book's own foreword, an irreplaceable loss to the country.</p>
+    </div>
+    <div class="rv">
+      <div class="lab" style="margin-bottom:26px">A Life · 1916–1968</div>
+      <div class="tl">
+        <div class="ev"><div class="yr">1916</div><div class="what">Born · Nagla Chandrabhan</div>
+          <div class="d">25 September, near Mathura, Uttar Pradesh.</div></div>
+        <div class="ev"><div class="yr">1937</div><div class="what">Joins the RSS</div>
+          <div class="d">Among the first swayamsevaks; rises to Joint Provincial Pracharak.</div></div>
+        <div class="ev"><div class="yr">1952</div><div class="what">Jana Sangh · General Secretary</div>
+          <div class="d">Builds the party organisation for the next fifteen years.</div></div>
+        <div class="ev"><div class="yr">1965</div><div class="what">The Four Lectures</div>
+          <div class="d">22–25 April, Bombay — Integral Humanism is set out in full.</div></div>
+        <div class="ev"><div class="yr">1967</div><div class="what">Party President</div>
+          <div class="d">Elected President of the Bharatiya Jana Sangh, Calicut session.</div></div>
+        <div class="ev"><div class="yr">1968</div><div class="what">Passing</div>
+          <div class="d">11 February — dies in tragic circumstances near Mughalsarai.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHILOSOPHY ============ -->
+<section class="philo" id="philosophy">
+  <div class="phead rv">
+    <div class="lab">The Core Philosophy</div>
+    <h2>One self, <i>widening.</i></h2>
+    <p>Integral Humanism refuses to cut the human being into pieces — a body for the
+       economist, a mind for the psychologist, a vote for the politician. It begins with
+       the whole person, and lets the circle widen.</p>
+  </div>
+
+  <div class="bigquote rv">
+    <div class="q">“Body, mind, intelligence and the soul — <i>these four make up an
+      individual.</i> But these are integrated. We cannot think of each part separately.”</div>
+    <div class="who micro">Chapter 2 · Bombay · 23 April 1965</div>
+  </div>
+
+  <div class="pgrid rv">
+    <div class="pcard"><div class="idx">01</div><div class="dev">एकात्म</div>
+      <h3>The Integral Self</h3>
+      <p>The person is not fragments to be managed but a single living whole — body, mind,
+         intellect and soul, each with its own hunger, none to be starved for another.
+         Knowing yourself means knowing all four at once.</p></div>
+    <div class="pcard"><div class="idx">02</div><div class="dev">विस्तार</div>
+      <h3>The Widening Circle</h3>
+      <p>Self-knowledge does not stop at the skin. The individual flows into family,
+         family into society, society into nation, nation into humanity, humanity into
+         all creation — concentric, never conflicting.</p></div>
+    <div class="pcard"><div class="idx">03</div><div class="dev">चिति</div>
+      <h3>Chiti — the Soul of a Nation</h3>
+      <p>As each person has a soul, each nation has a chiti — an innate nature and
+         direction. Culture is its expression; institutions are healthy only when they
+         are true to it. Borrowed ideologies cannot substitute for it.</p></div>
+    <div class="pcard"><div class="idx">04</div><div class="dev">धर्म</div>
+      <h3>Dharma Sustains</h3>
+      <p>Dharma is not religion, and Dharma Rajya is not theocracy. It is the moral law
+         that holds a society together — the innate principles by which body, wealth and
+         power are kept in the service of life.</p></div>
+    <div class="pcard"><div class="idx">05</div><div class="dev">पुरुषार्थ</div>
+      <h3>The Four Aims</h3>
+      <p>Dharma, artha, kama, moksha — righteousness, wealth, desire, liberation. Not a
+         ladder to climb one rung at a time, but four aims pursued together, integrally,
+         by the whole person.</p></div>
+    <div class="pcard"><div class="idx">06</div><div class="dev">मनुष्य</div>
+      <h3>Man at the Centre</h3>
+      <p>The economy exists for man, not man for the economy. A guarantee of work, the
+         machine in the service of the human hand, and progress measured by the person
+         standing at the very end of the line.</p></div>
+  </div>
+</section>
+
+<footer>
+  <div class="dev">एकात्म मानववाद</div>
+  <div class="fq">“It is essential to think of the economic system that we intend to develop —
+     with man at its centre.”</div>
+  <span class="micro">Integral Humanism · Four lectures · Bombay · 22–25 April 1965</span>
+  <span class="micro">Digitised reading edition · Pandit Deendayal Upadhyaya · 1916–1968</span>
+</footer>
+
+<script>
+const BOOK = __BOOK_JSON__;
+
+/* ---------- chapter meta ---------- */
+const CH_META = [
+  {key:'PRO', label:'Prologue', title:'The Man Behind the Book', sub:'About Pandit Deendayal Upadhyaya'},
+  {key:'I',   label:'Chapter 1', title:'Whither Bharat', sub:'The search for a direction of our own'},
+  {key:'II',  label:'Chapter 2', title:'The Integral Human', sub:'Body, mind, intellect and soul — one self'},
+  {key:'III', label:'Chapter 3', title:'Society, Chiti & Dharma', sub:'The self that widens into a people'},
+  {key:'IV',  label:'Chapter 4', title:'Dharma, State & Economy', sub:'Institutions in the service of man'},
+];
+
+/* ---------- mandala rings ---------- */
+(function(){
+  const M = document.getElementById('mandala');
+  const labels = ['Self','Family','Society','Nation','Mankind','Creation'];
+  const angles = [-90,-38,14,66,118,170];
+  for(let i=0;i<6;i++){
+    const pct = 34 + i*13;
+    const ring = document.createElement('div');
+    ring.className='ring';
+    ring.style.width = pct+'%'; ring.style.height = pct+'%';
+    M.appendChild(ring);
+    const lb = document.createElement('div');
+    lb.className='rlab'; lb.textContent = labels[i];
+    const a = angles[i]*Math.PI/180, r = pct/2;
+    lb.style.left = (50 + Math.cos(a)*r) + '%';
+    lb.style.top  = (50 + Math.sin(a)*r) + '%';
+    lb.style.transform = 'translate(-50%,-50%)';
+    M.appendChild(lb);
+  }
+  const dash = document.createElement('div');
+  dash.className='ring dash';
+  dash.style.width='86%';dash.style.height='86%';
+  dash.innerHTML = '<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="49.4" fill="none" stroke="rgba(217,164,79,.5)" stroke-width=".35" stroke-dasharray="0.8 3"/><rect x="48.9" y="-0.8" width="2.2" height="2.2" transform="rotate(45 50 0.3)" fill="#D9A44F"/></svg>';
+  M.appendChild(dash);
+})();
+
+/* ---------- build page content blocks ---------- */
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function blockHTML(b, first){
+  if(b[0]==='h') return `<h4>${esc(b[1])}</h4>`;
+  if(b[0]==='li'){ liCount++; return `<p class="li"><em class="n">${liCount}.</em>${esc(b[1])}</p>`;}
+  return `<p${first?' class="noind"':''}>${esc(b[1])}</p>`;
+}
+let liCount = 0;
+
+/* pages: array of {html, ch (0..4|-1 deco), kind} */
+const pages = [];
+document.fonts.ready.then(function(){
+function pushPage(html, ch, kind){ pages.push({html, ch, kind}); }
+
+/* deco pages 0-1 */
+pushPage(`<div class="coverdeco"><div class="disc dot"></div></div>`, -1, 'deco');
+pushPage(`<div class="tpage"><div class="dev">एकात्म मानववाद</div>
+  <h3>Integral<br>Humanism</h3><div class="orn">❖</div>
+  <div class="by">Pandit Deendayal Upadhyaya<br>Four lectures · Bombay<br>22–25 April 1965</div>
+  </div>`, -1, 'deco');
+
+/* measurement probe */
+const probe = document.createElement('div');
+probe.style.cssText='position:absolute;left:-9999px;top:0;width:358px;visibility:hidden';
+probe.innerHTML='<div class="paper" style="padding:0;width:358px;height:auto"><div class="body" id="probeBody" style="overflow:visible"></div></div>';
+document.body.appendChild(probe);
+const probeBody = probe.querySelector('.body');
+const PAGE_H = 428;             /* body height inside paper (620 - chrome ≈ 439, with slack) */
+
+function paginateChapter(chIdx, blocks){
+  /* chapter opener page (must land on a RIGHT page = odd index) */
+  if(pages.length % 2 === 0) pushPage(`<div class="blankpg">❖</div>`, chIdx, 'blank');
+  const meta = CH_META[chIdx];
+  const roman = ['—','I','II','III','IV'][chIdx] || '—';
+  pushPage(`<div class="opener">
+      <div class="doto">${chIdx===0?'॥':roman}</div>
+      <div class="clab">${meta.label}</div>
+      <div class="ctit">${meta.title}</div>
+      <div class="crule"></div>
+      <div class="csub">${meta.sub}</div>
+    </div>`, chIdx, 'opener');
+
+  liCount = 0;
+  let cur = '';           /* html accumulated for current page */
+  let firstPara = true;
+  probeBody.innerHTML='';
+
+  function flush(){
+    if(cur.trim()){ pushPage(`<div class="flow">${cur}</div>`, chIdx, 'text'); }
+    cur=''; probeBody.innerHTML='';
+  }
+  function fits(html){
+    probeBody.innerHTML = html;
+    return probeBody.offsetHeight <= PAGE_H;
+  }
+  for(const b of blocks){
+    const h = blockHTML(b, firstPara && b[0]==='p');
+    if(b[0]==='p') firstPara = false;
+    if(fits(cur + h)){ cur += h; continue; }
+    if(b[0]!=='p'){ flush(); cur = h; continue; }
+    /* split paragraph across pages by words */
+    let words = b[1].split(' ');
+    while(words.length){
+      /* binary search max words that fit */
+      let a=1, z=words.length, best=0;
+      while(a<=z){
+        const mid=(a+z)>>1;
+        const attempt = cur + `<p${cur===''&&false?'':''}>${esc(words.slice(0,mid).join(' '))}</p>`;
+        if(fits(attempt)){ best=mid; a=mid+1; } else { z=mid-1; }
+      }
+      if(best===0){ flush(); continue; }
+      cur += `<p>${esc(words.slice(0,best).join(' '))}</p>`;
+      words = words.slice(best);
+      if(words.length){ flush(); cur=''; }
+    }
+  }
+  flush();
+}
+
+/* prologue = intro blocks; then chapters */
+paginateChapter(0, BOOK.intro);
+BOOK.chapters.forEach((c,i)=>paginateChapter(i+1, c.blocks));
+if(pages.length % 2 === 1) pushPage(`<div class="blankpg">❖</div>`, 4, 'blank');
+/* closing page pair */
+pushPage(`<div class="tpage"><div class="orn">❖ ❖ ❖</div>
+  <div class="dev" style="font-size:30px">भारत माता की जय</div>
+  <div class="by" style="margin-top:18px">The end of the four lectures<br>25 April 1965</div></div>`, 4, 'deco');
+pushPage(`<div class="coverdeco"><div class="disc dot" style="opacity:.5;width:150px;height:150px"></div></div>`, 4, 'deco');
+probe.remove();
+
+/* ---------- render machinery ---------- */
+const slotL = document.getElementById('slotL'), slotR = document.getElementById('slotR');
+const book  = document.getElementById('book');
+let spread = 0;                       /* shows pages 2s, 2s+1 */
+const maxSpread = Math.ceil(pages.length/2)-1;
+let busy = false;
+
+function paperHTML(i, side){
+  const p = pages[i];
+  const inner = p ? p.html : '<div class="blankpg"></div>';
+  const noChrome = !p || p.kind!=='text';
+  const meta = p && p.ch>=0 ? CH_META[p.ch] : null;
+  const run = noChrome ? '' :
+    `<div class="run"><span>${side==='l' ? 'Integral Humanism' : (meta?meta.label+' · '+meta.title:'')}</span></div>`;
+  const pno = noChrome ? '' : `<div class="pno">${i-1}</div>`;
+  return `<div class="paper ${side==='l'?'pl':'pr'}">${run}<div class="body">${inner}</div>${pno}</div>`;
+}
+function renderStatic(){
+  slotL.innerHTML = paperHTML(spread*2, 'l');
+  slotR.innerHTML = paperHTML(spread*2+1, 'r');
+  updateChrome();
+}
+function currentChapter(){
+  const p = pages[spread*2+1] || pages[spread*2];
+  const q = pages[spread*2];
+  const ch = (p&&p.ch>=0)?p.ch : (q&&q.ch>=0?q.ch:-1);
+  return ch;
+}
+const chnow = document.getElementById('chnow');
+const pgno  = document.getElementById('pgno');
+const pfill = document.getElementById('pfill');
+const pknot = document.getElementById('pknot');
+function updateChrome(){
+  const ch = currentChapter();
+  chnow.innerHTML = ch<0 ? 'एकात्म मानववाद · Integral Humanism'
+    : `<b>${CH_META[ch].label}</b>&nbsp;&nbsp;·&nbsp;&nbsp;${CH_META[ch].title}`;
+  pgno.textContent = `Page ${Math.min(spread*2+1,pages.length-1)}–${Math.min(spread*2+2,pages.length)} / ${pages.length}`;
+  const f = spread/maxSpread*100;
+  pfill.style.width = f+'%';
+  pknot.style.left = f+'%';
+  document.querySelectorAll('.pill').forEach((el,i)=>{
+    el.classList.toggle('on', i===ch);
+  });
+  document.getElementById('prevb').disabled = spread<=0;
+  document.getElementById('nextb').disabled = spread>=maxSpread;
+}
+
+/* ---------- page-turn sound (Web Audio, synthesized) ---------- */
+let AC=null, soundOn=true;
+function ac(){ if(!AC) AC = new (window.AudioContext||window.webkitAudioContext)(); if(AC.state==='suspended')AC.resume(); return AC; }
+function flipSound(){
+  if(!soundOn) return;
+  try{
+    const ctx = ac(), t = ctx.currentTime;
+    /* paper swish: filtered noise sweep */
+    const dur=.32, buf=ctx.createBuffer(1, ctx.sampleRate*dur, ctx.sampleRate);
+    const d=buf.getChannelData(0);
+    for(let i=0;i<d.length;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,1.4);
+    const src=ctx.createBufferSource(); src.buffer=buf;
+    const bp=ctx.createBiquadFilter(); bp.type='bandpass'; bp.Q.value=.8;
+    bp.frequency.setValueAtTime(700,t); bp.frequency.exponentialRampToValueAtTime(2600,t+.16);
+    bp.frequency.exponentialRampToValueAtTime(900,t+.3);
+    const g=ctx.createGain();
+    g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.24,t+.05);
+    g.gain.exponentialRampToValueAtTime(.001,t+dur);
+    src.connect(bp).connect(g).connect(ctx.destination); src.start(t);
+    /* the click — page settling */
+    const o=ctx.createOscillator(), og=ctx.createGain(), lp=ctx.createBiquadFilter();
+    o.type='triangle'; o.frequency.setValueAtTime(1900,t+.30);
+    o.frequency.exponentialRampToValueAtTime(700,t+.345);
+    lp.type='lowpass'; lp.frequency.value=3200;
+    og.gain.setValueAtTime(0,t+.30); og.gain.linearRampToValueAtTime(.22,t+.308);
+    og.gain.exponentialRampToValueAtTime(.001,t+.375);
+    o.connect(lp).connect(og).connect(ctx.destination); o.start(t+.30); o.stop(t+.38);
+  }catch(e){}
+}
+document.getElementById('sndbtn').addEventListener('click',e=>{
+  soundOn=!soundOn;
+  e.target.textContent = soundOn?'Sound On':'Sound Off';
+  if(soundOn) flipSound();
+});
+
+/* ---------- flip animation ---------- */
+function turn(dir){
+  if(busy) return;
+  if(dir>0 && spread>=maxSpread) return;
+  if(dir<0 && spread<=0) return;
+  busy = true;
+  flipSound();
+  const leaf = document.createElement('div');
+  leaf.className = 'leaf' + (dir<0?' fromleft':'');
+  let front, back;
+  if(dir>0){ front = paperHTML(spread*2+1,'r'); back = paperHTML(spread*2+2,'l'); }
+  else     { front = paperHTML(spread*2,'l');   back = paperHTML(spread*2-1,'r'); }
+  leaf.innerHTML = `<div class="face front">${front}<div class="flipshade" id="fsF"></div></div>
+                    <div class="face back">${back}<div class="flipshade" id="fsB"></div></div>`;
+  book.appendChild(leaf);
+  /* reveal underlying page immediately */
+  if(dir>0){ slotR.innerHTML = paperHTML(spread*2+3,'r'); }
+  else     { slotL.innerHTML = paperHTML(spread*2-2,'l'); }
+
+  const D = 850;
+  const fsF = leaf.querySelector('#fsF'), fsB = leaf.querySelector('#fsB');
+  fsF.style.background = dir>0 ? 'linear-gradient(to left, rgba(0,0,0,.0), rgba(0,0,0,.28))'
+                               : 'linear-gradient(to right, rgba(0,0,0,.0), rgba(0,0,0,.28))';
+  fsB.style.background = fsF.style.background;
+  const t0 = performance.now();
+  function ease(x){ return x<.5 ? 4*x*x*x : 1-Math.pow(-2*x+2,3)/2; }
+  function frame(now){
+    let k = Math.min(1,(now-t0)/D); const e = ease(k);
+    const ang = (dir>0?-180:180)*e;
+    leaf.style.transform = `rotateY(${ang}deg)`;
+    const sh = Math.sin(e*Math.PI);
+    fsF.style.opacity = sh*.9; fsB.style.opacity = sh*.9;
+    if(k<1) requestAnimationFrame(frame);
+    else{
+      spread += dir;
+      renderStatic();
+      leaf.remove();
+      busy=false;
+    }
+  }
+  requestAnimationFrame(frame);
+}
+
+/* controls */
+document.getElementById('nextb').addEventListener('click',()=>turn(1));
+document.getElementById('prevb').addEventListener('click',()=>turn(-1));
+document.getElementById('hintR').addEventListener('click',()=>turn(1));
+document.getElementById('hintL').addEventListener('click',()=>turn(-1));
+slotR.addEventListener('click',()=>turn(1));
+slotL.addEventListener('click',()=>turn(-1));
+window.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight') turn(1);
+  if(e.key==='ArrowLeft') turn(-1);
+});
+let tx=null;
+book.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+book.addEventListener('touchend',e=>{
+  if(tx===null)return;
+  const dx=e.changedTouches[0].clientX-tx;
+  if(dx<-40)turn(1); if(dx>40)turn(-1); tx=null;
+},{passive:true});
+
+/* chapter pills */
+const pillWrap = document.getElementById('pills');
+const chStart = [];   /* spread index where chapter opener lives */
+CH_META.forEach((m,ci)=>{
+  const pi = pages.findIndex(p=>p.ch===ci && p.kind==='opener');
+  chStart[ci] = Math.floor(pi/2);
+  const b=document.createElement('button');
+  b.className='pill'; b.textContent = m.key;
+  b.title = m.label+' — '+m.title;
+  b.addEventListener('click',()=>{ jumpTo(chStart[ci]); });
+  pillWrap.appendChild(b);
+});
+function jumpTo(s){
+  if(busy || s===spread) return;
+  const dir = s>spread?1:-1;
+  /* single animated turn, then snap */
+  spread = s - dir;
+  renderStatic();
+  turn(dir);
+}
+document.getElementById('chtotal').textContent = pages.length+' pages · 4 chapters';
+
+/* responsive book scale */
+function scaleBook(){
+  const wrap = document.querySelector('.bookwrap');
+  const w = Math.min(window.innerWidth-140, 1180);
+  const natural = 904;
+  const s = Math.min(1, w/natural);
+  wrap.style.transform = `scale(${s})`;
+  wrap.style.transformOrigin='center top';
+  wrap.style.height = (640*s)+'px';
+}
+window.addEventListener('resize',scaleBook);
+
+/* ---------- podcast show players (EN + HI) ---------- */
+(function(){
+  const fmt = s => isFinite(s) ? `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}` : '–:––';
+  const speeds = [1, 1.25, 1.5, 2];
+  const players = [];
+  document.querySelectorAll('.playcard').forEach(card=>{
+    const audio = new Audio(card.dataset.src);
+    audio.preload = 'metadata';
+    const q = sel => card.querySelector(sel);
+    const btn = q('.pbtn'), prog = q('.prog'), fill = q('.fill'),
+          knot = q('.knot'), time = q('.ptime'), spd = q('.spd');
+    let si = 0;
+    const me = {audio, card};
+    players.push(me);
+    btn.addEventListener('click', ()=>{
+      if(audio.paused){
+        players.forEach(o=>{ if(o!==me){ o.audio.pause(); o.card.classList.remove('playing-one'); }});
+        audio.play().catch(()=>{});
+        card.classList.add('playing-one');
+      } else { audio.pause(); card.classList.remove('playing-one'); }
+    });
+    q('.b15').addEventListener('click', ()=>{
+      audio.currentTime = Math.max(0, audio.currentTime - 15); });
+    q('.f15').addEventListener('click', ()=>{
+      audio.currentTime = Math.min(audio.duration||0, audio.currentTime + 15); });
+    spd.addEventListener('click', ()=>{
+      si = (si + 1) % speeds.length;
+      audio.playbackRate = speeds[si];
+      spd.innerHTML = String(speeds[si]).replace('.25','&#188;').replace('.5','&#189;') + '&times;';
+    });
+    prog.addEventListener('click', ev=>{
+      if(!isFinite(audio.duration)) return;
+      const r = prog.getBoundingClientRect();
+      audio.currentTime = (ev.clientX - r.left) / r.width * audio.duration;
+    });
+    audio.addEventListener('timeupdate', ()=>{
+      const p = audio.duration ? audio.currentTime/audio.duration*100 : 0;
+      fill.style.width = p+'%'; knot.style.left = p+'%';
+      time.textContent = `${fmt(audio.currentTime)} / ${fmt(audio.duration)}`;
+    });
+    audio.addEventListener('loadedmetadata', ()=>{
+      time.textContent = `0:00 / ${fmt(audio.duration)}`; });
+    audio.addEventListener('ended', ()=>card.classList.remove('playing-one'));
+  });
+})();
+
+/* reveal on scroll */
+const io = new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+/* fallback: anything already in view (anchor jumps, headless) */
+function rvFallback(){
+  document.querySelectorAll('.rv:not(.in)').forEach(el=>{
+    const r = el.getBoundingClientRect();
+    if(r.top < innerHeight && r.bottom > 0) el.classList.add('in');
+  });
+}
+setTimeout(rvFallback, 500);
+window.addEventListener('hashchange', ()=>setTimeout(rvFallback, 400));
+if(location.href.includes('noanim')){
+  const st=document.createElement('style');
+  st.textContent='.rv{opacity:1!important;transform:none!important}';
+  document.head.appendChild(st);
+}
+if(location.href.includes('flat')){
+  const st=document.createElement('style');
+  st.textContent='.hero{min-height:auto!important;padding-top:150px!important;padding-bottom:120px!important}';
+  document.head.appendChild(st);
+}
+
+const pm = location.href.match(/[?&]p=(\d+)/);
+if(pm) spread = Math.min(maxSpread, Math.max(0, +pm[1]));
+renderStatic();
+scaleBook();
+}); /* end fonts.ready */
+</script>
+</body>
+</html>

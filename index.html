@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Integral Humanism — Deendayal Upadhyaya · Read the Book</title>
+<style>
+/* ============ fonts ============ */
+@font-face{font-family:'Instrument';src:url(fonts/InstrumentSerif-Regular.ttf);font-weight:400;font-style:normal}
+@font-face{font-family:'Instrument';src:url(fonts/InstrumentSerif-Italic.ttf);font-weight:400;font-style:italic}
+@font-face{font-family:'Plex';src:url(fonts/IBMPlexMono-Regular.ttf);font-weight:400}
+@font-face{font-family:'Plex';src:url(fonts/IBMPlexMono-Medium.ttf);font-weight:500}
+@font-face{font-family:'Aeonik';src:url(fonts/AeonikTRIAL-Light.otf);font-weight:300}
+@font-face{font-family:'Aeonik';src:url(fonts/AeonikTRIAL-Regular.otf);font-weight:400}
+@font-face{font-family:'Doto';src:url(fonts/Doto.ttf);font-weight:100 900}
+
+/* ============ tokens ============ */
+:root{
+  --ink:#0B1411;          /* deep contemplative green-black */
+  --ink-2:#0E1915;
+  --ink-3:#122019;
+  --cream:#F0E7D3;
+  --cream-dim:rgba(240,231,211,.72);
+  --gold:#D9A44F;
+  --gold-deep:#B67F2E;
+  --ember:#C96F3B;
+  --hair:rgba(240,231,211,.22);
+  --hair-soft:rgba(240,231,211,.12);
+  --paper:#F2EAD9;
+  --paper-2:#EBE1CC;
+  --book-ink:#2A241A;
+  --book-soft:#6E6350;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:'Aeonik',sans-serif;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(217,164,79,.35)}
+
+/* ============ poster chrome (fixed) ============ */
+.chrome{position:fixed;inset:0;pointer-events:none;z-index:90}
+.chrome .fr{position:absolute;inset:14px;border:1px solid var(--hair)}
+.chrome .tick{position:absolute;width:14px;height:14px;border-color:rgba(240,231,211,.5)}
+.chrome .t1{left:6px;top:6px;border-left:1.5px solid;border-top:1.5px solid}
+.chrome .t2{right:6px;top:6px;border-right:1.5px solid;border-top:1.5px solid}
+.chrome .t3{left:6px;bottom:6px;border-left:1.5px solid;border-bottom:1.5px solid}
+.chrome .t4{right:6px;bottom:6px;border-right:1.5px solid;border-bottom:1.5px solid}
+.grain{position:fixed;inset:-40%;z-index:91;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.94 0 0 0 0 0.9 0 0 0 0 0.83 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ============ shared type ============ */
+.mono{font-family:'Plex',monospace}
+.serif{font-family:'Instrument',serif;font-weight:400}
+.lab{font-family:'Plex',monospace;font-weight:500;font-size:13px;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--gold)}
+.micro{font-family:'Plex',monospace;font-weight:500;font-size:11.5px;letter-spacing:.34em;
+  text-transform:uppercase;color:rgba(240,231,211,.45)}
+.dot{ -webkit-mask-image:radial-gradient(circle 2.5px at 4px 4px,#000 97%,transparent 100%);
+  mask-image:radial-gradient(circle 2.5px at 4px 4px,#000 97%,transparent 100%);
+  -webkit-mask-size:8px 8px;mask-size:8px 8px}
+
+/* scroll reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+.rv.in{opacity:1;transform:none}
+
+/* ============ nav ============ */
+nav{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;justify-content:space-between;
+  align-items:center;padding:26px 44px;mix-blend-mode:normal}
+nav .wm{display:flex;align-items:baseline;gap:14px;text-decoration:none;color:var(--cream)}
+nav .wm .dev{font-family:'Instrument',serif;font-size:20px;color:var(--gold)}
+nav .links{display:flex;gap:34px}
+nav .links a{font-family:'Plex',monospace;font-weight:500;font-size:12px;letter-spacing:.26em;
+  text-transform:uppercase;color:rgba(240,231,211,.7);text-decoration:none;transition:color .3s}
+nav .links a:hover{color:var(--gold)}
+
+/* ============ hero ============ */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;
+  padding:120px 7vw 80px;overflow:hidden;
+  background:
+    radial-gradient(ellipse 90% 60% at 72% 42%, #1A2B1F 0%, transparent 60%),
+    linear-gradient(180deg,#0C1713 0%, #0B1411 55%, #091210 100%)}
+.hero .copy{position:relative;z-index:5;max-width:640px}
+.hero .dev-line{font-family:'Instrument',serif;font-size:clamp(22px,2.4vw,30px);
+  color:var(--gold);letter-spacing:.04em;margin-bottom:22px}
+.hero h1{font-family:'Instrument',serif;font-size:clamp(58px,7.2vw,108px);line-height:.98;
+  letter-spacing:.005em;margin-bottom:30px}
+.hero h1 i{color:var(--gold)}
+.hero .sub{font-size:clamp(17px,1.5vw,21px);line-height:1.65;color:var(--cream-dim);
+  max-width:520px;font-weight:300}
+.hero .meta{display:flex;gap:44px;margin-top:44px}
+.hero .meta .m .k{font-family:'Plex',monospace;font-weight:500;font-size:11.5px;
+  letter-spacing:.3em;text-transform:uppercase;color:rgba(240,231,211,.5);margin-bottom:8px}
+.hero .meta .m .v{font-family:'Instrument',serif;font-size:24px}
+.cta{display:inline-flex;align-items:center;gap:16px;margin-top:52px;padding:17px 30px;
+  border:1px solid var(--gold);color:var(--gold);text-decoration:none;
+  font-family:'Plex',monospace;font-weight:500;font-size:13px;letter-spacing:.3em;
+  text-transform:uppercase;transition:background .35s,color .35s;background:transparent}
+.cta:hover{background:var(--gold);color:var(--ink)}
+.cta .ar{transition:transform .35s}
+.cta:hover .ar{transform:translateY(3px)}
+
+/* mandala — the widening self */
+.mandala{position:absolute;right:max(2vw,20px);top:50%;transform:translateY(-50%);
+  width:min(46vw,720px);aspect-ratio:1;z-index:1}
+.mandala .halo{position:absolute;inset:6%;border-radius:50%;
+  background:radial-gradient(circle,rgba(217,164,79,.20) 0%,rgba(217,164,79,.06) 46%,transparent 68%)}
+.mandala .sun{position:absolute;left:50%;top:50%;width:29%;aspect-ratio:1;border-radius:50%;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle at 42% 36%,#F4D9A0 0%,#E4B563 34%,#C98A38 66%,#8F5B22 100%)}
+.mandala .ring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  border:1px solid var(--hair-soft);border-radius:50%}
+.mandala .ring.dash{border:none;animation:spin 90s linear infinite}
+.mandala .ring.dash svg{display:block;width:100%;height:100%}
+.mandala .rlab{position:absolute;left:50%;top:50%;font-family:'Plex',monospace;font-weight:500;
+  font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(240,231,211,.55);
+  background:var(--ink);padding:3px 10px;white-space:nowrap}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.hero .base-line{position:absolute;left:7vw;right:7vw;bottom:44px;display:flex;
+  justify-content:space-between;align-items:center;z-index:5}
+
+/* ============ reader ============ */
+.reader{position:relative;padding:110px 4vw 90px;
+  background:linear-gradient(180deg,#091210 0%,#0C1713 30%,#0C1713 70%,#0A1310 100%)}
+.reader .rhead{max-width:1180px;margin:0 auto 40px;text-align:center}
+.reader .rhead .lab{margin-bottom:18px}
+.reader .rhead h2{font-family:'Instrument',serif;font-size:clamp(38px,4.4vw,62px);line-height:1.04}
+.reader .rhead h2 i{color:var(--gold)}
+.reader .rhead p{margin:18px auto 0;max-width:560px;color:var(--cream-dim);font-weight:300;
+  font-size:17px;line-height:1.6}
+
+/* chapter bar — on top of the book */
+.chbar{max-width:1180px;margin:0 auto 26px;display:flex;align-items:center;gap:22px;
+  justify-content:space-between;border:1px solid var(--hair);padding:14px 22px;
+  background:rgba(240,231,211,.03)}
+.chbar .pills{display:flex;gap:8px}
+.chbar .pill{font-family:'Doto',monospace;font-weight:700;font-size:15px;letter-spacing:.12em;
+  color:rgba(240,231,211,.55);border:1px solid transparent;background:none;padding:7px 13px;
+  cursor:pointer;transition:all .3s}
+.chbar .pill:hover{color:var(--gold)}
+.chbar .pill.on{color:var(--gold);border-color:var(--gold)}
+.chbar .now{flex:1;text-align:center;font-family:'Plex',monospace;font-weight:500;font-size:13px;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--cream)}
+.chbar .now b{color:var(--gold);font-weight:500}
+.chbar .right{display:flex;align-items:center;gap:18px}
+.chbar .pg{font-family:'Plex',monospace;font-size:12px;letter-spacing:.2em;color:rgba(240,231,211,.55)}
+.chbar .snd{font-family:'Plex',monospace;font-weight:500;font-size:11px;letter-spacing:.24em;
+  color:rgba(240,231,211,.6);background:none;border:1px solid var(--hair);padding:7px 12px;
+  cursor:pointer;text-transform:uppercase;transition:all .3s}
+.chbar .snd:hover{color:var(--gold);border-color:var(--gold)}
+
+/* the book */
+.stage{display:flex;align-items:center;justify-content:center;gap:26px;max-width:1280px;margin:0 auto}
+.navbtn{width:56px;height:56px;flex:none;border:1px solid var(--hair);background:none;
+  color:var(--cream);font-size:20px;cursor:pointer;transition:all .3s;font-family:'Plex',monospace}
+.navbtn:hover{border-color:var(--gold);color:var(--gold)}
+.navbtn:disabled{opacity:.25;cursor:default}
+.bookwrap{perspective:2600px}
+.book{position:relative;width:calc(var(--pw)*2 + 4px);height:var(--ph);
+  transform-style:preserve-3d;
+  --pw:450px;--ph:620px}
+.book .shadow{position:absolute;left:2%;right:2%;bottom:-34px;height:50px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(0,0,0,.55) 0%,transparent 68%)}
+/* page-edge stacks */
+.stack{position:absolute;top:5px;bottom:5px;width:0}
+.stack.l{left:-1px;border-left:1px solid rgba(42,36,26,.45);
+  box-shadow:-2px 0 0 rgba(242,234,217,.85),-3px 0 0 rgba(42,36,26,.22),-5px 0 0 rgba(242,234,217,.8),-6px 0 0 rgba(42,36,26,.18),-8px 0 0 rgba(242,234,217,.7)}
+.stack.r{right:-1px;border-right:1px solid rgba(42,36,26,.45);
+  box-shadow:2px 0 0 rgba(242,234,217,.85),3px 0 0 rgba(42,36,26,.22),5px 0 0 rgba(242,234,217,.8),6px 0 0 rgba(42,36,26,.18),8px 0 0 rgba(242,234,217,.7)}
+.pageslot{position:absolute;top:0;width:var(--pw);height:var(--ph);overflow:hidden}
+.pageslot.left{left:0;border-radius:3px 0 0 3px}
+.pageslot.right{right:0;border-radius:0 3px 3px 0}
+.leaf{position:absolute;top:0;right:0;width:var(--pw);height:var(--ph);z-index:30;
+  transform-style:preserve-3d;transform-origin:left center;will-change:transform}
+.leaf .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+.leaf .face.back{transform:rotateY(180deg)}
+.leaf.fromleft{left:0;right:auto;transform-origin:right center}
+.flipshade{position:absolute;inset:0;pointer-events:none;opacity:0}
+
+/* paper */
+.paper{width:var(--pw);height:var(--ph);background:
+  linear-gradient(115deg,rgba(255,255,255,.35) 0%,transparent 30%),
+  var(--paper);
+  color:var(--book-ink);position:relative;
+  padding:52px 46px 58px;display:flex;flex-direction:column}
+.paper::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.45 0 0 0 0 0.38 0 0 0 0 0.26 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23p)'/%3E%3C/svg%3E")}
+.paper.pl{box-shadow:inset -26px 0 34px -22px rgba(60,45,20,.5)}
+.paper.pr{box-shadow:inset 26px 0 34px -22px rgba(60,45,20,.5)}
+.paper .run{display:flex;justify-content:space-between;margin-bottom:26px}
+.paper .run span{font-family:'Plex',monospace;font-weight:500;font-size:10px;
+  letter-spacing:.32em;text-transform:uppercase;color:var(--book-soft)}
+.paper .body{flex:1;overflow:hidden;position:relative;z-index:2}
+.paper .pno{text-align:center;margin-top:20px;font-family:'Plex',monospace;font-size:11px;
+  letter-spacing:.3em;color:var(--book-soft)}
+.paper .body p{font-family:'Instrument',serif;font-size:17.5px;line-height:1.58;
+  text-indent:1.6em;text-align:justify;hyphens:auto}
+.paper .body p.noind{text-indent:0}
+.paper .body p.li{text-indent:0;padding-left:1.5em;position:relative;margin-top:.5em}
+.paper .body p.li em.n{position:absolute;left:0;font-style:normal;color:var(--gold-deep);
+  font-family:'Plex',monospace;font-size:13px;top:3px}
+.paper .body h4{font-family:'Plex',monospace;font-weight:500;font-size:12.5px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep);
+  margin:1.5em 0 .8em;text-indent:0}
+.paper .body h4:first-child{margin-top:.2em}
+/* chapter opener page */
+.opener{display:flex;flex-direction:column;align-items:center;text-align:center;height:100%;
+  justify-content:center;gap:0}
+.opener .doto{font-family:'Doto';font-weight:700;font-size:120px;line-height:1;color:var(--gold-deep)}
+.opener .clab{font-family:'Plex',monospace;font-weight:500;font-size:12px;letter-spacing:.42em;
+  text-transform:uppercase;color:var(--book-soft);margin:26px 0 14px}
+.opener .ctit{font-family:'Instrument',serif;font-size:40px;line-height:1.1;max-width:300px}
+.opener .crule{width:70px;height:1px;background:var(--book-soft);opacity:.5;margin:26px auto}
+.opener .csub{font-family:'Instrument',serif;font-style:italic;font-size:18px;
+  color:var(--book-soft);max-width:280px;line-height:1.5}
+/* title page + cover deco */
+.tpage{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;height:100%}
+.tpage .dev{font-family:'Instrument',serif;font-size:26px;color:var(--gold-deep);margin-bottom:20px}
+.tpage h3{font-family:'Instrument',serif;font-size:46px;line-height:1.05;margin-bottom:18px}
+.tpage .by{font-family:'Plex',monospace;font-weight:500;font-size:11.5px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--book-soft);line-height:2.1}
+.tpage .orn{margin:30px 0;color:var(--gold-deep);font-size:20px}
+.coverdeco{display:flex;align-items:center;justify-content:center;height:100%}
+.coverdeco .disc{width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle at 42% 36%,#E9C583 0%,#CE9A47 50%,#96601F 100%)}
+.blankpg{display:flex;align-items:center;justify-content:center;height:100%;
+  color:var(--book-soft);font-size:18px;opacity:.6}
+
+/* corner hints */
+.hint{position:absolute;bottom:0;width:74px;height:74px;cursor:pointer;z-index:26}
+.hint.hr{right:0;background:linear-gradient(315deg,rgba(150,120,60,.28) 0%,transparent 52%)}
+.hint.hl{left:0;background:linear-gradient(45deg,rgba(150,120,60,.28) 0%,transparent 52%)}
+.hint{opacity:0;transition:opacity .3s}
+.book:hover .hint{opacity:1}
+
+.rfoot{max-width:1180px;margin:34px auto 0;display:flex;justify-content:space-between;align-items:center}
+.rfoot .tip{font-family:'Plex',monospace;font-size:11.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(240,231,211,.4)}
+.progress{flex:1;margin:0 40px;height:1px;background:var(--hair-soft);position:relative}
+.progress .fill{position:absolute;left:0;top:0;bottom:0;background:var(--gold);width:0;transition:width .5s}
+.progress .knot{position:absolute;top:-4px;width:9px;height:9px;transform:rotate(45deg) translateX(-50%);
+  background:var(--gold);transition:left .5s}
+
+/* ============ listen / podcast ============ */
+.listen{position:relative;padding:120px 7vw 110px;background:
+  radial-gradient(ellipse 60% 50% at 82% 20%,#16241C 0%,transparent 60%),
+  linear-gradient(180deg,#0A1310 0%,#0B1512 50%,#0A1310 100%)}
+.listen .lhead{text-align:center;max-width:760px;margin:0 auto 20px}
+.listen h2{font-family:'Instrument',serif;font-size:clamp(40px,4.8vw,68px);line-height:1.02;margin-top:20px}
+.listen h2 i{color:var(--gold)}
+.listen .lhead p{margin-top:20px;font-weight:300;font-size:17.5px;line-height:1.65;color:var(--cream-dim)}
+.langtog{display:flex;justify-content:center;gap:0;margin:36px auto 46px;width:max-content;
+  border:1px solid var(--hair)}
+.langtog button{font-family:'Plex',monospace;font-weight:500;font-size:13px;letter-spacing:.26em;
+  text-transform:uppercase;padding:13px 34px;background:none;border:none;color:rgba(240,231,211,.6);
+  cursor:pointer;transition:all .3s}
+.langtog button.on{background:var(--gold);color:var(--ink)}
+.eplist{max-width:1080px;margin:0 auto;border-top:1px solid var(--hair-soft)}
+.ep{display:flex;align-items:center;gap:30px;padding:30px 10px;
+  border-bottom:1px solid var(--hair-soft);transition:background .3s}
+.ep:hover{background:rgba(240,231,211,.025)}
+.ep .eno{font-family:'Doto';font-weight:700;font-size:30px;color:var(--gold);width:64px;
+  flex:none;letter-spacing:.1em}
+.ep .emeta{flex:1;min-width:0}
+.ep .etit{font-family:'Instrument',serif;font-size:29px;line-height:1.15}
+.ep .esub{font-family:'Plex',monospace;font-weight:500;font-size:11.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:rgba(240,231,211,.5);margin-top:8px}
+.ep .esub .edur{color:var(--gold)}
+.ep .prog{flex:1.1;height:26px;position:relative;cursor:pointer;min-width:120px}
+.ep .prog .rail{position:absolute;left:0;right:0;top:50%;height:1px;background:var(--hair)}
+.ep .prog .fill{position:absolute;left:0;top:50%;height:1px;background:var(--gold);width:0}
+.ep .prog .knot{position:absolute;top:50%;width:9px;height:9px;margin-top:-4.5px;
+  transform:rotate(45deg);background:var(--gold);left:0;margin-left:-4px;opacity:0;transition:opacity .3s}
+.ep.playing .prog .knot{opacity:1}
+.ep .etime{font-family:'Plex',monospace;font-size:12px;letter-spacing:.12em;
+  color:rgba(240,231,211,.55);width:110px;text-align:right;flex:none}
+.pbtn{width:60px;height:60px;flex:none;border-radius:50%;border:1px solid var(--hair);
+  background:none;color:var(--cream);cursor:pointer;position:relative;transition:all .3s}
+.pbtn:hover{border-color:var(--gold);color:var(--gold)}
+.ep.playing .pbtn{border-color:var(--gold);background:var(--gold);color:var(--ink)}
+.pbtn .tri{position:absolute;left:53%;top:50%;transform:translate(-50%,-50%);
+  width:0;height:0;border-left:15px solid currentColor;border-top:9px solid transparent;
+  border-bottom:9px solid transparent}
+.pbtn .bars{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:none;gap:5px}
+.pbtn .bars i{display:block;width:4px;height:18px;background:currentColor}
+.ep.playing .pbtn .tri{display:none}
+.ep.playing .pbtn .bars{display:flex}
+.ep.pending .pbtn{opacity:.35;cursor:default}
+.ep.pending .etime{font-size:10.5px;letter-spacing:.2em}
+.listen .lfoot{max-width:1080px;margin:30px auto 0;display:flex;justify-content:space-between}
+@media(max-width:900px){
+  .ep{flex-wrap:wrap}
+  .ep .prog{order:5;flex-basis:100%}
+}
+
+/* --- show card (spotify-like, our texture) --- */
+.show{max-width:1120px;margin:56px auto 0;display:flex;gap:64px;align-items:stretch}
+.cover{width:380px;height:380px;flex:none;position:relative;overflow:hidden;
+  background:
+    radial-gradient(ellipse 90% 70% at 70% 30%,#182A20 0%,transparent 65%),
+    linear-gradient(160deg,#101E17 0%,#0A1310 100%);
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}
+.cover .cv-halo{position:absolute;right:-14%;top:-14%;width:70%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(217,164,79,.28) 0%,rgba(217,164,79,.08) 50%,transparent 72%)}
+.cover .cv-sun{position:absolute;right:6%;top:6%;width:38%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 40% 35%,#F4D9A0 0%,#DFAE58 45%,#B67F2E 80%,#8F5B22 100%)}
+.cover .cv-ring{position:absolute;border:1px solid rgba(240,231,211,.16);border-radius:50%}
+.cover .r1{right:-4%;top:-4%;width:58%;aspect-ratio:1}
+.cover .r2{right:-14%;top:-14%;width:78%;aspect-ratio:1;border-color:rgba(240,231,211,.10)}
+.cover .r3{right:-26%;top:-26%;width:102%;aspect-ratio:1;border-color:rgba(240,231,211,.06)}
+.cover .cv-frame{position:absolute;inset:14px;border:1px solid rgba(240,231,211,.28);pointer-events:none}
+.cover .cv-top{position:absolute;left:28px;right:28px;top:26px;display:flex;
+  justify-content:space-between;align-items:baseline}
+.cover .cv-top span{font-family:'Instrument',serif;font-size:17px;color:var(--gold)}
+.cover .cv-top .cv-n{font-family:'Plex',monospace;font-weight:500;font-size:10px;
+  letter-spacing:.3em;color:rgba(240,231,211,.55)}
+.cover .cv-bottom{position:absolute;left:28px;right:28px;bottom:26px}
+.cover .cv-t1{font-family:'Instrument',serif;font-size:52px;line-height:.98;color:var(--cream)}
+.cover .cv-t2{font-family:'Plex',monospace;font-weight:500;font-size:10.5px;letter-spacing:.3em;
+  text-transform:uppercase;color:rgba(240,231,211,.6);margin-top:14px}
+.showinfo{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center}
+.showtitle{font-family:'Instrument',serif;font-size:clamp(34px,3.6vw,52px);line-height:1.05;
+  margin:16px 0 14px}
+.showtitle i{color:var(--gold)}
+.showby{font-family:'Plex',monospace;font-weight:500;font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(240,231,211,.55)}
+.showdesc{margin-top:18px;font-weight:300;font-size:16.5px;line-height:1.65;
+  color:var(--cream-dim);max-width:560px}
+.playcard{margin-top:32px;display:flex;align-items:center;gap:26px;border:1px solid var(--hair);
+  padding:20px 26px;background:rgba(240,231,211,.03)}
+.pbtn.big{width:68px;height:68px;background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.pbtn.big:hover{transform:scale(1.05)}
+.pbtn.big .tri{border-left-width:18px;border-top-width:11px;border-bottom-width:11px}
+.pbtn.big .bars i{width:5px;height:20px}
+.playing-one .pbtn.big .tri{display:none}
+.playing-one .pbtn.big .bars{display:flex}
+.ptitle{font-family:'Plex',monospace;font-weight:500;font-size:11.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.pmid{flex:1;min-width:0}
+.pmid .prog{height:26px;position:relative;cursor:pointer}
+.pmid .rail{position:absolute;left:0;right:0;top:50%;height:1px;background:var(--hair)}
+.pmid .fill{position:absolute;left:0;top:50%;height:1px;background:var(--gold);width:0}
+.pmid .knot{position:absolute;top:50%;width:9px;height:9px;margin-top:-4.5px;margin-left:-4px;
+  transform:rotate(45deg);background:var(--gold);left:0}
+.prow{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.ptime{font-family:'Plex',monospace;font-size:12px;letter-spacing:.14em;color:rgba(240,231,211,.6)}
+.pctl{display:flex;gap:10px}
+.ictl{font-family:'Plex',monospace;font-weight:500;font-size:11px;letter-spacing:.14em;
+  color:rgba(240,231,211,.65);background:none;border:1px solid var(--hair);padding:6px 11px;
+  cursor:pointer;transition:all .3s}
+.ictl:hover{color:var(--gold);border-color:var(--gold)}
+/* --- up next --- */
+.upnext{max-width:1120px;margin:64px auto 0}
+.unhead{display:flex;justify-content:space-between;align-items:baseline;
+  border-bottom:1px solid var(--hair);padding-bottom:16px}
+.unrow{display:flex;align-items:baseline;gap:26px;padding:19px 4px;
+  border-bottom:1px solid var(--hair-soft);opacity:.55}
+.unrow .unno{font-family:'Doto';font-weight:700;font-size:19px;color:var(--gold);width:56px;flex:none}
+.unrow .untit{font-family:'Instrument',serif;font-size:22px;flex:1;min-width:0}
+.unrow .unlang{font-family:'Plex',monospace;font-weight:500;font-size:10.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(240,231,211,.5)}
+.unrow .unsoon{font-family:'Plex',monospace;font-weight:500;font-size:10.5px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--gold);border:1px solid rgba(217,164,79,.4);padding:5px 12px}
+@media(max-width:980px){
+  .show{flex-direction:column;align-items:center;gap:40px}
+  .showinfo{text-align:center;align-items:center}
+  .unrow .unlang{display:none}
+}
+
+/* ============ author ============ */
+.author{position:relative;padding:130px 7vw;background:
+  radial-gradient(ellipse 70% 55% at 18% 30%,#16241C 0%,transparent 60%),#0A1310}
+.author .grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:80px;max-width:1240px;margin:0 auto}
+.author h2{font-family:'Instrument',serif;font-size:clamp(40px,4.6vw,64px);line-height:1.03;margin:20px 0 26px}
+.author h2 i{color:var(--gold)}
+.author .bio p{font-weight:300;font-size:17.5px;line-height:1.7;color:var(--cream-dim);margin-bottom:18px}
+.author .bio p b{color:var(--cream);font-weight:400}
+.tl{border-left:1px solid var(--hair);padding-left:38px;display:flex;flex-direction:column;gap:30px;
+  margin-top:14px}
+.tl .ev{position:relative}
+.tl .ev::before{content:"";position:absolute;left:-43px;top:8px;width:9px;height:9px;
+  transform:rotate(45deg);background:var(--gold)}
+.tl .yr{font-family:'Doto';font-weight:700;font-size:26px;color:var(--gold);letter-spacing:.08em}
+.tl .what{font-family:'Plex',monospace;font-weight:500;font-size:12px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--cream);margin:7px 0 6px}
+.tl .d{font-weight:300;font-size:15.5px;line-height:1.55;color:var(--cream-dim)}
+
+/* ============ philosophy ============ */
+.philo{position:relative;padding:130px 7vw 120px;background:
+  linear-gradient(180deg,#0A1310 0%,#0C1814 40%,#091110 100%)}
+.philo .phead{text-align:center;max-width:820px;margin:0 auto 34px}
+.philo h2{font-family:'Instrument',serif;font-size:clamp(42px,5vw,72px);line-height:1.02;margin-top:20px}
+.philo h2 i{color:var(--gold)}
+.philo .phead p{margin-top:22px;font-weight:300;font-size:18px;line-height:1.65;color:var(--cream-dim)}
+.bigquote{max-width:900px;margin:60px auto;text-align:center;position:relative;padding:0 20px}
+.bigquote .q{font-family:'Instrument',serif;font-size:clamp(26px,3vw,40px);line-height:1.32}
+.bigquote .q i{color:var(--gold)}
+.bigquote .who{margin-top:24px}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hair-soft);
+  border:1px solid var(--hair-soft);max-width:1280px;margin:70px auto 0}
+.pcard{background:var(--ink-2);padding:44px 38px 46px;position:relative;overflow:hidden;
+  transition:background .4s}
+.pcard:hover{background:var(--ink-3)}
+.pcard .idx{font-family:'Doto';font-weight:700;font-size:19px;color:var(--gold);letter-spacing:.2em}
+.pcard .dev{font-family:'Instrument',serif;font-size:30px;color:var(--gold);margin:20px 0 6px}
+.pcard h3{font-family:'Plex',monospace;font-weight:500;font-size:13.5px;letter-spacing:.26em;
+  text-transform:uppercase;margin-bottom:16px;color:var(--cream)}
+.pcard p{font-weight:300;font-size:15.5px;line-height:1.65;color:var(--cream-dim)}
+
+/* ============ footer ============ */
+footer{padding:80px 7vw 70px;text-align:center;background:#081009;position:relative}
+footer .dev{font-family:'Instrument',serif;font-size:24px;color:var(--gold);margin-bottom:16px}
+footer .fq{font-family:'Instrument',serif;font-style:italic;font-size:20px;color:var(--cream-dim);
+  max-width:640px;margin:0 auto 34px;line-height:1.5}
+footer .micro{display:block;margin-top:8px}
+
+/* ============ responsive ============ */
+@media(max-width:1200px){
+  .mandala{opacity:.35}
+  .hero .copy{max-width:560px}
+}
+@media(max-width:980px){
+  .pgrid{grid-template-columns:1fr}
+  .author .grid2{grid-template-columns:1fr;gap:56px}
+  nav .links{display:none}
+  .chbar{flex-wrap:wrap;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<div class="chrome"><div class="fr"></div>
+  <div class="tick t1"></div><div class="tick t2"></div><div class="tick t3"></div><div class="tick t4"></div>
+</div>
+<div class="grain"></div>
+
+<nav>
+  <a class="wm" href="#top">
+    <span class="dev">एकात्म मानववाद</span>
+    <span class="micro" style="color:rgba(240,231,211,.7)">Integral&nbsp;Humanism</span>
+  </a>
+  <div class="links">
+    <a href="#read">Read the Book</a>
+    <a href="#listen">Listen</a>
+    <a href="#author">The Author</a>
+    <a href="#philosophy">The Philosophy</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="mandala" id="mandala">
+    <div class="halo"></div>
+    <div class="sun dot"></div>
+  </div>
+  <div class="copy">
+    <div class="dev-line rv">एकात्म मानववाद</div>
+    <h1 class="rv">Know the <i>whole</i> of yourself.</h1>
+    <p class="sub rv">Body, mind, intellect and soul — one integral self, widening from the
+      individual to family, society, nation and all creation. Four lectures delivered by
+      Pandit Deendayal Upadhyaya in Bombay, April 1965 — read here, page by page,
+      as a book.</p>
+    <div class="meta rv">
+      <div class="m"><div class="k">Chapters</div><div class="v">Four Lectures</div></div>
+      <div class="m"><div class="k">Delivered</div><div class="v">22–25 April 1965</div></div>
+      <div class="m"><div class="k">Place</div><div class="v">Bombay</div></div>
+    </div>
+    <a class="cta rv" href="#read">Open the book <span class="ar">↓</span></a>
+  </div>
+  <div class="base-line">
+    <span class="micro">Deendayal Upadhyaya · 1916–1968</span>
+    <span class="micro">N° 01 — The Inner Sun</span>
+    <span class="micro">Ekātma Mānav-vād</span>
+  </div>
+</header>
+
+<!-- ============ READER ============ -->
+<section class="reader" id="read">
+  <div class="rhead rv">
+    <div class="lab">The Book · Read It Whole</div>
+    <h2>Turn the pages. <i>Slowly.</i></h2>
+    <p>The complete text of all four lectures, set as a book. Click a page edge, use the
+       arrows, or your keyboard. Sound on.</p>
+  </div>
+
+  <div class="chbar rv" id="chbar">
+    <div class="pills" id="pills"></div>
+    <div class="now" id="chnow">—</div>
+    <div class="right">
+      <span class="pg" id="pgno">—</span>
+      <button class="snd" id="sndbtn">Sound&nbsp;On</button>
+    </div>
+  </div>
+
+  <div class="stage rv">
+    <button class="navbtn" id="prevb" aria-label="previous">←</button>
+    <div class="bookwrap">
+      <div class="book" id="book">
+        <div class="shadow"></div>
+        <div class="stack l"></div><div class="stack r"></div>
+        <div class="pageslot left" id="slotL"></div>
+        <div class="pageslot right" id="slotR"></div>
+        <div class="hint hl" id="hintL" title="previous page"></div>
+        <div class="hint hr" id="hintR" title="next page"></div>
+      </div>
+    </div>
+    <button class="navbtn" id="nextb" aria-label="next">→</button>
+  </div>
+
+  <div class="rfoot rv">
+    <span class="tip">← → keys work</span>
+    <div class="progress"><div class="fill" id="pfill"></div><div class="knot" id="pknot"></div></div>
+    <span class="tip" id="chtotal">—</span>
+  </div>
+</section>
+
+<!-- ============ LISTEN ============ -->
+<section class="listen" id="listen">
+  <div class="lhead rv">
+    <div class="lab">The Podcast &middot; सुनिए</div>
+    <h2>Or simply <i>listen.</i></h2>
+  </div>
+
+  <div class="show rv">
+    <div class="cover">
+      <div class="cv-halo"></div>
+      <div class="cv-sun dot"></div>
+      <div class="cv-ring r1"></div><div class="cv-ring r2"></div><div class="cv-ring r3"></div>
+      <div class="cv-frame"></div>
+      <div class="cv-top">
+        <span>एकात्म मानववाद</span>
+        <span class="cv-n">N&#176; 01</span>
+      </div>
+      <div class="cv-bottom">
+        <div class="cv-t1">Integral<br>Humanism</div>
+        <div class="cv-t2">The National Soul &middot; 1965</div>
+      </div>
+    </div>
+
+    <div class="showinfo">
+      <div class="micro" style="color:var(--gold)">Podcast &middot; Audio Deep-Dive</div>
+      <h3 class="showtitle">Integral Humanism<br>&amp; the <i>National Soul.</i></h3>
+      <div class="showby">On the four lectures of Pandit Deendayal Upadhyaya &middot; Bombay, April 1965</div>
+      <p class="showdesc">The whole book as one deep-dive conversation — every lecture,
+        every story and argument, discussed end to end. In English and in Hindi.
+        Press play, or take it for a walk.</p>
+
+      <div class="playcard" data-src="podcast/notebooklm_en.mp3">
+        <button class="pbtn big" aria-label="play">
+          <span class="tri"></span><span class="bars"><i></i><i></i></span>
+        </button>
+        <div class="pmid">
+          <div class="ptitle">English &middot; The four lectures, discussed</div>
+          <div class="prog"><div class="rail"></div><div class="fill"></div>
+            <div class="knot"></div></div>
+          <div class="prow">
+            <span class="ptime">–:–– / –:––</span>
+            <span class="pctl">
+              <button class="ictl b15" title="back 15s">&#8617;&#xFE0E; 15</button>
+              <button class="ictl f15" title="forward 15s">15 &#8618;&#xFE0E;</button>
+              <button class="ictl spd" title="playback speed">1&times;</button>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="playcard" data-src="podcast/notebooklm_hi.mp3" style="margin-top:14px">
+        <button class="pbtn big" aria-label="play">
+          <span class="tri"></span><span class="bars"><i></i><i></i></span>
+        </button>
+        <div class="pmid">
+          <div class="ptitle">हिन्दी &middot; राष्ट्र की शाश्वत चिति</div>
+          <div class="prog"><div class="rail"></div><div class="fill"></div>
+            <div class="knot"></div></div>
+          <div class="prow">
+            <span class="ptime">–:–– / –:––</span>
+            <span class="pctl">
+              <button class="ictl b15" title="back 15s">&#8617;&#xFE0E; 15</button>
+              <button class="ictl f15" title="forward 15s">15 &#8618;&#xFE0E;</button>
+              <button class="ictl spd" title="playback speed">1&times;</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="micro" style="margin-top:18px">Audio overviews generated with Google NotebookLM</div>
+    </div>
+  </div>
+
+  <div class="upnext rv">
+    <div class="unhead">
+      <span class="lab" style="font-size:12px">Up Next &middot; Narrated in an Indian voice</span>
+      <span class="micro" style="color:var(--gold)">Live soon</span>
+    </div>
+    <div class="unrow"><span class="unno">॥ १</span><span class="untit">Whither Bharat &middot; भारत किधर?</span><span class="unlang">English &middot; हिन्दी</span><span class="unsoon">soon</span></div>
+    <div class="unrow"><span class="unno">॥ २</span><span class="untit">The Integral Human &middot; एकात्म मानव</span><span class="unlang">English &middot; हिन्दी</span><span class="unsoon">soon</span></div>
+    <div class="unrow"><span class="unno">॥ ३</span><span class="untit">Society, Chiti &amp; Dharma &middot; समाज, चिति और धर्म</span><span class="unlang">English &middot; हिन्दी</span><span class="unsoon">soon</span></div>
+    <div class="unrow"><span class="unno">॥ ४</span><span class="untit">Dharma, State &amp; Economy &middot; धर्म, राज्य और अर्थ</span><span class="unlang">English &middot; हिन्दी</span><span class="unsoon">soon</span></div>
+  </div>
+</section>
+
+<!-- ============ AUTHOR ============ -->
+<section class="author" id="author">
+  <div class="grid2">
+    <div class="bio rv">
+      <div class="lab">The Author</div>
+      <h2>The man who asked <i>whither</i> Bharat.</h2>
+      <p><b>Pandit Deendayal Upadhyaya</b> was born on 25 September 1916 in Nagla
+        Chandrabhan, a village near Mathura in Uttar Pradesh. He stood first class,
+        first in the Ajmer Board matriculation, winning two gold medals — and won two
+        more at Intermediate, before taking his B.A. in mathematics in first class.</p>
+      <p>He joined the RSS in 1937 as one of its earliest swayamsevaks, and the Bharatiya
+        Jana Sangh in 1952 as its General Secretary — a post he held for fifteen years,
+        building the party after the death of Dr. Syama Prasad Mookerjee, until he became
+        its President in 1967.</p>
+      <p>An editor of <b>Panchjanya</b> and <b>Swadesh</b>, he wrote the Hindi drama
+        <b>Chandragupta Maurya</b>, a biography of <b>Shankaracharya</b>, and translated the
+        Marathi biography of Dr. Hedgewar. In April 1965 he condensed a lifetime of
+        thought into four evening lectures in Bombay — <i>Integral Humanism</i> — a
+        philosophy that begins not with systems, but with the self.</p>
+      <p>His death in tragic circumstances on 11 February 1968 was, in the words of the
+        book's own foreword, an irreplaceable loss to the country.</p>
+    </div>
+    <div class="rv">
+      <div class="lab" style="margin-bottom:26px">A Life · 1916–1968</div>
+      <div class="tl">
+        <div class="ev"><div class="yr">1916</div><div class="what">Born · Nagla Chandrabhan</div>
+          <div class="d">25 September, near Mathura, Uttar Pradesh.</div></div>
+        <div class="ev"><div class="yr">1937</div><div class="what">Joins the RSS</div>
+          <div class="d">Among the first swayamsevaks; rises to Joint Provincial Pracharak.</div></div>
+        <div class="ev"><div class="yr">1952</div><div class="what">Jana Sangh · General Secretary</div>
+          <div class="d">Builds the party organisation for the next fifteen years.</div></div>
+        <div class="ev"><div class="yr">1965</div><div class="what">The Four Lectures</div>
+          <div class="d">22–25 April, Bombay — Integral Humanism is set out in full.</div></div>
+        <div class="ev"><div class="yr">1967</div><div class="what">Party President</div>
+          <div class="d">Elected President of the Bharatiya Jana Sangh, Calicut session.</div></div>
+        <div class="ev"><div class="yr">1968</div><div class="what">Passing</div>
+          <div class="d">11 February — dies in tragic circumstances near Mughalsarai.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHILOSOPHY ============ -->
+<section class="philo" id="philosophy">
+  <div class="phead rv">
+    <div class="lab">The Core Philosophy</div>
+    <h2>One self, <i>widening.</i></h2>
+    <p>Integral Humanism refuses to cut the human being into pieces — a body for the
+       economist, a mind for the psychologist, a vote for the politician. It begins with
+       the whole person, and lets the circle widen.</p>
+  </div>
+
+  <div class="bigquote rv">
+    <div class="q">“Body, mind, intelligence and the soul — <i>these four make up an
+      individual.</i> But these are integrated. We cannot think of each part separately.”</div>
+    <div class="who micro">Chapter 2 · Bombay · 23 April 1965</div>
+  </div>
+
+  <div class="pgrid rv">
+    <div class="pcard"><div class="idx">01</div><div class="dev">एकात्म</div>
+      <h3>The Integral Self</h3>
+      <p>The person is not fragments to be managed but a single living whole — body, mind,
+         intellect and soul, each with its own hunger, none to be starved for another.
+         Knowing yourself means knowing all four at once.</p></div>
+    <div class="pcard"><div class="idx">02</div><div class="dev">विस्तार</div>
+      <h3>The Widening Circle</h3>
+      <p>Self-knowledge does not stop at the skin. The individual flows into family,
+         family into society, society into nation, nation into humanity, humanity into
+         all creation — concentric, never conflicting.</p></div>
+    <div class="pcard"><div class="idx">03</div><div class="dev">चिति</div>
+      <h3>Chiti — the Soul of a Nation</h3>
+      <p>As each person has a soul, each nation has a chiti — an innate nature and
+         direction. Culture is its expression; institutions are healthy only when they
+         are true to it. Borrowed ideologies cannot substitute for it.</p></div>
+    <div class="pcard"><div class="idx">04</div><div class="dev">धर्म</div>
+      <h3>Dharma Sustains</h3>
+      <p>Dharma is not religion, and Dharma Rajya is not theocracy. It is the moral law
+         that holds a society together — the innate principles by which body, wealth and
+         power are kept in the service of life.</p></div>
+    <div class="pcard"><div class="idx">05</div><div class="dev">पुरुषार्थ</div>
+      <h3>The Four Aims</h3>
+      <p>Dharma, artha, kama, moksha — righteousness, wealth, desire, liberation. Not a
+         ladder to climb one rung at a time, but four aims pursued together, integrally,
+         by the whole person.</p></div>
+    <div class="pcard"><div class="idx">06</div><div class="dev">मनुष्य</div>
+      <h3>Man at the Centre</h3>
+      <p>The economy exists for man, not man for the economy. A guarantee of work, the
+         machine in the service of the human hand, and progress measured by the person
+         standing at the very end of the line.</p></div>
+  </div>
+</section>
+
+<footer>
+  <div class="dev">एकात्म मानववाद</div>
+  <div class="fq">“It is essential to think of the economic system that we intend to develop —
+     with man at its centre.”</div>
+  <span class="micro">Integral Humanism · Four lectures · Bombay · 22–25 April 1965</span>
+  <span class="micro">Digitised reading edition · Pandit Deendayal Upadhyaya · 1916–1968</span>
+</footer>
+
+<script>
+const BOOK = {"intro": [["h", "Integral Humanism"], ["h", "By Pandit Deendayal Upadhyaya"], ["p", "Integral Humanism was first presented by Pandit Deendayal Upadhyaya in the form of four lectures delivered in Bombay on April 22-25, 1965."], ["p", "Pandit Deendayal Upadhyaya was born on Sept. 25, 1916, in a village Nagla Chandrabhan, Near Mathur in Uttar Pradesh. He passed his Matriculation standing first class, first in the Ajmer Board Examinations, winning two gold medals. He again won two gold medals in Intermediate examination securing first rank. He did his B.A. in mathematics in first class."], ["p", "Panditji joined the RSS in 1937 as one of the first few Swayamsevaks and rose to be its Joint Provincial Pracharak."], ["p", "He joined the Jana Sangh in 1952 and was appointed its General Secretary, which post he retained till he became the President of the Party in 1967. After the death of Dr. Syama Prasad Mookherji he shouldered the responsibility of building up the party and he achieved a remarkable success in this onerous task."], ["p", "Pandit Upadhyaya edited PANCHJANYA (Weekly) and SWADESH (Daily) from Lucknow. He has also written a drama CHANDRAGUPTA MAURYA in Hindi, and later wrote a Hindi biography of SHANKARACHARYA. He translated Marathi biography of Dr. Hedgewar, the founder of RSS."], ["p", "His death in tragic circumstances on Feb. 11, 1968 is an irreplaceable loss to the country."], ["h", "Integral Humanism"]], "chapters": [{"n": 1, "blocks": [["p", "I am asked to present my thoughts on the subject of \"Integral Humanism\" in a series of talks beginning this evening. Last January at Vijayavada, Bharatiya Jana Sangh adopted the statement of \"Principles & Policies\" in which 'Integral Humanism' has also been accepted. There has been scattered discussions here and there on the subject. It is necessary that we consider Integral Humanism in all its aspects. So long as the country was under the yoke of the British rule, all the movements and policies in the country had one principal 'aim to drive out the foreign rulers and to achieve independence'. But what would be the face of the new Bharat after independence? In which direction were we to advance? These questions were precisely thought out. It would not be correct to say that no thought was devoted to these aspects. There were people who even at that time had considered these questions. Gandhiji himself had set out his idea of the independent Bharat in his book \"Hind Swaraj\". Prior to this Lokmanya Tilak discussed the philosophical basis of the rejuvenation of Bharat in his book 'Gita Rahasya'. He gave a comparative discussion of various schools of thought current all over the world at that time."], ["p", "Apart from these, the Congress and other political parties adopted various resolutions from time to time which contain references to this subject. However the subject requires much more serious study than was devoted to it at that time. It did not attract serious attention at that time because every one believed it was more important to think of ways to drive out the British and the other things could be discussed later on. It did not seem right to waste time in internal discussions while the foreign rule continued. Hence even if there might have been difference in views, they were shelved for the time being."], ["p", "As a result, even those who held the view that socialism should be the basis of the future Bharat, worked inside the Congress as a socialist group. They did attempt to form as a separate party as such."], ["p", "The revolutionaries too, were working independence in their own way. All were agreed, however, that the foremost task was to gain independence."], ["p", "Having attained. Independence, the question naturally ought to have occurred to us, \"Now that we independent, what shall be the direction of our progress?\". But is amazing that serious thought has not been to this question and today even after seventeen years independence we cannot say that a definite direction been decided upon."], ["h", "Whither Bharat"], ["p", "From time to time, Congressmen. or others have declared Welfare State, Socialism, Liberalism etc. as their aims. Slogans have been raised. But this ideology slogans attached little significance to the philosophies, apart from the slogans. I am saying this on the basis of personal discussions. A leading gentleman once suggested during a conversation that a joint front should be for against Congress, whereby a good fight can be given. Now a days political parties adopt this strategy. So, it was surprising to put forward this suggestion. However, naturally, I asked, \"What programme shall we adopt? If such a joint front is formed some idea of the programme essential. What will be out economic policy? What will our foreign policy? These questions should also be broadly tackled.\""], ["p", "\"Do not worry about it. Whatever you like you can adopt. We are ready to support, anything from extreme Marxist to downright capitalist program.\" The reply came as if this was natural. He had no difficulty in adopting any programme. The only object was somehow Congress should be defeated. Even now some declare that Congress must be defeated even with the cooperation of communists and all the rest. Recently elections were held in Kerala. During t elections, Communists, Muslim League, Swatantra Party, S.S.P. Rebel Congress known as Kerala Congress, Revolutionary Socialist Party etc. entered into a variety of bilateral of multiple alliances. As. a result, it was difficult to imagine that any of these parties had a definite. ideology, principles and aims. This is the situation as far as principles are concerned."], ["p", "Congress too, is in a similar state. Even though the Congress has proclaimed democratic socialism as its goal, the behavior of various Congress leaders shows one thing clearly that there are no definite , principles, no single direction in Congress. There are staunch communists in Congress fold. There are also those who have faith in, Capitalism and oppose communism to the teeth. All brands of people are arrayed on Congress platform. If there can be a magic box which contains a cobra and a mangoose living together, it is Congress."], ["p", "We must ponder whether we can progress under such conditions. If we stop to analyze the reasons for the problems facing the country we will find that the confusion about our goal and the direction is mainly responsible for the chaos. I realize that all the. 450 million people of Bharat cannot agree on all or even on a single question. That is not possible in any country. Yet there is generally, what is called a more or less common desire of the people of any nation. If this popular longing is made the basis of our aims, the common man feels that the nation is moving in a proper direction, and that his own aspiration is reflected in the efforts of the nation. This also generates the greatest possible feeling of unity. The truth of the statement is borne out by the response of the people during the Chinese Invasion of October/November 1962. A wave of enthusiasm swept across the country. Action and sacrifice. both obtained in abundance. There was no barrier between the government and the public or between various political parties. How did this happen?. The external threat made us recognize ourselves. The government adopted that policy which reflected the widespread feeling in the people and which enhanced their sense of self-respect with a call for sacrifice. The result was, we stood united."], ["h", "The Root of Our Problems-Neglect Of Self"], ["p", "It is essential that we think about our national identity. Without this identity there is no meaning. Of independence, nor can independence become the instrument of progress and happiness. As long as we are unaware of out national identity, we cannot recognize develop all our potentialities. Under alien rule this identity is suppressed. That is why nations wish to remain independent so that they can progress according to their natural bent and can experience happiness in their endeavor. Nature is powerful. An attempt to go against nature or to disregard her leads to troubles. The natural instincts cannot be disregarded but it is possible to elevate this nature to the level of culture. Psychology informs us how by suppression of various natural instincts different mental disorders ensue. Such a person remains restless and dejected. His abilities slowly deteriorate and become perverted. The Nation too like the individual becomes a prey to numerous ills when its natural instincts are disregarded. The basic cause of the problems facing Bharat is the neglect of its national identity. Opportunism Has Shaken the Confidence Of People in Politics"], ["p", "A majority of those who lead the nation today as well as those who take active interest in the affairs of the country are not sufficiently aware of this root cause. Consequently opportunists with no principles reign in politics of our country. Parties and politicians have neither principles nor aims nor a standard code of conduct. A person feels nothing wrong in leaving one party and Joining another. Even alliances and mergers of parties or their bifurcations are dictated not by agreement or by differences in principles by purely by gains in elections or in positions of power. In 1939 Shri Hafiz Mohammed Ibrahim was elected Muslim League ticket. Later when he joined Congress, in accordance with healthy principles of public conduct he resigned and sought re- election on Congress ticket and was once again elected. In 1948 when socialists left Congress and founded Socialist Party, all those who were members of legislature resigned and fought elections on socialist tickets. But thereafter this healthy tradition was forgotten. Now there is complete license in politics. As result, in public mind there is distrust for every one. There is hardly any reason whose Integrity is beyond doubt in the public mind. This situation must be changed. Otherwise, unity and discipline cannot. What Should Be Our Direction?"], ["p", "The nation is at crossroads. Some people suggest that we must start from where we have left off one thousand years ago, when foreign invaders disrupted our life. But nation is not an inanimate object like a cloth so that weaving can be taken. up after a gap in time. Besides it would not be rational to say that the thousand year old alien rule has interrupted the current of our national life so completely that from that time to this day we remained stationary and inactive. The nation has certainly put her genius to work, in the changing circumstances to meet the challenges thrown at her. We have struggled to continue our life forward and to wrest independence from the aliens. The current of our national life was not interrupted but has gone on ceaselessly. The task of turning the waters of Ganga back to. some previous point would not be wise Ganga at Banaras may not be crystal clear as at Haridwar. But still it is the same holy Ganga. It has absorbed numerous rivulets with all their refuse. However, these have no separate existence but have become Ganga. The current Ganga must inevitably glow onwards. If this was all that happened it would still not be a big problem. But there are other nations in the world. They have made phenomenal progress in the past one thousand years. Our entire attention was engaged in fighting for independence or staving off new hordes of invaders. We have not been able to contribute to the world progress. Now when we are free, is it not paramount that we fill this deficiency at the earliest and stand shoulder to shoulder with other advanced nations of the world?"], ["p", "Up to this point there is no room for difference of opinion. The difficulty arises when we fail to discern the reasons of the spectacular advance of the West, its effects, real and, apparent. This is further complicated by the fact that Britishers a representative of the West, ruled this country for a century and, during this period adopted such measures whereby in the minds of our people a contempt for things Bharatiya and respect for everything Western were subtly created. Along with the scientific advance, their way of life, manners and food habits etc. came to this country. Not only material sciences but also their social, economic and political doctrines became our standards. Today the educated in this country clearly display this effect. We shall have to decide whether this effect is good or bad for us. We had taken pride in resisting things British while they ruled us, but strangely enough, now that the Britishers have left, westernisation has become synonymous with progress. It is true that a narrow sense of nationalism should not be allowed to obstruct the progress of the nation. However western science and the western way of life are two different things. Whereas western science is universal and must be absorbed by us if we wish to go forward, the same is not true about the western way of life and values. In fact thoughtless imitation of the West must be scrupulously discarded. There are those who consider economic and political doctrines of the West as epitome of progress and desire to transplant the same in our country. Therefore when we are trying to decide where wish to take our country and how, we must also take into consideration the basis of various economic and political doctrines of the west and their present position."], ["h", "The Rise of European Nations"], ["p", "Among various Isms that affected the West, the principal ones are Nationalism, Democracy and Socialism. At the same time there have been some who cherish world unity and world peace and have made some efforts in that direction."], ["p", "Among these, nationalism is the oldest and the strongest. After the fall of the Roman Empire and decline in the influence of the Catholic Church Europe witnessed rise of several nations. History of Europe in the past on thousand years is the history of the rise of and conflict among various nations. These nations extended their expires beyond the European continent and subjugate other independent countries. Nationalism brought nation and state together resulting in nation states. At the same time the decline in the influence of the Roman Catholic Church gave rise either to national churches or to complete disappearance of religious influence on politics. Anyway the concept of secular state arose out of this situation."], ["h", "Birth of Democracy In Europe"], ["p", "A revolutionary concept which made a deep impact on the political life of Europe is Democracy. In the beginning, every nation had a king as its head but there was gradual awakening in the minds of people against the autocracy of the royalty. The industrial revolution and the international trade resulted in the rise of a business community in all nations. Naturally there ensued a conflict between these new centres of power and the established kings and feudal lords. This conflict, adopted 'democracy' as its philosophical basis. The origin of democracy was sought in the Greek city republics. The common man was attracted by the lofty ideals of equality, fraternity and liberty of every citizen. France witnessed a bloody revolution. In England too, there were periodic movements. The idea of democracy gained foothold in the mind of common man. The royalty was either liquidated or their powers were drastically' curbed and constitutional governments were established. Today democracy has been already accepted in Europe. Even those who have suppressed democracy do not denounce it. The dictators like Hitler, Mussolini and Stalin too paid lipservice to democracy."], ["h", "Individual Was Exploited"], ["p", "Every individual got a vote in the democratic setup. But real power stayed with those who had led the revolution. Industrial revolution had generated faith in the new methods of production. Instead of working in the freedom of home, workers had started working in the factories taking orders from the factory owners, The worker migrated from his home town to dwell in crowded cities. There was no provision of proper housing. There were hardly any rules in the factory to protect the worker. He was economically weak and not yet organized. He became a victim of exploitation, injustice and harassment. Those in whom political power was vested were members of the same group who exploited the workers. Hence there was no hope of redress from the state."], ["p", "A number of persons led movements in protest against this injustice with the desire to improve the lot of workers. They called themselves socialists. Karl Marx was one of them. In an effort to lead the movement against t injustice, he studied the entire history and structure presented his analysis of the situation. He claimed to have given a scientific basis to his theories. All the subsequent socialists might not have agreed with Marx but they all considerably influenced by his ideas."], ["h", "Dictatorship of The Proletariat"], ["p", "According to Marx analysis-dialectic materialism the root cause of exploitation lies in the private owners of the means of production. If these means are made the property of the society (for. the Marxist, the Society synonymous with the State) then there will be no further exploitation. But before this. the state should be redeemed from the hands of the exploiters and ensured against their influence in future. Towards this end, dictatorship of proletariat must be established. In order that people tolerate this dictatorship, it was held as an ideal that when the exploiter class has been finally liquidated, and possibility of its resurgence exists, the state will replaced by a classless, stateless society. Marx also attempted to show that capitalism contains seeds of own destruction and that socialism is inevitable."], ["p", "In some countries of Europe there was social revolution. Even where, socialism was not accepted, politicians had to accept the rights of workers. \"Welfare State\" was accepted as an ideal. Nationalism, democracy, socialism or equality (equality is there at the root of socialism; equality is different from equability), these three doctrines have dominated European social political thinking. Every now and then apart from these ideals of world peace and world unity also cropped up. All these are good ideas. They reflect the higher aspirations mankind. But by itself each of these doctrines is incomplete. Not only that, each stands opposed to the rest in practice. Nationalism poses a threat to world peace. Democracy and capitalism join hands to give a free reign exploitation. Socialism replaced capitalism and brought with it an to democracy and individual freedom. Hence the West is present faced with the task of reconciling these good ideals. They have not succeeded to this day, in this task. They have tried combinations and permutations, by emphasis on one or the other ideal. England emphasized nationalism and democracy and developed her politico-social institutions along those lines, whereas France could not adopt the same. There, democracy resulted in political instability. The British Labor party wanted to reconcile socialism with democracy but people have raised doubts whether democracy will survive if socialism gains strength. Hence the labor party no longer supports socialism so strongly as the Marxist doctrines advocate. If socialism has been diluted considerably, Hitler and Mussolini adopted nationalist cum socialism and buried democracy. In the end socialism also became a tool for their nationalism which posed a great threat to world peace and unity. We may indeed seek some guidance from the western world but the fact is, it has no concrete suggestions to offer. It is itself at crossroads unable to decide what is good. Under such circumstances we cannot expect guidance from the West. On the contrary we must consider whether in this present state of the world, we can contribute something to resolve its dilemma. Having taken note of the progress of the world, can we add to the common store of Knowledge? As a member of the world community , we must discharge our responsibilities. If we possess some thing that may prove helpful to world progress we should not hesitate in imparting it to the world. In this era of adulteration, instead of adulterating ideas we must on the contrary scrutinize and improve upon them wherever possible before accepting them. Rather than being a burden on the world, we must attempt to resolve if possible the problems facing the world."], ["p", "We must also consider what contribution our tradition and civilization make to the world culture. We shall consider this tomorrow evening."]]}, {"n": 2, "blocks": [["p", "Yesterday we had seen that even after 17 years of independence, we have still to decide what direction we should adopt to realize our cherished dream of all round development in the lives of our countrymen. Normally people are not prepared to seriously consider this question. They think only of the problems which they face from time to time. Sometimes economic problems are viewed with concern and an attempt is made to resolve them, and at other times social or political problems come to the forefront claiming attention. Not knowing fundamentally the direction in which we to go al these efforts are not accompanied by sufficient enthusiasm not do they give a feeling of satisfaction to the people engaged in these efforts. These efforts produce only a fraction of the results which they ought to have produced."], ["h", "Modern versus Ancient"], ["p", "Those who advocates some define direction, include two distinct groups of people. There are some who suggest that we must go back to the position when we lost our independence and proceed from there. On the other hand there are people who would like to discard all that has originated here in Bharat and are not ready to think about it. They seem to think that western life and thoughts are the last word in progress and all of it should be imported here if we are to develop. Both these lines of thought are incorrect, thought they do represent partials truths and it will not be proper to discard them altogether."], ["p", "Those who advocate starting from where we left off a thousand years ago, forget that whether it may or may not be desirable. It is definitely impossible. The flow of time can not be reversed."], ["h", "The Past Cannot be Disowned"], ["p", "In the past one thousand years whatever we assimilated whether it was forced on us or we took with willingness cannot be discarded now. Besides, we too have created originality not a little. In the life of our society, We did not remain always mere passive witness to whatever new challenging situations arose; nor did we merely react to every alien action. We too have attempted to reshape our life as required to face the new situations. Therefore, it will not do, simply to close our eyes to all that has happened in the past one thousand years."], ["h", "Foreign Ideologies Are Not Universal"], ["p", "Similarly those who would like to make western ideologies the basis of our progress forget that these ideologies have arisen in certain special situations and time. These are not necessarily universal. They cannot be free from the limitations of the particular people and their culture, which gave birth to these Isms. Besides many of these ideas are already out of date. The principles of Marx have changed both with the changing times as well as with varying conditions to the extent that parrot like repetition of Marxism for problems facing our country would amount to a reactionary attitude rather than a scientific and pragmatic one. It is indeed surprising that those who claim to reform the society by removing dead traditions, themselves fall prey to some outdated foreign traditions. Our country: Our problems"], ["p", "Every country has its own peculiar historical. social and economic situations and its leaders decide the remedies to the ills that beset the country from time to time taking into consideration its background. It is illogical to believe that remedies which the leaders of one country decided to try for their problems are likely to be applicable as such to all other peoples. A simple illustration will suffice. Even though the basic organic activity is the same in all human beings the drugs which may be helpful in England may not prove equally helpful in India. Diseases depend also upon climate, water, dietary habits and heredity. Even though the external symptoms may be apparently similar the same drug does not necessarily cure all persons. Those who apply a single penacea to all diseases must be considered quacks rather than doctors. Therefore Ayurveda states i.e. for the disease in each place remedy suitable to that place must be found. Therefore, it is neither possible nor wise to adopt foreign Isms in our country in the original from in toto. It will not be helpful in achieving happiness and prosperity."], ["h", "Human Knowledge Is Common Property"], ["p", "On the other hand it needs, to be realized that not all the thoughts and principles that have sprung up elsewhere are necessarily local in space and time. The response of human beings in a particular place time and social atmosphere may, and does, in many cases have relation and use to other human beings elsewhere and at other times. Therefore to ignore altogether the developments in other societies, past or present is certainly unwise. Whatever truths these developments contains must be taken not of and accepted. The rest must be scrupulously avoided. While absorbing the wisdom of other societies it is only proper that we avoid their mistakes or perversities. Even their wisdom should be adapted to our particular circumstances. In brief, we must absorb the knowledge and gains of the entire humanity so far as eternal principles and truths are concerned. Of these the ones that originated in our midst have to be clarified and adapted to changed times and those that we take from other societies have to be adapted to our conditions."], ["h", "The Conflicting Ideas"], ["p", "The western political thought has accepted Nationalism, Democracy and Socialism or equality as ideals. Besides now and then, there have been attempts directed at world unity which took the shape of the \"League of Nations\" and after the second world war, the \"United Nation Organizations\". For a variety of reasons those have not succeeded. However, those definitely were attempts in that direction."], ["p", "All these ideals have in practice proved to be incomplete and mutually opposing."], ["p", "Nationalism led to conflict between nations and in turn to global conflict, whereas if status-quo is regarded as synonymous with world peace the aspirations of many small nations to be independent would have never been fulfilled. World unity and Nationalism conflict with each other. Some advocate suppression of Nationalism for world unity whereas other regard world unity as an utopian ideal and emphasize national interest to the utmost."], ["p", "Similar difficulty arises in reconciling Socialism and Democracy. Democracy grants individual liberty but the same is used by capitalist system for exploitation and monopoly. Socialism was brought in to end exploitation but it eliminated the freedom and dignity of the individual."], ["p", "Mankind stands confused. unable to decide what is the correct path for future progress. The West is not in a position to say with confidence that \"this alone and no other\" is the right path. It is itself groping. Therefore simply to follow the West would be an instance of a blind being led by another blind."], ["p", "In this situation our attention is claimed by the Bharatiya culture. Is possible that our culture can point the direction to the world?"], ["p", "From the national stand point we shall have to consider our culture because that is our very nature. Independence is intimately related to one's own culture. If culture does not form the basis of independence then the political movement for independence would reduce simply to a scramble by selfish and power seeking persons independence can be meaningful only if it becomes instrument for the expression of our culture. Such expression will not only contribute to our progress but the effort required will also give us the experience of joy. Therefore, both from the national as well as human standpoint it has become essential that we think of the principles of the Bharatiya culture. If with its help we can reconcile the various ideals of the western political though then it will be an added advantages for us. These western principles are a product of revolution in human thought, and social conflict. They represent one or the other aspiration of mankind. It is not proper to ignore them."], ["h", "Bharatiya Culture Is Integrated"], ["p", "The first characteristic of Bharatiya culture is that it looks upon life as an integrated whole. It has an integrated view point. To think of parts may be proper for a specialist but it is not useful from the practical standpoint. The confusion in the West arises primarily from its tendency to think of life in sections and then to attempt to put them together by patch work. We do admit that there is diversity and plurality in life but we have always attempted to discover the unity behind them. This attempt is thoroughly scientific. The scientists always attempt to discover order in the apparent disorder in the universe, to find out the principles governing the universe and frame practical rules on the basis of these principles. Chemists discovered that a few elements comprise the entire physical world. Physicists went one step further and showed that even these elements consist only of energy. Today we know that the entire universe is only a form of energy."], ["p", "Philosophers are also basically scientists. The western philosophers reached tip to the principle of duality; Hegel put forward the principle of thesis, anti-thesis and synthesis; Karl Marx used this principle as a basis and presented his analysis of history and economics.. Darwin considered the principle of survival of the fittest as the sole basis of life. But we in this country saw the basic unity of all life. Even the dualists have believed the nature and spirit to be complementary to each other than conflicting. The diversity in life is merely an expression of the internal unity. There is complementary underlying the diversity. The unit of seed finds expression in various form - - the roots. the trunk, the branches the leaves, the flowers and the fruits of the tree. All these have different forms and colors and even to some extent different properties. Still we recognize their relation of unity with each other through seed."], ["h", "Mutual Conflict - Sign of Cultural Regression"], ["p", "Unity in diversity and the expression of unity in various forms has remained the central thought of Bharatiya culture. If this truth is wholeheartedly accepted then there will not exist any cause for conflict among various powers. Conflict is not a sign of culture of nature: rather it is a symptom of their degradation. The law of the jungle, \"Survival of the Fittest\" which the West discovered in recent years was known to our philosophers."], ["p", "We have recognized desire, anger etc. among the six lower tendencies of human nature, but we did not use them as the foundation or the basis of civilized life or culture. There are thieves and robbers in the society. It is essential to save ourselves and the society from these elements. We cannot consider them as our ideals or standards for human behavior. Survival of the fittest is the law of the jungle. The civilizations have developed not on the basis of this law but by consideration of how the operation of this law will be the least in human life. If we wish to progress, we have to keep this history of civilization before our minds. Mutual Co-operation"], ["p", "Co-operation also obtains in abundance just as conflict and competition in this world. Vegetation and animal life keep each other alive. We get our oxygen supply with the help of vegetation whereas we provide carbondioxide so essential for the growth of vegetable life. This mutual co-operation sustains life on this earth. The recognition of this element of mutual sustenance among different forms of life and taking that as the basis of an effort to make human life mutually sustaining is the prime characteristic of civilization. To mold the nature to achieve the social goals is culture but when this nature leads to social conflict it is perversion. Culture does not disregard or deny nature. Rather it enhances those elements in nature which are helpful in sustaining life in this universe and making it fuller richer, and curbs others which obstruct or destroy life. Let us take a simple illustration. The relationship such as brother, sister, mother and son, father and son are natural. These are same both in man as well as among animals. Just as two brothers are sons of one mother so also two calves have a single mother cow. Where lies the difference?? In animals by lack of memory the relation is short-lived. They cannot build up an edifice of civilization on these relations. But men use this natural relation as a basis to construct a more harmonious order in life, to establish other relationships flowing from these basic relationships so as to knit the whole society in single unit of co-operation. Thus various values and traditions are built. Standards of good and bad are constructed accordingly. In society we find instances of both affection as well as enmity between brothers. But we consider affection good and aim at enchanting affectionate brotherly relations. The opposite tendency is disapproved. If conflict and enmity is made the basis of human relationships and if on this basis history is analyzed, then it would be futile to dream of world peace to result out of such a course of action."], ["p", "A mother brings up her children. Mother's love is held up as the highest love. On such a basis alone we can devise the rules regulating the life of mankind. Sometimes there are examples of selfishness and cruelty of a mother toward her child. Among some species of animals mother devise her progeny to satisfy the hunger. On the other hand among monkeys mother carries her child long after its death. Both types of behavior are found among living things. Which of these two principles of nature can be made the basis of civilized life? We cannot but conclude that alone which helps to sustain life can be chosen, the contrary cannot lead to civilized life. Human nature has both tendencies, anger, and greed on the one hand and love, sacrifice on the other. All these are present in our nature. Anger etc. are natural to man and beasts. For the reason if we make anger a standard in our life and arrange our efforts accordingly then the result will be a lack of harmony in our. life. Therefore the exhortation, \"do not yield to anger\". Even. when the anger arises in one's mind one can exercise control over it and one should do so. Thus control becomes a standard of our life and not anger."], ["p", "Such laws are known as the principles of ethics. These principles are not framed by anyone. They are discovered. A suitable analogy is that of the law of gravitation, that if we throw a stone it falls on the ground. This law of gravitation is not framed by Newton. He discovered it. When he saw an apple falling to the ground from the branch, he realized there must exist such a law. Thus he discovered this law, he did not frame it. Similarly there are certain principles of human relations such as, if one feels anger it is on the whole beneficial to mankind that one must control anger. These principles of ethics are then discovered."], ["p", "\"Do not tell lies to one another, say what you know to be true\". This is a principle. Its usefulness becomes apparent at every step in life. We appreciates truthful person. If we speak lie, we ourselves feels unhappy; life cannot go on; there will be great confusion."], ["h", "These Principles Constitute Our Dharma"], ["p", "A child does not speak lie by nature. Often Parents, teach their child to speak untruths. When the child desires something, if parents do not wish that child should have it, they conceal the object and tell the child that the desired object has disappeared. The child may be fooled a couple of times but soon knows the real situation and learns to speak untruth. This fact that by nature a person is truthful is a law that is discovered. Many other principles of ethics are similarly discovered. They are not arbitrarily framed by someone. In Bharat these principles are termed \"Dharma\", laws of life. All those principles which bring about harmony, peace and progress in the life of mankind are included In this \"Dharma\". On the sound basis of \"Dharma\". then, we must proceed with the analysis of life as an integral whole."], ["p", "When Nature is channeled according to the principles of Dharma. we have culture and civilization. It is indeed this culture which will enable us to sustain and sublimate the life of mankind. \"Dharma\" is translated here as law. The English word 'religion' is not the correct word for 'Dharma'."], ["p", "As pointed out earlier an integrated life is the foundation and the principle underlying this culture as well as its aims and ideals. We have thought of life as Integrated not only in the case of collective or social life but also in the individual life. Normally an individual is thought of in the physical bodily forms. Physical comfort and luxury is considered happiness. But we know that mental worry destroys bodily happiness. Everyone desires physical comfort. But if a person is imprisoned and there he is given finest of food etc., will he be happy? A person does not experience joy on getting nice food if it is also accompanied by a few abuses. There is a well-known incident in Mahabharata. When Lord Krishna went to Hastinapur as an emissary of Pandavas, Duryodhan invited him to enjoy his hospitality. Lord Krishna declined his Invitation and went instead to Vidura's home. Overjoyed by the visit of this much revered guest, Vidura's wife served the banana skins while throwing away the pulp. But Lord Krishna enjoyed even the meal of banana skin. That is why it is said, \"Even a modest meal served with dignity and affection tastes better than the best delicacies served with disrespect\". It is necessary therefore to take not of the mental happiness. Similarly there is an intellectual happiness which too must be considered. Even after a person gets comforts for the body, and importance, affection. etc. Which please the mind. if he is involved in some intellectual confusion he is reduced to a state almost similar to madness. And what is madness itself? A lunatic may have all physical comforts, he may be perfectly healthy and properly cared for by his relatives; but he does not posses intellectual happiness. Intellectual peace is also essential and important. We will have to take all these things into consideration."], ["h", "The Political Aspirations of Man"], ["p", "Body, mind, intelligence and the soul.-these four make up an individual. But these are integrated. We cannot think of each part separately. The confusion that has arisen in the West is due to the fact that they have treated each of the above aspects of human being separately and without any relation to the rest. When there was movement for democratic structure, they proclaimed \"man is a political animal\" and therefore his political aspirations must be attended to. Why only one person should be the king and others his subjects'? Let everyone rule! In Order to satisfy this political man they gave him the right to vote. Now he did get the right to a vote, but at the same time other rights diminished. Then the questions arose. \"The voting right is nice but what about food? What if there is nothing to eat ?\""], ["p", "They wondered, \"Now that you have voting right, you are the king. Why need you worry?\" But man replied, \"What shall I do with the state if I do not get any food? I have no use of this voting right. I want bread first. Then came Karl Marx and said, \" Yes, bread is the most important thing. The state belongs to the 'haves'. So let us fight for bread. He saw man as primarily made up of body, wanting bread. But hose who followed the path shown by Karl Marx came to realize that they had neither bread not voting-right."], ["p", "At the opposite end there is USA. There is both bread as well as voting right. Even so there is lack of peace and happiness. USA has highest list in number of suicides, number of mental patients and number of persons using tranquilizers to get sleep. People are puzzled as to the cause of this new situation. Man obtained bread, he got his voting right, still three is no peace, no happiness. Now they want back their peaceful sleep. Sound and undisturbed sleep is a scarce commodity in the present day America. Those who think realize that there is a basic mistake some where, whereby even after acquiring all good things of life, they are not happy."], ["p", "The reason is that they have not thought of the integrated human being. In our country we have thoroughly considered this matter. That is why we have stated that progress of man means progress of the body, mind, intellect and soul of man, all together. Often it has been propagated that Bharatiya culture thinks only salvation of the soul. It does not bother about the rest. This is wrong. We do not think of the soul but it is not true that we do not consider body, mind and intellect of much importance. Other gave importance of body alone. Therefore our attention to the soul is unique. With time this created and impression that we are concerned only with the soul and not with other aspects of human being. A young unmarried boy cares for his mother, but after marriage he cares both for his wife as well as his mother, and discharges his responsibilities towards both of them. Now if anyone says that this man has no loves for his mother, it would be untrue. A wife also loves only her husband at first, but after the birth of child, she loves both her husband and child. Sometimes an unthoughtful husband feels that his wife neglects him, after the birth of their child. But this is generally not correct. If that is true then the wife has certainly slipped in her duty."], ["p", "Similarly, while we recognize the need to pay attention to the soul, we do not neglect the body. Upanishads declare in unambiguous words i.e. weakling cannot realize the self. Again Body is truly the primary instrument to discharge the responsibilities that dharma in joins. The fundamental difference between our position and that of the west is that. whereas they have regarded body and satisfaction of its desires as the aim, we regard the body as an instrument for achieving our aims. We have recognized the importance of the body only in this light. The satisfaction of our bodily needs is necessary, but we don't consider this to be the sole aim of all our efforts. Here in Bharat, we have placed before ourselves the ideal of the four fold responsibilities, of catering for the needs of body, mind, intellect and soul with a view of achieve the integrated progress of man. Dharma, Artha, Kama and Moksha are the four kinds of human effort. Purushartha means efforts which befit a man. The longings for Dharma, Artha Kama and Moksha, are inborn in man, and satisfaction. Of these four efforts too, we have thought in an integrated way. Even though Moksha has been considered the highest of these purusharthas, efforts for Moksha alone are not considered to give benefit to the soul. On the other hand, a person who engages in action, while remaining unattached to its fruits, is said to achieve Moksha inevitably and earlier."], ["p", "Artha includes what is known as political and economic policies. According to the ancients, it used to include the justice and punishment also. Kama relates to the satisfaction of various natural desires. \"Dharma\" defines a set of rules to regulate the social activity. Artha and Kama, so as to progress in an integral and harmonious way, and attain not only Kama and Artha but also Moksha eventually."], ["p", "Thus even though Dharma regulates Artha and Kama. all the three are interrelated and mutually complementary. Dharma helps achieve Artha. Even in business, one requires honesty, restraint, truthfulness etc. which are the attributes of Dharma. Without these qualities one cannot earn money. It must be admitted that Dharma is instrumental in attaining Artha and Kama. Americans proclaimed, \"Honesty is the best business policy\". In Europe they said, \"Honesty is the best policy\". We go one step forward and assert \"Honesty is not a policy but a principle\" i.e. we believe in dharma not just because it is instrumental in acquiring Artha but because it is a fundamental principle of civilized life."], ["p", "Kama too can be attained only through Dharma. Having produced the material things such as nice food. when, where, how and in what measure it will be used can be determined only by Dharma. If a sick person eats food meant for a healthy one and vice- versa, both of them will be at a disadvantage. Dharma helps in restraining the natural tendencies of man, whereby he is able to determine what is beneficial to him apart from what is pleasurable. Hence Dharma is given the foremost place in our culture."], ["p", "Dharma is of primary importance, but we should not forget that it is not possible to practice Dharma in the absence of Artha. There is a saying \"What sin will not be committed by one who is starving? Those who have lost everything become ruthless.\" Even a rishi like Vishwamitra driven by hunger broke into the home of a hunter and ate the flesh of a dog. Therefore we are enjoined to see that there is enough wealth created continuously, since wealth. also strengthen Dharma. Similarly the government has maintain law and order and prevent chaos, which definitely destroys Dharma. At the time of Chaos, law of the jungle prevails where the strong feed upon the weak. Therefore stability in the state is also essential for the prevalence of Dharma."], ["p", "In order to do this, education, character building, spread of idealism, and suitable economic structures are all necessary. Governments also fall inside the realm of Artha. Excessive power of state is also harmful of Dharma. It was said that a king should be neither too harsh nor too soft with his people. Heavy reliance on harsh measures produces a feeling of revolt in people. When state usurps the rightful position of Dharma, then there is this evil of preponderance of power of the state. Dharma suffers thereby. This is the reason of the decline of Dharma in ruthless states."], ["p", "When the state-acquires all powers, both political and economic, the result is a decline of Dharma. In this way if the state has unlimited powers, the whole society looks towards the state, for everything. Officers of the government neglect their duties and acquire vested interests. These are all signs of the preponderance of the powers of state."], ["p", "Dharma staffers a setback. Hence Artha should no be allowed to acquire hod in either of these two ways."], ["p", "Karma too has been considered on the same lines. I the physical needs are neglected, and desires entirely suppressed, Dharma does not grow. Dharma cannot be observed if one has no food to eat. If the fine arts which satisfy the mind, are altogether stopped, then the civilizing influence on people will not be present. Mind will become perverse and Dharma neglected. On the other hand, if greediness of the gluttons of Rome or sensuousness of Yayati prevails, then the duties will be forgotten. Hence Kama too must be pursued consistent with Dharma. We have thus considered the life of an individual in a through and integrated manner. We have set the aim of developing body, mind intellect as well as soul in a balance way. We have tried to satisfy the manifold aspirations man taking care that efforts to satisfy two different aspirations are not mutually conflicting. This is the integrated picture of all the fourfold aspirations of and individual. This concept of a complete human being, integrate individual, is both our goal as well as our path. What should be the relation of this integrated human being with the society and how the interests of the society should be enhanced will be discussed tomorrow."]]}, {"n": 3, "blocks": [["p", "Yesterday we considered man as an individual. There are different aspects of an individual personality, different levels of needs of an individual. In order to develop complete personality, to satisfy the needs progressively but simultaneously at all levels, certain specific kinds of effort's are needed. These, too, were considered. But man does not exist merely as an individual. The individual comprising of body, mind, intellect and soul as not limited to singular \"I\" but is also inseparably related to the plural \"We\". Therefore we must also think of the group or the society. It is a simple truth treat society is a group of men. But how did society come into being? Many views have been put forward by philosophers. Those propounded in the West and on which the western socio- political structure is based can be broadly summarized as \"society is a group of individuals brought into being by the individuals by an agreement among themselves.\" This view is known as \"Social Contract Theory\". Individual is given greater importance in. this view. If there are any differences in different western views, these pertain only to the questions, namely, \"If the individual produced a society. then in whom the residual power remains vested, in the society or in the individual? Does the individual have the right to change the society? Can the society impose a variety or regulations on the individual and claim a right to the allegiance of the individual to itself? Or the individual is free as regards these questions?\""], ["h", "Individual Versus Society"], ["p", "There is a controversy in the West on this question. Some have opted for the society as supreme and from this a conflict has arisen. The truth is that the view that individuals have brought society into being is fundamentally incorrect. It is true that the society is composed of a number of individuals. Yet it is not made by people, nor does it come into being by mere coming together of a number of individuals."], ["p", "In our view society is self-born. Like an individual, society comes into existence in an organic way. People do not produce society. It is not a sort of club, or some joint stock company, or a registered co-operative society. In reality, society is an entity with its own \"SELF\", its own life; it is a sovereign being like an individual; it is an organic entity. We have not accepted the view that society is some arbitrary association. It has its own life. Society too has its body, mind, intellect and soul. Some western psychologists are beginning to accept this truth. McDougal has produced a new branch of psychology called group mind. He has accepted that the group has its own mind, its own psychology, its own methods of thinking and action."], ["p", "Group has its feelings too. These are not exactly similar to the individual's feelings. Group feelings cannot be considered a mere arithmetic addition of individual feelings. Group strength too is not a mere sum of individuals’ strength. The intellect, emotions and energies, strength of a group, are fundamentally different from those of an individual. Therefore, at times it is experienced that even weakling, despite his individual weak physique turns out to be a heroic member of the society. Sometimes an individual may be ready to put up with an affront to his person, but is unwilling to tolerate an insult to his society. A person may be ready to forgive and forget a personal abuse to him, but the same man loses his temper if you abuse his society. It is possible that a person who is of a high character in his personal life, is unscrupulous as a member of the society. Similarly an individual can be good in society but not so in his individual life. This is a very important point."], ["p", "Let me give you an illustration. Once during a conversation between Shri Vinobaji and the Sar Sanghachalak of Rashtriya Swayamsevak Sangh, Shri Guruji, a question arose as to where the modes of thinking of Hindus and Muslims differ. Guruji said to Vinobaji that there are good and bad people in every society. There can be found honest and good people in Hindus as well as in Muslims. Similarly rascals can be seen in both the societies. No particular society has a monopoly of goodness. However, it is observed that Hindus even if they are rascals individual life, when they come together in a group, they always think of good things. On the other hand when two Muslims come together, they propose and approve of things which they themselves in their individual capacity would not even think of. They start thinking in an altogether different way. This is an everyday experience. Vinobaji admitted that there was truth in this observation but had no reasons to explain it."], ["p", "If we analyze this situation. we shall discover that the modes of thinking of an individual and of a society are always different. These two do not bear an arithmetic relation. If a thousand good men gather together it cannot be said for certain that they will think similarly of good things."], ["p", "An average Indian student at present, is a mild and meek young man. Compared to an average student of twenty years ago, he is weaker and milder in every way. But when a score of such students get together, the situation becomes difficult. Then they indulge in all sorts of irresponsible actions. Thus a single student appears disciplined but a group of students become undisciplined. We shall have to consider why this change comes about. This is known as mob-mentality as distinct from individual mentality. This mob-mentality is a small aspect of mind. When a group of persons collect for a short time, the collective mentality obtained in that group is known as mob-mentality. But society and social mentality evolves over a much longer period. There is a thesis is that when a group of people live together for a long time, by historical tradition and association, by continued intercourse. they begin to think similarly and have similar customs. It is true that some uniformity is brought about by staying together. Friendship arises between two persons of similar inclination. However a nation or a society does not spring up from mere co-habitation. Why Mighty Nations Of Antiquity Perished ?"], ["p", "It is known that some ancient nations disappeared. The ancient Greek nation came to end. Egyptian civilization similarly disappeared. Babylonian and Syrian civilizations are a matter of history. Cynthia's perished. Was there ever a time when the citizens of those nations stopped living together? It was only the fact that there were wide differences among people that let to the downfall of these nations. The Greece in the past produced Alexander and Heredotes. Ulysis and Aristotle, Socrates and Plato and the present day Greece is inhabited by people of the same hereditary stock. There was no interruption in their heredity, because there never was a time when the whole of Greece was devoid of human population and when a new race inhabited that country. Such a thing never happened. Father and son tradition of old Greece was never interrupted. It is possible to trace the ancestry of present day Greeks to the old Greeks, some 250 to 500 generation back. Despite all the old Greek Nation is non-existent. So also the old Egyptian Nation Is no longer there. New nations have arisen in those places. How did this happen? This simple fact is indisputable, that nations do not come into existence by a mere co habitation. There was never a time in the lives of the citizens of these decadent nations, when they stopped living in a group. On the other hand Israeli Jews lived for centuries with other peoples scattered far and wide, yet they did not get annihilated in the societies in which they lived because of cohabitation. It is clear therefore that the source of national feeling is not in staying on a particular piece of land, but is in something etc. What Is A Nation?"], ["p", "That source is in the goal which is put before the people. When a group of persons lives with a goal, and ideal. A mission , and looks upon a particular place of land as motherland, this group constitutes a nation. If either of the two-an ideal and a motherland-is not there, then there is no nation. There is a \"Self\" in the body, the essence of the individual; upon the severance of its relation with the body, a person is said to die. Similarly there is this idea, ideal, or fundamental principle of a nation, its soul. Although it is believed that man take birth again and again, yet the reborn person is a different individual. They are treated as two separate beings. The same soul leaves one body and enters another, but the previous and the latter are two different individuals. The end of a person is nothing but the departure of his soul from his body. The other components of the body also undergo change. From childhood to old age, there is a drastic change! The biologists tell us that in course of a few years, every cell of our body is replaced by a new one. A variety of changes takes place. Because the soul resides in the body without interruption, the body continues its existence, such a relation is known as \"the law of identity\" in logic. It is due to this identity that we admit the continued existence of any entity. In this connection a nice illustration of a barber's razor is sometimes advanced."], ["p", "Once while shaving a customer, a barber, prided in his razor being 60 years old. His father too had worked with the same razor. The customer was surprised especially because the handle was quite shiny and new In appearance. \"Why the handle is quite shiny? How have your preserved the brightness for sixty years?\" He asked. Barber too was amused with this. Is it possible to preserve the handle in a brand new appearance for sixty years? It has been replaced only six months ago\". He replied naturally. The customer was curious and asked and how old is the steel? Three years was the reply. In brief. the handle was replaced. the steel was also replaced, but the razor remained old! Its identity was intact. Similarly a nation too has a soul. There is a technique name for it. In the \"Principles arid Policies\" adopted by the Jana Sangh, this name is mentioned. The word is Chiti. According to McDougal, it is the innate nature of a group. Every group of persons has an innate nature. Similarly every society has an innate nature, which is inborn. and is not the result of historical circumstances."], ["p", "A human being is born with a soul. Human personality, Soul and character are all distinct from one another.. Personality results from a cumulative effect of all the actions, thoughts and impressions of an individual. But Soul is unaffected by this history, Similarly national culture is continuously modified and enlarged by the historic reasons and circumstances. Culture does include all those things which by the association, endeavors and the history of the society, have come to be held up as good and commendable. but these are not added on to Chiti. Chiti is fundamental and is central to the nation from its very beginning. Chiti determines the direction in which the nation is to advance culturally. Whatever is in accordance with Chiti, is included in culture."], ["h", "Chiti, Culture, Dharma"], ["p", "By way of an illustration consider the story of Mahabharat. Kauravas were defeated, and Pandavas won. Why did we hold up the conduct of Pandavas as Dharma? Or why this battle was not considered just a battle for a kingdom? The praise for Yudhistir and the dishonor heaped on Duryodhana are not a result of political causes Krishna killed his uncle Kansa, the established king of the times. Instead of branding this as a revolt. we consider Krishna as an Avatar of God, and Kansa as an Asura. Rama was assisted in his invasion of Lanka by Vibhishana, brother of Ravana. Such conduct of Vibhishana instead of being branded as treason, is considered good and exemplary. He betrayed his brother and his king even as Jaichand had one later on. He might be branded as a \"quisling\". But Vibhishana is not called \"quisling' by any one. On the contrary he is highly praised for his conduct, and Ravana actions are disapproved. Why so? The reason behind this is not political."], ["p", "If there is any standard for determining the merits and demerits of particular action, it is this Chiti; from nature whatever is in accordance with 'Chiti', is approved and added on to culture. These things are to be cultivated. Whatever is against 'Chiti,' is discarded as perversion, undesirable, is to be avoided. Chiti is the touchstone on which each action, each attitude is tested, and determined to be acceptable or otherwise. 'Chitti' is the soul of the nation. On the strength of this 'Chiti', a nation arises, strong and virile if it is this 'Chiti' that is demonstrated in the actions of every great man of a nation."], ["p", "An individual is also in instrument in bringing forth the soul of the nation \"Chiti\". Thus apart from his own self, an individual also represents his nation. Not only that, but he also mans the various institutions that are created for the fulfillment of the national goal. Therefore he represents these too. The groups larger than nation such as \"mankind\" are also represented by him. In short, an individual has a multitude of aspect, but they are not conflicting; there is co-operation. unity and harmony in them. A system based on the recognition of this mutuality complementary nature of the different ideals of mankind, their essential harmony, a system which devises laws, which removes the disharmony and enhances these mutual usefulness and co-operation, alone can bring peace and happiness to mankind; can ensure steady development. \"Institution\"- A Means To Fulfill National Needs"], ["p", "According to Darwin's theory, living beings develop various organs as per the requirements dedicated by the circumstances. In our shastras, it was stated slightly differently, that the soul constructs, using the strength of \"Prana'\", various organs as the need is felt, for the purpose of continuing life. Just as the soul produced these different organs in the body, so also in the nation many different organs are produced as instruments to achieve national goals. Like various departments in a factory, building, machinery, sales, production, maintenance etc. nations also produce different departments, which are called institutions. These institutions are created to fulfill the needs of a nation. Family, castes, guilds, (which are now known as trade unions)etc., are such institutions. Property, marriage are also institution. Formerly there were no marriages. Later on some Rishi established this practice of marriage. He produced the institution of marriage. Similarly Gurukul and Rishkul were institutions. In the same way, the state is also an institution. The Nation creates it. A lot of trouble in the West is due to the fact that they confused the state with the nation, they considered the state synonymous with the nation. Truly speaking, nation and state are not the same. In our country, the state was produced as per social contract theory. Formerly there was no king. Mahabharat describes that in Krityuga, there was no state or king. Society was sustained and protected mutually by practicing Dharma."], ["p", "Later on interruption and disorganization came into existence. Greed and anger dominated. Dharma was on the decline and the rule \"might is right\" prevailed. The Rishis were perturbed over the developments. They all went to Brahma to seek counsel, Brahma gave them a treatise on \"Law and the Functions of the State\", which he had himself writer. At the same time, he asked Manu to become the first King. Manu declined saying that a king will have to punish other persons, put them in jail and so on; he was not prepared to commit all these sins. There upon Brahma said, your actions in the capacity of king will not constitute sin, a long as they are aimed at securing conditions under which the society can live peacefully and according to Dharma. This will be your duty, your Dharma. Not only that but You will also have a share of the Karma of your subjects, whereby you will gain Dharma considerably if your subjects maintain conduct according to Dharma. Although it is not explicitly stated here, but I believe that if the society under any king committed sin, a part of that too must automatically go to the account of the king. It is not proper if only good things are shared by the king and not the bad ones; both must be shared in the same proportion. Thus state came into existence as a contract. This contract theory can be applied to the state but not to the nation. In the West, it was exactly opposite. Society as a nation, according to them. was a contract, but the king claimed a divine right and proclaimed himself the sole representative of God. This is wrong. In our Country, the king may have been first recognized in antiquity but the society as a nation is considered self-born. State is only an institution."], ["p", "Similarly other institutions, like the state, are created from time to time as the need is felt. Every individual is a limb of one or more of these institutions. A person is a member of his family, as well as his community; he may also be a member of some association of his fellow professionals, if he pursues a profession. Above all he is a member of the nation and society. If we consider even larger sphere he is a member of the whole mankind, and then the entire universe, Truly speaking an individual is not merely a single entity but a plural entity. He is a part of not just one, but a member of many institutions. He lives a variety of lives. The most important aspect, is that despite this multiple personality, he can and should behave in a way which does not bring different aspects of his life into mutual conflict but which is mutually sustaining, complementary and unifying. This quality is inherent in man."], ["p", "A person who uses this quality properly, becomes happy and on the other hand one who does not do so, reaps unhappiness. Such a person will not have balanced development in the life. As an illustration, a man is son of his another, husband of his wife, brother of his sister and father of his son. A single individual is a father and is also a son, he is brother and also husband. he has to maintain all these relation with intelligence, understanding and tact. Where a person fails to do so, there is conflict. If he sides with one party the other feels wronged. The conflicts between his wife and his sisters, his wife and mother result from his inability to behave properly. There upon some of his relations are strained. He is pained because his duties towards his mother and towards his wife clash. When he can resolve this conflict, and fulfill all his obligations properly, it can be said that his development will be integrated."], ["h", "Society and Individual Not Conflicting"], ["p", "We do not accept the view that there is any permanent inevitable conflict among the multifarious personality of an individual, and different institutions of the society. If a conflict does exist, it is a sign of decadence perversion and not of nature or culture. The error in western thinking lies in that some people there believe that human progress is a result of this fundamental conflict. Therefore they consider the conflict between the individual and the state as a natural occurrence, on the same basis they also theorized on the class conflict."], ["p", "Classes do exist in a society. Here too, there were castes, but we had never accepted, conflict between one caste and another as fundamental concept behind it. In our concept of four castes, they are thought of as analogous to the different limbs of Virat- purusha. It was suggested that from the head of the Virat-Purusha Bhrahmins were created, Kshatriyas from hands, Vaishyas from his abdomen and Shudras from legs. If we analyze this concept we are faced with the question whether there can arise any conflict among the head, arms. stomach and legs of the same Virat Purusha. If conflict is fundamental, the body cannot be maintained. There cannot be any conflict in the different parts of the same body. On the contrary \"one man\" prevails. These limbs are not only complementary to one another, but even further, there is individual unity. There is a complete identity of interest identity of belonging. The origin of the caste system was on the above basis. If this idea is not kept alive; the castes, instead of being complementary, can produce conflict. But then this is distortion. It is not a systematic arrangement, rather it is absence of any plan, any arrangement. This is indeed the present condition of our society."], ["p", "This process of deterioration can set in the various institutions of a society due to a variety of reasons. If the soul of the society weakens, then all the different limbs of the society will grow feeble and ineffective. Any particular institution may be tendered useless or even harmful. Besides the need and the usefulness of any particular institution may change with time, place and circumstances. While examining the present state of an institution we ought at the same time, to think of what it should be like; mutual complementary and a sense of unity, alone can be the standards of proper conduct. Family, Community, Trade Union, Gram Panchayat, Janapada, State and such other institutions are various limbs of the nation and even of mankind. The are interdependent, initially complementary. There should be a sense of unity through all of them. For this very reason, there should be a tendency toward mutual accommodation in them instead of conflict or opposition."], ["p", "State is one of the several institutions, an important one, but it is not above all other. One of the major reasons for the problems of the present day world is that almost everyone thinks of the state to be synonymous with the society. At least in practice. they consider the state as the sole representative of the society. Other institutions leave declined in their effectiveness while the state has become dominant to such an extent that all the powers are gradually being centralized in the state."], ["p", "We had not considered the state to be the sole representative of the nation. Our national life continued uninterruptedly even after the state went in the hands of foreigners. The Persian nation came to an end with their loss of independence. In our country, there were foreign rules now and then in various parts of the country. At the some time the pathans seized the throne of Delhi, and then the Turks; the Mughals and the British too established their rules. Despite all this, our national life went on, because the state was not its centre. If we had considered state as the centre, we would have been finished as a nation long time ago. In some tale for children, it is described that an evil spirit resided in some parrot and to kill the evil spirit one had to kill that parrot. Those nations whose life centred in the state, were finished with the end of the state. On the other hand, where state was not believed central to its life, the nation survived the transfer of political power."], ["p", "This had its had effects also. Late Dr. Ambedkar had said that our Gram Panchayats were so strong that we neglected the throne of Delhi. We did not remain alert as regards the state. as much as we ought to have done, thinking that nation's life did not depend on the state. We forgot that, though it may not be central. the state is definitely an important institution serving some needs of the nation, just as a limb of the body. It is possible to pluck a hair without much harm but along with the hair, if some skin is also removed, and a little further, if the head too is cut off, then there will be great loss for the body. Therefore the body must be protected. Although the various limbs of the body are not absolutely indispensable yet each of them serves an important purpose. From the same standpoint, state, too, should have been deemed important in the life of a nation. There were persons who attended to this aspect. It was for this reason that the great teacher of Shivaji, Samarth Ramdas Swami, directed him to establish his kingdom. Dharma wields its own power. Dharma is important in life. Shri Ramdas would as well have preached to Shivaji to become a mendicant and spread Dharma following his own example. But on the contrary, he inspired Shivaji to extend his rule, because state too, is an important institution of the society. However, to consider something important is different from saying that it is supreme. The state is not supreme. The question arises, then, that if the state is not of fundamental importance, what is a that is absolutely important. Let us consider this question."], ["h", "Dharma Sustains the Society"], ["p", "We shall have to examine the reasons why the state was established. No one will dispute that the state must have some specific aim, some ideal. Then this aim or ideal must be consider of highest importance rather then the state which is created to fulfill this ideal. A watchman is not deemed greater than the treasure he supposed to protect, nor is a treasure. The state is brought into existence to protect the nation: produce and maintain conditions in which the ideals of the nation can be translated into reality. The ideals of the nation constitute \"Chiti\", which is analogous to the soul of an individual. It requires some effort to comprehend Chiti. The laws that help manifest and maintain Chiti of a Nation are termed Dharma of that nation. Hence it is this \"Dharma\" that is supreme. Dharma is the repository of the nation's soul. If Dharma is destroyed. the Nation perishes. Anyone who abandons Dharma betrays the nation."], ["p", "Dharma is not confined to temples or mosques. Worship of God is only a part of Dharma. Dharma is much wider. In the past, temples have served as effective medium to educate people in their Dharma. However just as schools themselves do not constitute knowledge, so also temples do not constitute Dharma. A child may attend school regularly and yet may remain uneducated. So also, it is possible that a person may visit temple or mosque without break and yet he may not know his Dharma. To attend temple or mosque constitutes a part of religion, sect. creed, but not necessarily \"Dharma\". Many misconceptions that originated from faulty English translations, include this most harmful confusion of Dharma with religion."], ["h", "Dharma And Religion Are Different"], ["p", "On the one hand we used the word religion as synonymous with \"Dharma\" and on the other hand increasing ignorance, neglect of our society and Dharma, and greater acceptance of European life, became the outstanding features of our education. As a result all the characteristics of a narrow religion, especially as practiced in the West were attributed automatically to the concept of Dharma also. Since in the West, injustice atrocities, were perpetrated, bitter conflicts and battles were fought in the name of religion, all these were enblock listed on the debit side of \"Dharma\" also. We felt that in the name of Dharma also battles were fought. However battles of religion and battles for Dharma are two different things. Religion means a creed or a sect; it does not mean Dharma. Dharma is very wide concept. It is concerned with all aspects of life. It sustains the society. Even further, it sustains the whole world. That which sustains is \"Dharma\"."], ["p", "The fundamental principles of Dharma are eternal and universal. Yet. their implementation may differ according to time, place and circumstances. It is a fact that a human being requires food for maintaining his body. However, what a particular person should eat in, how much quantity, at what intervals is all decided according to circumstances. It is possible at times that even fasting is advisable. If a typhoid patient is given normal food, the consequences may be disastrous. For such a person, keeping away from food is necessary, similarly the principles of Dharma have to be adapted to changing times and pace."], ["p", "Some rules are temporary and others are valid for longer periods. There are some rules regulating our conduct at this meeting. One of the rules is that I speak and you listen with attention. If an contravention of this rule, you start conversing with one another or addressing the gathering at the same time, than there will be disorder; our work will not progress: the meeting will not be sustained. It can be said that you have not observed your Dharma. Thus it is our Dharma that we observed your Dharma. Thus it is our Dharma that we observed the rules by winch the meeting proceeds smoothly. But this rule is applicable only as long as this meeting lasts. If after the meeting is over, even when you reach home, you continue to observe this rule and do not speak, a different problem will arise. Your family might have to call in a doctor. At home, the rules suitable there will have to be observed. The complete treatise on the rules in general, and their philosophical basis is the meaning of Dharma. These rules cannot be arbitrary. They should be such as to sustain and further existence and progress of the entity which they serve. At the same time they should be in agreement with and supplementary to the larger framework of Dharma of which they form a part. For instance. when we form a registered society, we have the right to frame the rules and regulations, but these cannot be contradictory to the constitution of the society. The constitution itself cannot violate the Societies Registration Act. The act has to be within the provision of the constitution of the country. In other words, the constitution of the country is a fundamental document which governs the formulation of all acts in the country. In Germany the constitution is known as the \"Basic Law\"."], ["p", "Is the constitution too, not subject to some principles of more fundamental nature? Or is it a product of any arbitrary decisions of the constituent assembly? On serious consideration, it will be clear that even the constitution has to follow certain basic principles of Nature. Constitution is for sustaining the nation. If instead it is instrumental in its deterioration, then it must be pronounced improper. It must be amended. The amendment is also not solely dependent on majority opinion. Now-a-days the majority is much talked of. Is the majority capable of doing anything and everything? Is the action of the majority always just and proper? No. In the West, the king used to be the sovereign. There after when royalty was deprived of its so-called divine rights, sovereignty was proclaimed to be with the people. Here in Our country neither the kings, nor the people, nor the parliament have had absolute sovereignty. Parliament cannot legislate arbitrarily."], ["p", "It is said about the British parliament that it is sovereign and can do anything. They say that \"British Parliament can do everything except making a woman a man and vice versa.\" But is it possible for the parliament to legislate that every Englishman must walk on his head? It is not possible. Can they pass an act that everyone in England must present himself before the local authority once everyday? They cannot. England has no written constitution. They regard tradition highly. But their traditions too have undergone change. What is the basis for making changes in their traditions? Whichever tradition proved an obstacle in the progress of England, was discarded. Those which were helpful in the progress were consolidated."], ["p", "The traditions are respected everywhere, just as in England. We have written constitution, but even this written constitutions cannot go contrary to the traditions of this country. In as much as it does go contrary to our traditions, it is not fulfilling Dharma. That constitution which sustains the nation is in tune with Dharma. Dharma sustains the nation. Hence we have always given primary importance to Dharma, which is considered sovereign. All other entities, institutions or authorities derive their power from Dharma and are subordinate to it."], ["p", "If we examine our constitution from the point of view of the growth of the nation, we find that our constitution needs amendment. We are one nation, one society. That is why we did not entertain any special rights on the basis of language, province, caste, religion, etc. but gave every one equal citizenship. There are separate states. There is no separate citizenship of state and of Union. We are all citizens of Bharat. By the same token, we have denied the right to secede to individual state. Not only that the power to demarcate the boundaries of state and to choose their names, is vested in the parliament, and not in assemblies. This is as it should be; in tune with the nationalism and tradition of Bharat. However, despite all this, we made our constitution federal, whereby what we have adopted in practice, we have rejected in principle. In a federation constituent units have their own sovereignty. These voluntarily relinquish their sovereignty to the federation, by an agreement. It may be that they surrender all their rights and thereby the centre requires sovereignty. But these powers are given to the Union. It has no power of its own. Thus the federal constitution considers the individual states as fundamental power, and the centre as merely a federation of states. This is contrary to the truth. It runs counter to the unity and indivisibility of Bharat. There is no recognition of the idea of Bharatmata, Our sacred motherland, as enshrined in the hearts of our people."], ["p", "According to the first para of the Constitution, \"India that is Bharat will be a federation of States\", i.e. Bihar Mata, Banga Mata, Punjab Mata, Kannada Mata, Tamil Mata, all put together make Bharat Mata. This is ridiculous. We have thought of the provinces as limbs of Bharat Mata and not as individual mother. Therefore our constitution should be unitary instead of federal."], ["p", "A unitary State does not mean concentration of all powers in the Centre; just as the head of the family does not have all the powers with him even though all the transactions are carried out in his name. Others also share the executive power. In our body also, does the soul possess all powers? Thus a unitary State does not mean a highly autocratic centre nor does it entail the elimination of provinces. The provinces will have various executive powers. Even the various entities below the provincial level, such as the Jana Padas, will also have suitable powers. The Panchayats too should have powers. Traditional, the Panchayats had a very important position. No body could dissolve Panchayats. today, however. our constitution does not have any place for these Panchayats. There are no powers to these Panchayats in their own right. They exist at the mercy of the states only as delegated authorities. It is necessary that their powers be considered fundamental. In this way, the decentralization of power will be accomplished. The authority will be distributed to the lowest level, and will be fully decentralized. At the same time, all these entities of power will be centred around the unitary State. This arrangement will embody Dharma."], ["p", "If we carry this concept of Dharma even further, not only the State and the nation but the nature of the entire mankind will have to be considered. In other words, the constitution of a nation cannot be contrary to the natural law. There are a number of norms of behavior which are not found in any statute book, yet they do exist. At times they are even stronger and more binding than any statutory law. The precept that one should respect one's parents is not written in any law. The present day governments which are turning out variety of laws, day in and day out, have not passed a law to this effect. Still, people respect their parents. Those who do not are criticized. If tomorrow there arises a discussion, even in a court. it will be generally accepted that as long as a person does not attain majority, he should accept his parent's decisions and should respect them."], ["p", "Thus the fundamental law of human nature us the standard for deciding the propriety of behavior in various situations. We have termed this very law as' Dharma'. The nearest equivalent English term for Dharma can be \"Innate law\", which, however, does not express the full meaning of Dharma, Since 'Dharma' is supreme, our ideal of the state has been \"Dharma Rajya\". The king is supposed to protect Dharma. In olden times at the coronation ceremony the king used to recite three times. \"There is no authority which can punish me\". (Similar claim was made by kings in the western countries. i.e., it was said, \"King can do no wrong\", and hence there too, nobody could punish the king). Upon this, the Purohit used to strike the king on his back with a staff saying. \"No, you are subject to the rule of Dharma. You are not sovereign\". The king used to run around the sacred fire and the Purohit would follow him striking him with the Staff. Thus after completing three rounds, the ceremony would came to an end thereby the king was unambiguously told that he was not an unpunishable sovereign. Dharma was above him, that even he was subject to Dharma. Can the people do whatever they please? It may be contended that democracy means just that. The people can do what they please. But in our country, even in people wish, they are not free to act contrary to Dharma. Once a priest was asked: \"If the God is omnipotent, can he act contrary to Dharma. If he does, then he is not omnipotent\". This was a dilemma. Can God practice Adharma or is lie not omnipotent? Actually God cannot act contrary to Dharma. If he does, then he is not omnipotent. Adharma is a characteristic of weakness, not of strength. If fire instead of emitting heat, dies out it is no longer strong. Strength lies not in unrestrained behavior, but in well regulated action. Therefore God who is omnipotent is also self- regulated and consequently fully in tune with Dharma. God descends in human body to destroy Adharma and re-establish Dharma, not to act on passing whims and fancies. Hence even God can do everything but cannot act contrary to Dharma. But for the risk of being misunderstood, one can say that Dharma is even greater than God. The universe is sustained because he acts according to Dharma. The king was supposed to be a symbol of Vishnu, in as much as he was the chief protector of Dharma Rajya."], ["p", "Dharma Rajya does not mean a theocratic state. Let us be very clear on this point, Where a particular sect and its prophet or Guru, rule supreme, that is a theocratic state. All the rights are enjoyed by the followers of this particular sect. Others either cannot live in that country or at best enjoy a slave-like, secondary citizen's status. Holy Roman empire had this basis. The same concept was existing behind \"Khilafat\". The Muslim kings world over used to rule in the name of Khalifa. After the first world war, this came to an end. Now efforts are afoot to revive it. Pakistanis the most recent theocratic state. They call themselves an Islamic State. There, apart from Muslims all the rest are second class citizens. Apart from this difference there is no other sign of Islam in Pakistan's administration. Quran, Masjid, Roja. Id, Namaz etc. are same both in Bharat as well as in Pakistan. There is no need to the state and religion. By such a tie-up, there is no increase in an individual's capacity to worship God. The only result is that the state slips in its duty. This does not happen in a Dharma Rajya. Rather there is freedom to worship according to one's religion. In a theocratic state one religion has all the rights and advantages, and there are direct or indirect restrictions on all other religions. Dharma Rajya accepts the importance of religion in the peace, happiness and progress of an individual. Therefore the state has the responsibility to maintain an atmosphere in which every individual can follow the religion of his choice and live in peace. The freedom has its inherent limits. I have the freedom to swing my hand, but as soon as there is conflict between my hand and someone else's nose, my freedom has to be restricted. I have no freedom to swing my hand so as to hit another person's nose. Where other person's freedom is likely to be encroached upon, my freedom ends. The freedom of both parties has to be ensured. Similarly every religion has the freedom to exist. But this freedom extends only as far as it does riot encroach upon the religion of others. If such encroachment is carries on, it will have to be condemned as misuse of freedom and will have to be ended. Such limitations will be required in all aspects of life. Dharma Rajya ensures religious freedom and is not theocratic state. Now-a-days the word \"secular state\" is being uses as opposed to theocratic state. The adoption of this work is mere imitation of the western thought pattern. We had no need to import it. We called it a secular state to contrast it with Pakistan. There is some misunderstanding arising out of this. Religion was equated with Dharma and then secular state was meant to be a state without Dharma. Some said ours is a state (without Dharma ), whereas others trying to find a better sounding word, called it Dharmanikshepa (indifferent to Dharma state). But all these words are fundamentally erroneous. For a state can neither be without Dharma nor can it be indifferent dharma just as fire cannot be without hear. If fire loses heat, it does not remain fire any longer. State which exists fundamentally to maintain Dharma to maintain law and order, can neither be needharma nor Dharmanipeksha. If it is Needharma it will be lawless state, and where there is lawlessness, where is the question of the existence of any state? In other words Dharma and State are self-contradictory. State can only be Dharma Rajya (rule of Dharma) nothing else. Any other definition will conflict with the reason of its very existence."], ["p", "In a Dharma Rajya, the state is not absolutely powerful. It is subject Dharma. We have always vested sovereignty in Dharma. Presently there has arisen a controversy. Parliament is sovereign or the Supreme Court? Legislature is higher or judiciary? This quarrel is like a quarrel whether left hand is more important or right hand? Both are limbs of the state, the Legislature is well as Judiciary. Both have distinct functions to perform in their individual sphere each is supreme. To consider either one above the other would be mistake. Yet the legislators say, \"we are higher\", On the other hand members of the Judiciary assert that they have a higher authority, since they interpret the laws which the legislature makes. The Legislature claims to have given powers to the Judiciary. If necessary, legislature can change the constitution. Hence it claims sovereignty. Now since powers are bestowed by constitution, they are talking of amendment to the constitution. But I believe that even if by a majority the constitution is amended, it will be against Dharma. In 'reality' both the Legislature and the Judiciary are on an equal plane. Neither the Legislature is higher nor the Judiciary. Dharma is higher than both. The Legislature will have to act according to Dharma and the Judiciary will have to act according to Dharma. Dharma will specify limits of both. The Legislature, the Judiciary or the people, none of these is supreme, Some will say, \"Why ! People are sovereign. They elect\", But even the people are not sovereign because people too have no right to act against Dharma. If an elected government allows people to go against Dharma and does not punish. then that government is in reality a government of thieves. Even the general will cannot go against Dharma. Imagine the situation if by some manoeurving, thieves gain a majority in the government and send one of their ranks as an executive ! What will be the duty of the minority if the majority is of thieves and elects a thief to rule. The duty clearly will be to remove the representative elected by the majority. During the second world war then Hitler attacked France, the French army could not stall the onward march of Nazi troops. The then Prime Minister of France. Marshall Petain decided to surrender. The French public supported the decision, but De Gaulle escaped to London where he declared that he did not accept the surrender. France is independent and will remain so. From London, he formed a Government of France in Exile and eventually liberated France. Now if the majority rule is to be considered supreme, then De Gaulle's action will have to be condemned. He had no right to fight in the name of independence. De Gaulle derived his right from the fact that the French nation was above the majority public opinion. The national Dharma is above all. Independence is Dharma of every nation. To preserve independence, and to strive for regaining it when lost is the duty of every citizens."], ["p", "Even in our country a majority had not risen against the Britishers; only a few had. Some revolutionaries arose, some brave people arose and fought. Lokmanya declared \"Freedom is my Birth right\". He did not declare this birthright with the support of a majority or by a referendum from the public. Now a days people advocate that the merger of Goa should be decided by referendum, that there should be plebiscite in Kashmir etc., etc. This is wrong. National unity is our Dharma. Decision concerning this cannot be made by plebiscite. This type of a decision has already been taken by the nature. Elections and majority can decide as to who will form the government. The truth cannot be decided by the majority. What the government will do will be decided by Dharma."], ["p", "You all know that in the USA where they swear by democracy, at one time Lincoln did not accept wrong public opinion. On the question of the abolition of slavery when the southern states declared their intention to secede. Lincoln stood firm and told them: \"You have no right to secede even in a democracy\". He fought against this and did not allow them to secede. Nor did he tolerate slavery. He did not show readiness for a compromise whereby there may continue partial slavery to accommodate southern states. He did not accept the principle of meeting halfway. He categorically declared that the system of slavery was against tradition, the Dharma, the principle which were at the basis of American nation. Therefore the system of slavery had to be abolished. When the Southerners decided to secede he told them \"You cannot secede\". On this point there was a civil war and Lincoln did not compromise with Adharma."], ["p", "Here in our country the situation in this regard is very much like old Hindu marriages where a married couple could not divorce even if both the parties wished. The principle was that their behavior should be regulated not by their sweet will but by Dharma. The same is case with the nation. If the four million people of Kashmir say that they want to secede, if the people of Goa say they want to secede, some say they want the Portuguese to return, all this is against Dharma. Of the 45 million people of India. even if 449,999,999 opt for something which is against Dharma, even then this does not become truth. On the other hand, even if a person stands for something which is according to Dharma, that constitutes truth because truth resides with Dharma. It is the duty of this one person that he tread the path of truth and change people. It is from this basis that persons drives the right to proceed according to Dharma."], ["p", "Let us understand very clearly that Dharma is not necessarily with the majority or with the people. Dharma is eternal. Therefore. in the definition of democracy to say that it is a government of the people. It is not enough, it has to be for the good of the people. What constitutes the good of the people. Dharma alone can decide. Therefore, a democratic Government \"Jana Rajya\" must also be rooted in Dharma i.e. a \"Dharma Rajya\". In the definition of 'Democracy' viz. \"government of the people, by the people and for the people\", of stands for independence, 'by' stands for democracy and 'for' Indicates Dharma. Therefore, the true democracy is only where there is freedom as well as Dharma encompasses all these concepts."]]}, {"n": 4, "blocks": [["p", "Yesterday we had discussed the functions of State in a Nation. According to the Bharatiya traditions. a nation is an organic living entity which has come into existence on its own and has not been made up or created by any group of persons. A nation brings forth a variety of institutions to fulfill its needs, as well as to give concrete shape to its inner fundamental nature. The State is one of these institutions which though being an important institution, is not supreme. In our literature where the duties of a king are referred to, his importance is definitely recognized. This is so, perhaps, to make him realize his immense responsibility. He exercised tremendous influence on the lives and character of the people. Hence he had to give due attention to his own behavior. Bhishma has said the same thing, in Mahabharat when he was asked whether circumstances make a king or a king makes the circumstances. He categorically stated that the king shapes the circumstances. Now some persons interpret this to mean that the considered the king above all. But this is not true. He did not suggest that the king was above Dharma. It is true that the king wielded a great deal of influence. and that he was the protector of Dharma in society, but the king could not decide what constitutes Dharma. He only saw to it that people led their lives according to Dharma. In a way he was equivalent to present day executive."], ["p", "In the present State, the executive has the responsibility to execute the laws properly, but does not enact laws. When the executive does not function with honesty and efficiency, the laws are entirely disregarded, as we see very well around us. We can well say today \"Executive is responsible for the present evils to a great extent.\" After all why has prohibition failed? Who is responsible for the failure?? When those very persons who have been entrusted with the task of implementing prohibition. Start taking monthly allowances from the bootleggers, how is the prohibition policy to succeed? The executive is, therefore, responsible for the proper enforcement of law. This is the meaning of Bhishma's statement. It would be a mistake to interpret it as acceptance of approved supremacy of a monthly allowances from the bootleggers, how is the prohibition policy to succeed? The executive is therefore, responsible for the proper enforcement of law. This is the meaning of Bhisma statement. It would be a mistake to interpret it as acceptance of approved supremacy of a king. If this were so, how was it that the tyrant king Venu was removed by the Rishis and Prithu was enthroned? This action by the Rishis was never condemned by any one in history. On the contrary it was hailed by everyone. When the supremacy of Dharma is accepted as a principle, then, though the authority of Dharma, the Rishis derive a right to remove a king who defaults in his duty. Otherwise, it would have been absolutely illegal to remove a king from his throne. Thus if a King does not act according to Dharma, it becomes the duty of everyone to remove him."], ["p", "In Western countries, either a King was removed by some other king or people rejected the sovereignty of king altogether. There king was a representative of God and could under no circumstances be removed at least in principle."], ["p", "In our socio-political set-up, the king and the State were never considered supreme. Not only that, there were other important institutions, (besides the State, which was only one of them) to regulate and to help carry on the social life. Those institutions had been organized both on horizontal and vertical level, i.e. on original and occupation basis. We have evolved Panchayats and Janapada Sabhas. The mightiest of the king did not ever disturb the Panchayats. Similarly there were associations on the basis of trade. These two were never disturbed by the State; on the contrary their autonomy was recognized. They devised their own rules and regulations in their fields. The Panchayats of different communities, shrines, nigams, Village Panchayats, Janapada Sabhas and such other Organization used to set- up regulations. The function of the state was mostly to see that these rules are observed by the persons concerned. The State never interfered with the affairs of these associations. Thus the State was concerned only with some aspects of life of the Society."], ["p", "Similarly, in the economic field many institutions are created. We have to think what should be the nature of our economic structure. We must have such an economic system which helps in the developments of our humane qualities, or civilization and enables us to attain a still higher level of all round perfection. We should have a system which does not overwhelm our humane quality; which does not make us slaves of its own grinding wheels. According to our concept, man attains God like perfection as a result of development. What structure. what regulation should be specified in our economic system if we wish to achieve this goal? Let us, consider this point."], ["p", "Economic system must achieve the production of all the basic things essential for the maintenance and development of people as well as the protection and development of the Nation. Having satisfied the basic minimum requirements, the question naturally arises, whether there should be more production for greater property and happiness. The Western societies consider it most essential and even desirable to go on continuously and systematically increasing the desires and needs of man. There is no upper limit in the context. Normally desire precedes the efforts at producing the things desired. But now the position is reverse. People are induced to desire and use the things that have been and are being produced. Instead of producing to meet the demand, the search is on the markets for the goods already produced; if the demand does not exist, systematic efforts are made to create demand. This has become the chief characteristic of the western economic movement. Earlier, production followed the demand, now demand allows the production. Consider the use of tea for example. Tea was produced because people desired and wanted it. But Tea was produced and we were induced to develop taste for tea. Now tea is a common man's drink. It has become a part of our life. Similar is the case of vegetable ghee. Did anyone ever want to use it? It was first produced and then we were taught to use it. If whatever is manufactured is not consumed, there will be depression. Some of us many remember the great depression of 1930-32. There was abundance of goods at that time but there was no demand. Therefore factories had to be closed down. Bankruptcy and unemployment were widespread. Thus now-a-days it is most important that what is being produced must be consumed."], ["p", "The Editor of \"Organiser\", an English Weekly, had gone to USA for a visit sometime ago. Upon his return, he related an interested instance."], ["p", "There is a factory producing \"Potato-peelers\", a device for peeling potatoes. The production of this factory outstripped the demand for the device. The management of the firm faced the problem of finding some way by which people may be induced to buy more potato peelers. They called a meeting of all the salesmen of the firm. Among the suggestions put forward, one was to make the color of the handle similar to that of potato peel. so that along with the peel. the peeler may also be dumped in the garbage, often by mistake. Thus there may be greater demand. Also, the product was offered in a more attractive packing. Now this economic structure is not merely consumption oriented but is clearly leading to destruction. Throw away the old one and buy a new one! Rather than satisfying the need and demand from people. to create fresh demand has become the aim of modern economics. Supposing that we need not worry about the limited supply of natural resources, there is yet the question of balance in Nature. There is a relationship in different parts of Nature. If from the three sticks standing with mutual support, one is removed, the other two will automatically fall. The present economic system and system of production are fast disturbing this equilibrium of nature. As a result on the one hand new products are manufactured for satisfying ever increasing desires, on the other hand new problem arise every day, threatening the very existence of the entire humanity and civilization."], ["p", "It is essential, therefore, to use up that portion of the available natural resources which the nature will be able to recoup easily. When the fruits are taken, the fruit tree is not injured: it may even be helpful to the tree. However, in the effort to take a greater harvest from the land chemical fertilizers are used which in a few years time render the land altogether infertile. Lakhs of acres of land lie barren in America due to this factor. How long this dance of destruction can go on ?"], ["p", "The destruction provides for depreciation fund to replace the machines when worn out. Then how can we neglect the depreciation fund for nature. From this point of view, it must be realized that the object of our economic system should be, not extravagant use of available resources, but a well regulated use. The physical objects necessary for a purposeful, happy and progressive life must be obtained. The Almighty has provided as much. It will not be wise, however, to engage into a blind rat-race of consumption and production as if man is created for the sole purpose of consumption. Engine needs coal for its proper working, but it has not been produced merely to consume coal. On the contrary it is only proper always to see that with the minimum coal- consumption, maximum energy is produced. This is the economic view point. Keeping in view the aim of human life, we must endeavor to see how with the minimum of fuel, man proceeds to his goal with the maximum speed. Such a system alone can be called civilization. This system will not think of merely a single aspect of human life but of all its aspects including the ultimate aim. This system will not thrive on the exploitation of nature but will sustain nature and will in turn itself be nourished. Milking rather than exploitation should be our aim. The system should be such that overflow from nature is used to sustain our lives."], ["p", "If such human angle inspires the economic system than our thinking on the economic question will undergo through transformation. In the Western economics, whether it is capitalist or socialist, value has the most important and central position. All economic theories centre around value. It may be that the analysis of value is very important from the point of view of the economist but, those social philosophers which are based entirely on value are for incomplete, inhuman and to some extent unethical take. For example, the slogan commonly heard now-a-days \"one must earn his bread\". Normally communists use this slogan but even the capitalists are not fundamentally in disagreement with it. If there is any difference between !hem, it is only as regards who earns and how much. The capitalists consider capital and enterprise as important components of production and hence if they take a major share of profits. they think it is their due. On the other hand, communists believe only labor to be the main factor in production. Therefore they concede major share of production to the laborers. Neither of these ideas is correct. Really speaking. our slogan should be that the one who earns will feed and every person will have enough to eat.. The right to food is a birthright. The ability to earn is a result of education and training. In a society even those who do not earn must have food. The children and the old, the diseased and the invalids, all must be eared for by the society. Even society generally fulfills this responsibility. The social and cultural progress of mankind ties in the readiness to fulfill this responsibility. The economic system must provide for this task. Economics as a science does not account for this responsibility. A man works not merely for bread alone, but also to shoulder this responsibility. Otherwise those who have had their meals would no longer work."], ["p", "Any economic system must provide for the minimum basic necessities of human life to everyone. Food, clothing and shelter constitute, broadly speaking these basic necessities. Similarly, the society must enable the individual to carry out his obligations to the society by properly educating him. Lastly, in the event of an individual falling a prey to any disease. society must arrange for his treatment and maintenance. If a government provides these minimum requirements, then only it is a rule of Dharma. Otherwise, it is a rule of Adharma. Describing the King Dilip, Kalidas has said in Raghuvansha \"Being responsible for the maintenance. protection and education of his subjects, he was their true farther. Others were merely instrumental in giving them their birth\". The description of king Bharat after whom our country has been named Bharat, also runs similarly, i.e. \"by maintaining and protecting his subjects he was called Bharat.\" This is his country, Bharat, if in this country maintenance and protection are not guaranteed, then the name Bharat is meaningless."], ["h", "Education - A Social Responsibility"], ["p", "To educate a child is in the interest of the Society itself. By birth a child is an animal. He becomes a responsible member of the society only by education and culture. To charge fees for something which is in the interest of the society itself a rather odd. If due to the inability to pay the fees, children are left without education, will the society endure the situation for long? We do not charge fee from trees for sowing the seed and caring for the supplying. On the contrary we invest our money and efforts. We know that when the tree grows, we shall reap fruits."], ["p", "Education is a similar investment. An educated individual will indeed serve the society. On the other hand it will not be surprising if people grow indifferent to the society which leave them to fend for themselves. Before 1947, in all the princely states In India, no fees were charged for education. The highest education was free. In the Gurukulas, even food and lodging were arranged with out any charge. The student used to go to the society for \"Bhiksha\". No householder would refuse the Bhiksha to the student. In other words, society used to bear the burden of education. Similarly, it is rather surprising that medical treatment must be paid for. In fact, medical treatment also should be free as it was in this country in the past. Now-a-days one has to pay even to gain entrance to a temple. In Tirupathi, to enter the Balaji temple, there is a charge of 0.25 paise. However, at noon for one hour, there is Dharma Darshan, which means, during that time, no ticket is needed, as if at other times there is Adharma Darshan. The society should guarantee to all members minimum requirements for maintenance and progress of every individual. Now the question arises that if everyone is to be guaranteed the minimum necessities, where will the resources for all this come from?"], ["h", "Guarantee of Work"], ["p", "It is clear that the resources must be produced by our own efforts. Therefore. where a right to a guaranteed minimum is recognized, any individual who does not share in the efforts to produce is a burden to the society. Similarly any system which obstructs the production activity of the people is self destructive. Such a system will not enable the individuals to fulfill their responsibility. Not only that, but even if the requirements of an individual are met, while he does not share in the efforts, his personality will not develop fully, his progress as a human being will be distorted and lop-sided. Man has stomach as well is hands. If he has no work for his hands, he will not get happiness even if he gets food to satisfy his hunger. His progress will be obstructed. Just as a barren woman experiences emptiness in life and consequent dissatisfaction, so does a man without work."], ["p", "The guarantee of work to every able bodied member of the society, should be the aim of our economic system. Today we witness a very strange situation. On the one hand, a ten-year-old child and seventy-year-old man are toiling and on the other hand youth of twenty five is driven to suicide for want of work. We shall have to remove this mismanagement. God has given hands to every man but by themselves hands have a limited capacity to produce. They need assistance of capital in the form of machines. Labor and capital bear the same relation to each other as that between man and nature. The world is a creation of these two. Neither of them can be neglected."], ["h", "Capital Formation"], ["p", "For capital formation it is essential that a part of production be saved from immediate consumption and be used for further production, in future. Thus capital can be formed only by restraint on consumption. This is the basis of capital formation to which Karl Marx refers to as \"surplus value\" in his treatise. In the capitalist system the industrialist creates capital with the help of this surplus value. In a socialist system, the state undertakes this task. In both the systems, the entire production is not distributed among the workers. If production is carried on through centralized large-scale industries, the sacrifice on the part of the worker in creating the capital is not given due recognition. The advantage in decentralization is in the fact that the workers has a sense of direct participation in the management of this surplus value or capital. Machine is the most common from of capital. Machine was created in order to reduce the content of physical labor in production and to increase the productivity of the worker. Machine, therefore, is an assistant of the worker and not his competitor. However, where the human labor came to be considered as a commodity to be purchased with money, the machine became the competitor of the human being. The principal drawback of the capitalist view point in the fact that by making the machine a competitor of human labor and thereby displacing and competitor of human labor and thereby displacing and subjecting human being to privations the very purpose of creating machine has been defied. Machine cannot be blamed for this. It is the fault of the economic and social system which cannot distinguish between the object and the instrument. We shall have to take into account the limitations on usefulness of machines and decide on its field of application. From this point of view to import the machinery from Western countries, where shortage of manpower was the guiding factor in the design of machines would be a serious mistake. The merits of machine are, not independent of time and place. Machines are a product of the modern science but not its representatives. Scientific knowledge is not a monopoly of any particular country. But its application has to take into account the particular condition of each country and its requirements. Our machines must not only, by tailored for our specific economic means, but also must, at least, avoid conflict with our socio-political and cultural objectives, if not support them."], ["p", "Professor Vishvesaraya has said in one of his books, that while considering the system of production one must take into account the seven 'M's. These are man, material, money, management, motive power, market and machine. The skill and ability of the workers or those who should be provided with work must be considered. Easy availability of the required raw material. and the quality and properties of the raw materials available cannot be ignored. We must also think of how much money is available as capital. How this capital can be increased and at what rate? How best it can be utilized for maximum production? How much of it should be put in the fixed assets and how much should be kept in the liquid form? We must also pay attention to the form of power available in the country in addition to the human and animal labor. Wind, water, steam oil, gas, electricity and atomic power can supply the motive power. Of these, which form of power can be obtained in what quantity and without being uneconomic must be thought of while deciding upon our methods of production. In the same way managerial skills are also important and deserve the attention. If the ability to co-ordinate the efforts of a dozen workers is wanting, all of them will remain unemployed. It is also necessary to think of the usefulness of the goods produced to the society. This means that production of any particular commodity cannot be justified economically without the consideration of the market it commands. Taking into consideration all these factors we should design suitable machines. Instead, we find now-a-days that we install the machines first and try to coordinate all other factors afterwards. Other countries of the world did not progress in this fashion. Otherwise new machines would not have been invested. We are importing the machines and hence, we have little knowledge. We shall have to develop a Bharatiya technology."], ["p", "None of the seven factors is unchangeable. In fact each one keeps constantly changing. Those who are entrusted with the task of planning must think of how the change is directed towards progress, how physical hardship is reduced, and waste of energy is minimized. As an illustration let us take the low productivity of our worker. It can be increased by using machines, and it is necessary to do so. But if the machine is such that requires only a few men to run it, then the rest of the people will be thrown out of employment. If the machine has to be imported from other countries at such a heavy cost that the additional production it causes will be insufficient to make it economic, then such a machine is not suitable to our requirements. Just as to let a part of the installed capacity of a factory remain unutilised is a losing proposition, so also to let the people of this country remain unemployed is a losing proposition. May, this is even worse. Whereas a machine ties up only the capital invested in it in past, the unemployed people have to be fed, which is continuous and unending drain on resources, consumed at double the speed. Therefore instead of the usual exhortation \"Every worker must get food\", we must think of \"Everyone who eats must get work\", as the basis of our economy. No doubt charakha has to be replaced by machines but not necessarily automatic machines everywhere. Full employment must be a primary consideration and then the rest of the six factors suit this."], ["h", "Man's Place In The Economy"], ["p", "The use of manpower and the employment question will have to be thought of in the context of the human being as a whole, as an integral being. The economic theories of the past few centuries and the structure of society based on these theories, have resulted in a thorough devaluation of the human being. His personality is altogether irrelevant to the economic set up. Capitalist economy recognizes only an \"economic man\", whose all decisions are based entirely on calculations of gain and loss, in terms of material wealth. For this economic man, five rupees are always more than four rupees. He works solely to gain more wealth, and execs to get the maximum gain. For him, just like other commodities, human labor is a commodity to be brought and sold In the market. This is free enterprise. It holds all other restriction and regulations unjust, save the brake of competition. In the race no one is prepared to stop and give a helping land to the weak who is left behind; elimination of the weak is considered just and natural. He is uneconomic, marginal unit, not fit to exist. This is what it advocates. By the elimination of such marginal units, the economic power accumulates in the hands of a few. This is considered normal and natural is capitalist system. But when monopoly is a established, even the check of competition ceases to operates. In such a. situation the incentive resulting from competition is no longer available. Prices are arbitrarily fixed and quality of products deteriorates."], ["p", "Even as regards the consumer's needs, the capitalist is guided not by the necessities and desires of the consumer. but by his purchasing power. The needs of the wealthy and the well fed are attended to rather than those of the poor and the hungry. As a result where countless varieties of goods are produced for he needs of the wealthy, even the basic necessities of life for the poor become scarce. The centralization and monopolization of reduction totally undermine the influence of the consumer. The markets are so organized that the consumer has to go by standard products. This standardization is on the increase at such a pace that individual preference of the consumer is ignored. Like the books in the library, even human beings are allotted numbers as consumers. The system which boasts of giving highest importance to the individual has ironically destroyed all individuality. Clearly, the capitalist system is incapable of helping the development of an integral human being."], ["h", "Socialist System Is A Reaction"], ["p", "Socialism arose as a reason to capitalism. But even socialism failed to establish the importance of the human being. Socialists contented themselves by merely transferring the ownership of capital in the hands of the State. But the State is even more of an impersonal institution. All the business of the State is conducted by rigid rules and regulations. Generally, there is no place for individual discretion and even where such discretion is allowed, the slightest laxity in the sense of duty and social responsibility on the part of the administrators results in corruption and favoritism. The capitalistic system thought merely of the economic man, but left him free in other fields where the could exercise his individuality. The socialist system went much further thinking only of the abstract man. After that, there was no scope for the development of the individual personality based on diverse tastes and abilities. The needs and preferences of individuals have as much importance in the socialist system as in a prison manual. There is no such thing as individual freedom in the socialist system State's Claims on Individual."], ["p", "There is no private property in a socialist society. This removes the problems attendants to the institution of private property. However. the incentive for production and conservation of resources and economy in utilization accompany the institution of private property. There has been no alternative arrangement to preserve these. The State is made supreme and sole authority in all matters. Individual citizen is reduced to mere cog in this giant wheel. There is no provisions to inspire the individual to fulfill his role. As Djilas states, the class of old fashioned exploiters has been eliminated, but a new class of bureaucratic exploiter has come into existence. Karl Marx put forward, in his analysis of history, that capitalism contains the seeds of its own destruction. and that communism is a natural and inevitable successor to capitalism."], ["p", "This concept may be helpful in fostering faith in the communist about their ultimate victory but certainly such a determinist view destroys the urge for reforms and dynamism in man. He is no longer the creator of a new order; he is merely incidental to a predetermined historic process. His task is only to accelerate the process. Therefore, even as he tries to organize workers, he cares little for their welfare, but uses them as mere tools for the revolution. The dialectic materialism of Marx, too, operates only so long as state is note established as supreme after destroying the capitalists. Thereafter, the state puts a stop to the operation of the principle of dialectic materialism. In the name of crushing and counter revolutionaries, the state becomes more and more totalitarian. The day when the state is to wither away yielding place to a stateless society remains a mere dream. In fact according to the Marxist view, to obstruct the process of these antithesis, is itself reactionary. Marx is thus falsified by his own standards."], ["p", "Both these systems, capitalist as well as communist, have failed to take account of the Integral Man, his true and complete personality and his aspirations. One considers him a mere selfish being lingering after money, having only one law, the law of fierce competition, in essence the law of the jungle; whereas the other has viewed him as a feeble lifeless cog in the whole scheme of things, regulated by rigid rules, and incapable of any good unless directed. The centralization of power, economic and political, is implied in both. Both, therefore, result in dehumanization of man."], ["p", "Man. the highest creation of God. is losing his own identity. We must re-establish him in his rightful position, being him the realization of his greatness, reawaken his abilities and encourage him to exert for attaining divine heights of his latest personality. This is possible only through a decentralized economy."], ["p", "We want neither capitalism nor socialism. We aim at the progress and happiness of \"Man\", the Integral Man."], ["p", "The protagonists of the two systems fight with 'Man' on the state. Both of them do not understand man, nor do they care for his interests."], ["h", "Our Economic System"], ["p", "The Objectives of our Economy should be"], ["li", "An assurance of minimum standard of living to every individual and preparedness for the defense of the nation."], ["li", "Further increase above this minimum standard of living whereby the individual and the nation acquires the means to contribute to the world progress on the basis of its own 'Chiti'."], ["li", "To provide meanings employment to every able bodies citizens by which the above two objectives can be realized and to avoid waste and extravagance in utilizing natural resources."], ["li", "To develop suitable machines for Bharatiya conditions (Bharatiya Technology) taking note of the availability and nature of the various factors of production (Seven 'M's)."], ["li", "This system must help and not disregard the human being, the individual. It must protect the cultural and other values of life. This is requirement which cannot be violated except at a risk of great peril."], ["li", "The ownership, state, private or any other form of various industries must be decided on a pragmatic and practical basis."], ["p", "These are a few general directions which we must bear in mind while developing our economy. \"Swadeshi\" and \"Decentralization\" are the two words which can briefly summarize the economic policy suitable for the present circumstances. Centralization and monopolization have been the order of the day for all these years, knowingly or unknowingly. The planners have become prisoners of a belief that only large-scale centralized industry is economic and hence without worrying about its ill-effects, or knowingly but helplessly, they have continued in that direction. The same has been the fate of \"Swadeshi\". The concept of \"Swadeshi\" is ridiculed as old fashioned and reactionary. We proudly use foreign articles. We have grown over independent upon foreign aid in everything from thinking, management, capital, methods of production, technology, etc. to even the standards and forms of consumption. This is not the road to progress and development. We shall forget our individuality and become virtual slaves once again. The positive content of \"Swadeshi\" should be used as the cornerstone of reconstruction of our economy."], ["p", "For want of time, I have not touched the natural aspects of economic structure. But one thing is clear that many old institutions will yield place to new ones. This will adversely affect those who have vested interests in the old institutions. Some others who are by nature averse to change will also suffer by efforts of reconstruction. But disease must be treated with medicine. Strength can be gained only from exercise and hard work. Therefore, we still have to discard the status-quo mentality and usher in a new era. Indeed our efforts at reconstruction need not be clouded by prejudice or disregard for all that is inherited from our past. On the other hand, there is no need to cling to past institutions and traditions which have outlived their utility. We have considered what the direction of change should be. We have in the last four days thought over the integrated from of Humanism. On the basis we shall be able to reconcile nationalism, democracy, socialism and world peace with the traditional values of Bharatiya Culture and think of all these ideals in an integrated form. The mutual conflict among these ideals can be removed and they can supplement mutually. Thereby the \"Man can gain his lost status and attain the aims of his life\"."], ["p", "We have here discussed the philosophy. But the members of the Bharatiya Jana Sangh are not mere philosophers or academicians. We have set out with the determination to make this nation strong, happy and prosperous through the medium of the Bharatiya Jana Sangh. Therefore, we must carry on practical programs for the nationalist reconstruction on this foundation. We have taken due note of our ancient culture. But we are no archeologists. We have to intention of becoming the custodians of a vast archeological museum. Our goal is not merely to protect the culture but to revitalize it so as to make it dynamic and in tune with the times. We must ensure that our nation stands firm on this foundation and our society is enabled to live a healthy, progressive and purposeful life. We shall have to end a number of traditions and set in reforms which are helpful in the development of values and of national unity in our society. We shall remove those traditions which obstruct this process. Whereas one need not mourn the limitations of the human body, one must undergo the required social operation if any part of the body has cancerous growth. There is no need to to amputee healthy limbs. If today, the society is gripped with evils like untouchability which lead men to treat other human beings as lower than themselves and thereby threaten the national unity, we shall have to end s such evils."], ["p", "We shall be required to produce such institutions as will kindle the spirit of action in us, which will replace the self-centredness and selfishness by a desire to serve the nation, which will produce not only sympathy towards our brethren, but a sense of affection and oneness with them. Such institutions can truly reflect our 'Chiti'."], ["p", "'Chiti' is a nation's soul. The strength and energy activating the nation is called \"Virat\" and channeled by 'Chiti'. The place of 'Virat\" in the life of nation is similar to that of Prana in the body. Just as 'Prana' infuses strength in various organs of the body, refreshed the intellect and keeps body and soul together; so also in a nation, with a strong 'Virat' alone can democracy succeed and the government be effective. Then the diversity of our nation does not prove an obstacle to our national unity. The difference of languages. occupations, etc. are present everywhere. However, when the 'Virat' is awake, diversity does not lead to conflicts and people co-operates with each other like the various limbs of the human body or like the members of a family."], ["p", "We have to Undertake the task of awakening our nation's 'Virat'. Let us go forward in this task with a sense of pride for our heritage, with a realistic assessment of the present and a great ambition for the future. We wish neither to make this country a shadow of some distant past nor an imitation of Russia or America."], ["p", "With the support of Universal knowledge and our heritage, we shall create a Bharat which will excel all its past glories, and will enable every citizen in its fold to steadily progress in the development of his manifold latent possibilities and to achieve through a sense of unity with the entire creation, a state even higher than that of a complete human being; to become Narayan from 'Nar'. This is the external divine from of our culture. This is our message to humanity to cross roads. May God give us strength to succeed in this task."], ["h", "Bharat Mata Ki Jai !"]]}]};
+
+/* ---------- chapter meta ---------- */
+const CH_META = [
+  {key:'PRO', label:'Prologue', title:'The Man Behind the Book', sub:'About Pandit Deendayal Upadhyaya'},
+  {key:'I',   label:'Chapter 1', title:'Whither Bharat', sub:'The search for a direction of our own'},
+  {key:'II',  label:'Chapter 2', title:'The Integral Human', sub:'Body, mind, intellect and soul — one self'},
+  {key:'III', label:'Chapter 3', title:'Society, Chiti & Dharma', sub:'The self that widens into a people'},
+  {key:'IV',  label:'Chapter 4', title:'Dharma, State & Economy', sub:'Institutions in the service of man'},
+];
+
+/* ---------- mandala rings ---------- */
+(function(){
+  const M = document.getElementById('mandala');
+  const labels = ['Self','Family','Society','Nation','Mankind','Creation'];
+  const angles = [-90,-38,14,66,118,170];
+  for(let i=0;i<6;i++){
+    const pct = 34 + i*13;
+    const ring = document.createElement('div');
+    ring.className='ring';
+    ring.style.width = pct+'%'; ring.style.height = pct+'%';
+    M.appendChild(ring);
+    const lb = document.createElement('div');
+    lb.className='rlab'; lb.textContent = labels[i];
+    const a = angles[i]*Math.PI/180, r = pct/2;
+    lb.style.left = (50 + Math.cos(a)*r) + '%';
+    lb.style.top  = (50 + Math.sin(a)*r) + '%';
+    lb.style.transform = 'translate(-50%,-50%)';
+    M.appendChild(lb);
+  }
+  const dash = document.createElement('div');
+  dash.className='ring dash';
+  dash.style.width='86%';dash.style.height='86%';
+  dash.innerHTML = '<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="49.4" fill="none" stroke="rgba(217,164,79,.5)" stroke-width=".35" stroke-dasharray="0.8 3"/><rect x="48.9" y="-0.8" width="2.2" height="2.2" transform="rotate(45 50 0.3)" fill="#D9A44F"/></svg>';
+  M.appendChild(dash);
+})();
+
+/* ---------- build page content blocks ---------- */
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function blockHTML(b, first){
+  if(b[0]==='h') return `<h4>${esc(b[1])}</h4>`;
+  if(b[0]==='li'){ liCount++; return `<p class="li"><em class="n">${liCount}.</em>${esc(b[1])}</p>`;}
+  return `<p${first?' class="noind"':''}>${esc(b[1])}</p>`;
+}
+let liCount = 0;
+
+/* pages: array of {html, ch (0..4|-1 deco), kind} */
+const pages = [];
+document.fonts.ready.then(function(){
+function pushPage(html, ch, kind){ pages.push({html, ch, kind}); }
+
+/* deco pages 0-1 */
+pushPage(`<div class="coverdeco"><div class="disc dot"></div></div>`, -1, 'deco');
+pushPage(`<div class="tpage"><div class="dev">एकात्म मानववाद</div>
+  <h3>Integral<br>Humanism</h3><div class="orn">❖</div>
+  <div class="by">Pandit Deendayal Upadhyaya<br>Four lectures · Bombay<br>22–25 April 1965</div>
+  </div>`, -1, 'deco');
+
+/* measurement probe */
+const probe = document.createElement('div');
+probe.style.cssText='position:absolute;left:-9999px;top:0;width:358px;visibility:hidden';
+probe.innerHTML='<div class="paper" style="padding:0;width:358px;height:auto"><div class="body" id="probeBody" style="overflow:visible"></div></div>';
+document.body.appendChild(probe);
+const probeBody = probe.querySelector('.body');
+const PAGE_H = 428;             /* body height inside paper (620 - chrome ≈ 439, with slack) */
+
+function paginateChapter(chIdx, blocks){
+  /* chapter opener page (must land on a RIGHT page = odd index) */
+  if(pages.length % 2 === 0) pushPage(`<div class="blankpg">❖</div>`, chIdx, 'blank');
+  const meta = CH_META[chIdx];
+  const roman = ['—','I','II','III','IV'][chIdx] || '—';
+  pushPage(`<div class="opener">
+      <div class="doto">${chIdx===0?'॥':roman}</div>
+      <div class="clab">${meta.label}</div>
+      <div class="ctit">${meta.title}</div>
+      <div class="crule"></div>
+      <div class="csub">${meta.sub}</div>
+    </div>`, chIdx, 'opener');
+
+  liCount = 0;
+  let cur = '';           /* html accumulated for current page */
+  let firstPara = true;
+  probeBody.innerHTML='';
+
+  function flush(){
+    if(cur.trim()){ pushPage(`<div class="flow">${cur}</div>`, chIdx, 'text'); }
+    cur=''; probeBody.innerHTML='';
+  }
+  function fits(html){
+    probeBody.innerHTML = html;
+    return probeBody.offsetHeight <= PAGE_H;
+  }
+  for(const b of blocks){
+    const h = blockHTML(b, firstPara && b[0]==='p');
+    if(b[0]==='p') firstPara = false;
+    if(fits(cur + h)){ cur += h; continue; }
+    if(b[0]!=='p'){ flush(); cur = h; continue; }
+    /* split paragraph across pages by words */
+    let words = b[1].split(' ');
+    while(words.length){
+      /* binary search max words that fit */
+      let a=1, z=words.length, best=0;
+      while(a<=z){
+        const mid=(a+z)>>1;
+        const attempt = cur + `<p${cur===''&&false?'':''}>${esc(words.slice(0,mid).join(' '))}</p>`;
+        if(fits(attempt)){ best=mid; a=mid+1; } else { z=mid-1; }
+      }
+      if(best===0){ flush(); continue; }
+      cur += `<p>${esc(words.slice(0,best).join(' '))}</p>`;
+      words = words.slice(best);
+      if(words.length){ flush(); cur=''; }
+    }
+  }
+  flush();
+}
+
+/* prologue = intro blocks; then chapters */
+paginateChapter(0, BOOK.intro);
+BOOK.chapters.forEach((c,i)=>paginateChapter(i+1, c.blocks));
+if(pages.length % 2 === 1) pushPage(`<div class="blankpg">❖</div>`, 4, 'blank');
+/* closing page pair */
+pushPage(`<div class="tpage"><div class="orn">❖ ❖ ❖</div>
+  <div class="dev" style="font-size:30px">भारत माता की जय</div>
+  <div class="by" style="margin-top:18px">The end of the four lectures<br>25 April 1965</div></div>`, 4, 'deco');
+pushPage(`<div class="coverdeco"><div class="disc dot" style="opacity:.5;width:150px;height:150px"></div></div>`, 4, 'deco');
+probe.remove();
+
+/* ---------- render machinery ---------- */
+const slotL = document.getElementById('slotL'), slotR = document.getElementById('slotR');
+const book  = document.getElementById('book');
+let spread = 0;                       /* shows pages 2s, 2s+1 */
+const maxSpread = Math.ceil(pages.length/2)-1;
+let busy = false;
+
+function paperHTML(i, side){
+  const p = pages[i];
+  const inner = p ? p.html : '<div class="blankpg"></div>';
+  const noChrome = !p || p.kind!=='text';
+  const meta = p && p.ch>=0 ? CH_META[p.ch] : null;
+  const run = noChrome ? '' :
+    `<div class="run"><span>${side==='l' ? 'Integral Humanism' : (meta?meta.label+' · '+meta.title:'')}</span></div>`;
+  const pno = noChrome ? '' : `<div class="pno">${i-1}</div>`;
+  return `<div class="paper ${side==='l'?'pl':'pr'}">${run}<div class="body">${inner}</div>${pno}</div>`;
+}
+function renderStatic(){
+  slotL.innerHTML = paperHTML(spread*2, 'l');
+  slotR.innerHTML = paperHTML(spread*2+1, 'r');
+  updateChrome();
+}
+function currentChapter(){
+  const p = pages[spread*2+1] || pages[spread*2];
+  const q = pages[spread*2];
+  const ch = (p&&p.ch>=0)?p.ch : (q&&q.ch>=0?q.ch:-1);
+  return ch;
+}
+const chnow = document.getElementById('chnow');
+const pgno  = document.getElementById('pgno');
+const pfill = document.getElementById('pfill');
+const pknot = document.getElementById('pknot');
+function updateChrome(){
+  const ch = currentChapter();
+  chnow.innerHTML = ch<0 ? 'एकात्म मानववाद · Integral Humanism'
+    : `<b>${CH_META[ch].label}</b>&nbsp;&nbsp;·&nbsp;&nbsp;${CH_META[ch].title}`;
+  pgno.textContent = `Page ${Math.min(spread*2+1,pages.length-1)}–${Math.min(spread*2+2,pages.length)} / ${pages.length}`;
+  const f = spread/maxSpread*100;
+  pfill.style.width = f+'%';
+  pknot.style.left = f+'%';
+  document.querySelectorAll('.pill').forEach((el,i)=>{
+    el.classList.toggle('on', i===ch);
+  });
+  document.getElementById('prevb').disabled = spread<=0;
+  document.getElementById('nextb').disabled = spread>=maxSpread;
+}
+
+/* ---------- page-turn sound (Web Audio, synthesized) ---------- */
+let AC=null, soundOn=true;
+function ac(){ if(!AC) AC = new (window.AudioContext||window.webkitAudioContext)(); if(AC.state==='suspended')AC.resume(); return AC; }
+function flipSound(){
+  if(!soundOn) return;
+  try{
+    const ctx = ac(), t = ctx.currentTime;
+    /* paper swish: filtered noise sweep */
+    const dur=.32, buf=ctx.createBuffer(1, ctx.sampleRate*dur, ctx.sampleRate);
+    const d=buf.getChannelData(0);
+    for(let i=0;i<d.length;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,1.4);
+    const src=ctx.createBufferSource(); src.buffer=buf;
+    const bp=ctx.createBiquadFilter(); bp.type='bandpass'; bp.Q.value=.8;
+    bp.frequency.setValueAtTime(700,t); bp.frequency.exponentialRampToValueAtTime(2600,t+.16);
+    bp.frequency.exponentialRampToValueAtTime(900,t+.3);
+    const g=ctx.createGain();
+    g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.24,t+.05);
+    g.gain.exponentialRampToValueAtTime(.001,t+dur);
+    src.connect(bp).connect(g).connect(ctx.destination); src.start(t);
+    /* the click — page settling */
+    const o=ctx.createOscillator(), og=ctx.createGain(), lp=ctx.createBiquadFilter();
+    o.type='triangle'; o.frequency.setValueAtTime(1900,t+.30);
+    o.frequency.exponentialRampToValueAtTime(700,t+.345);
+    lp.type='lowpass'; lp.frequency.value=3200;
+    og.gain.setValueAtTime(0,t+.30); og.gain.linearRampToValueAtTime(.22,t+.308);
+    og.gain.exponentialRampToValueAtTime(.001,t+.375);
+    o.connect(lp).connect(og).connect(ctx.destination); o.start(t+.30); o.stop(t+.38);
+  }catch(e){}
+}
+document.getElementById('sndbtn').addEventListener('click',e=>{
+  soundOn=!soundOn;
+  e.target.textContent = soundOn?'Sound On':'Sound Off';
+  if(soundOn) flipSound();
+});
+
+/* ---------- flip animation ---------- */
+function turn(dir){
+  if(busy) return;
+  if(dir>0 && spread>=maxSpread) return;
+  if(dir<0 && spread<=0) return;
+  busy = true;
+  flipSound();
+  const leaf = document.createElement('div');
+  leaf.className = 'leaf' + (dir<0?' fromleft':'');
+  let front, back;
+  if(dir>0){ front = paperHTML(spread*2+1,'r'); back = paperHTML(spread*2+2,'l'); }
+  else     { front = paperHTML(spread*2,'l');   back = paperHTML(spread*2-1,'r'); }
+  leaf.innerHTML = `<div class="face front">${front}<div class="flipshade" id="fsF"></div></div>
+                    <div class="face back">${back}<div class="flipshade" id="fsB"></div></div>`;
+  book.appendChild(leaf);
+  /* reveal underlying page immediately */
+  if(dir>0){ slotR.innerHTML = paperHTML(spread*2+3,'r'); }
+  else     { slotL.innerHTML = paperHTML(spread*2-2,'l'); }
+
+  const D = 850;
+  const fsF = leaf.querySelector('#fsF'), fsB = leaf.querySelector('#fsB');
+  fsF.style.background = dir>0 ? 'linear-gradient(to left, rgba(0,0,0,.0), rgba(0,0,0,.28))'
+                               : 'linear-gradient(to right, rgba(0,0,0,.0), rgba(0,0,0,.28))';
+  fsB.style.background = fsF.style.background;
+  const t0 = performance.now();
+  function ease(x){ return x<.5 ? 4*x*x*x : 1-Math.pow(-2*x+2,3)/2; }
+  function frame(now){
+    let k = Math.min(1,(now-t0)/D); const e = ease(k);
+    const ang = (dir>0?-180:180)*e;
+    leaf.style.transform = `rotateY(${ang}deg)`;
+    const sh = Math.sin(e*Math.PI);
+    fsF.style.opacity = sh*.9; fsB.style.opacity = sh*.9;
+    if(k<1) requestAnimationFrame(frame);
+    else{
+      spread += dir;
+      renderStatic();
+      leaf.remove();
+      busy=false;
+    }
+  }
+  requestAnimationFrame(frame);
+}
+
+/* controls */
+document.getElementById('nextb').addEventListener('click',()=>turn(1));
+document.getElementById('prevb').addEventListener('click',()=>turn(-1));
+document.getElementById('hintR').addEventListener('click',()=>turn(1));
+document.getElementById('hintL').addEventListener('click',()=>turn(-1));
+slotR.addEventListener('click',()=>turn(1));
+slotL.addEventListener('click',()=>turn(-1));
+window.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight') turn(1);
+  if(e.key==='ArrowLeft') turn(-1);
+});
+let tx=null;
+book.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+book.addEventListener('touchend',e=>{
+  if(tx===null)return;
+  const dx=e.changedTouches[0].clientX-tx;
+  if(dx<-40)turn(1); if(dx>40)turn(-1); tx=null;
+},{passive:true});
+
+/* chapter pills */
+const pillWrap = document.getElementById('pills');
+const chStart = [];   /* spread index where chapter opener lives */
+CH_META.forEach((m,ci)=>{
+  const pi = pages.findIndex(p=>p.ch===ci && p.kind==='opener');
+  chStart[ci] = Math.floor(pi/2);
+  const b=document.createElement('button');
+  b.className='pill'; b.textContent = m.key;
+  b.title = m.label+' — '+m.title;
+  b.addEventListener('click',()=>{ jumpTo(chStart[ci]); });
+  pillWrap.appendChild(b);
+});
+function jumpTo(s){
+  if(busy || s===spread) return;
+  const dir = s>spread?1:-1;
+  /* single animated turn, then snap */
+  spread = s - dir;
+  renderStatic();
+  turn(dir);
+}
+document.getElementById('chtotal').textContent = pages.length+' pages · 4 chapters';
+
+/* responsive book scale */
+function scaleBook(){
+  const wrap = document.querySelector('.bookwrap');
+  const w = Math.min(window.innerWidth-140, 1180);
+  const natural = 904;
+  const s = Math.min(1, w/natural);
+  wrap.style.transform = `scale(${s})`;
+  wrap.style.transformOrigin='center top';
+  wrap.style.height = (640*s)+'px';
+}
+window.addEventListener('resize',scaleBook);
+
+/* ---------- podcast show players (EN + HI) ---------- */
+(function(){
+  const fmt = s => isFinite(s) ? `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}` : '–:––';
+  const speeds = [1, 1.25, 1.5, 2];
+  const players = [];
+  document.querySelectorAll('.playcard').forEach(card=>{
+    const audio = new Audio(card.dataset.src);
+    audio.preload = 'metadata';
+    const q = sel => card.querySelector(sel);
+    const btn = q('.pbtn'), prog = q('.prog'), fill = q('.fill'),
+          knot = q('.knot'), time = q('.ptime'), spd = q('.spd');
+    let si = 0;
+    const me = {audio, card};
+    players.push(me);
+    btn.addEventListener('click', ()=>{
+      if(audio.paused){
+        players.forEach(o=>{ if(o!==me){ o.audio.pause(); o.card.classList.remove('playing-one'); }});
+        audio.play().catch(()=>{});
+        card.classList.add('playing-one');
+      } else { audio.pause(); card.classList.remove('playing-one'); }
+    });
+    q('.b15').addEventListener('click', ()=>{
+      audio.currentTime = Math.max(0, audio.currentTime - 15); });
+    q('.f15').addEventListener('click', ()=>{
+      audio.currentTime = Math.min(audio.duration||0, audio.currentTime + 15); });
+    spd.addEventListener('click', ()=>{
+      si = (si + 1) % speeds.length;
+      audio.playbackRate = speeds[si];
+      spd.innerHTML = String(speeds[si]).replace('.25','&#188;').replace('.5','&#189;') + '&times;';
+    });
+    prog.addEventListener('click', ev=>{
+      if(!isFinite(audio.duration)) return;
+      const r = prog.getBoundingClientRect();
+      audio.currentTime = (ev.clientX - r.left) / r.width * audio.duration;
+    });
+    audio.addEventListener('timeupdate', ()=>{
+      const p = audio.duration ? audio.currentTime/audio.duration*100 : 0;
+      fill.style.width = p+'%'; knot.style.left = p+'%';
+      time.textContent = `${fmt(audio.currentTime)} / ${fmt(audio.duration)}`;
+    });
+    audio.addEventListener('loadedmetadata', ()=>{
+      time.textContent = `0:00 / ${fmt(audio.duration)}`; });
+    audio.addEventListener('ended', ()=>card.classList.remove('playing-one'));
+  });
+})();
+
+/* reveal on scroll */
+const io = new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+/* fallback: anything already in view (anchor jumps, headless) */
+function rvFallback(){
+  document.querySelectorAll('.rv:not(.in)').forEach(el=>{
+    const r = el.getBoundingClientRect();
+    if(r.top < innerHeight && r.bottom > 0) el.classList.add('in');
+  });
+}
+setTimeout(rvFallback, 500);
+window.addEventListener('hashchange', ()=>setTimeout(rvFallback, 400));
+if(location.href.includes('noanim')){
+  const st=document.createElement('style');
+  st.textContent='.rv{opacity:1!important;transform:none!important}';
+  document.head.appendChild(st);
+}
+if(location.href.includes('flat')){
+  const st=document.createElement('style');
+  st.textContent='.hero{min-height:auto!important;padding-top:150px!important;padding-bottom:120px!important}';
+  document.head.appendChild(st);
+}
+
+const pm = location.href.match(/[?&]p=(\d+)/);
+if(pm) spread = Math.min(maxSpread, Math.max(0, +pm[1]));
+renderStatic();
+scaleBook();
+}); /* end fonts.ready */
+</script>
+</body>
+</html>

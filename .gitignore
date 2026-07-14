@@ -1,0 +1,9 @@
+.DS_Store
+podcast/.chunks/
+podcast/.schunks/
+podcast/audio/
+podcast/audio_american/
+podcast/*.m4a
+podcast/gen*.log
+podcast/kartik_english_sample.mp3
+__pycache__/
