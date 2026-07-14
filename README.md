@@ -3,6 +3,8 @@
 A reading & listening website for *Integral Humanism* — the four lectures delivered by
 Pandit Deendayal Upadhyaya in Bombay, 22–25 April 1965.
 
+**Live site: [integral-humanism.vercel.app](https://integral-humanism.vercel.app)**
+
 - **Read**: the full book as an animated page-flip reader (~170 pages, page-turn sound)
 - **Listen**: audio deep-dives in English & Hindi (generated with Google NotebookLM)
 - **The Author** & **The Core Philosophy** sections
